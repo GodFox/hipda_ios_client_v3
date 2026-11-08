@@ -15,7 +15,6 @@
 #import "UIAlertView+Blocks.h"
 #import <SVProgressHUD.h>
 
-#import <UI7TableViewCell.h>
 #import "SWRevealViewController.h"
 
 @interface HPFavoriteViewController ()
@@ -73,7 +72,7 @@
 
 
 - (void)confirm:(id)sender {
-    [UIAlertView showConfirmationDialogWithTitle:@"同步"
+    [HPAlert showConfirmationDialogWithTitle:@"同步"
                                          message:@"您确定同步与HiPDA论坛的收藏吗?"
                                          handler:^(UIAlertView *alertView, NSInteger buttonIndex)
      {
@@ -96,7 +95,7 @@
      {
          if (error) {
              [SVProgressHUD dismiss];
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] handler:nil];
              
          } else if ([threads count]){
              [SVProgressHUD dismiss];
@@ -131,10 +130,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"HPFavoriteCell";
-    UI7TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UI7TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     HPThread *thread = [_favoritedThreads objectAtIndex:indexPath.row];

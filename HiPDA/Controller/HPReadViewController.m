@@ -216,7 +216,24 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
 
 
 - (void)loadView {
-    CGRect screenFrame = [[UIScreen mainScreen] applicationFrame];
+    // iOS 27 上 -[UIScreen applicationFrame] 已废弃并可能返回 NaN 高度，
+    // UIWebView initWithFrame: 会因 CALayer bounds 含 NaN 直接崩溃。
+    CGRect screenFrame = CGRectZero;
+    for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+        if ([scene isKindOfClass:[UIWindowScene class]] &&
+            scene.activationState == UISceneActivationStateForegroundActive) {
+            screenFrame = ((UIWindowScene *)scene).coordinateSpace.bounds;
+            break;
+        }
+    }
+    if (isnan(screenFrame.size.width) || isnan(screenFrame.size.height) ||
+        screenFrame.size.width <= 0 || screenFrame.size.height <= 0) {
+        screenFrame = [[UIScreen mainScreen] bounds];
+    }
+    if (isnan(screenFrame.size.width) || isnan(screenFrame.size.height) ||
+        screenFrame.size.width <= 0 || screenFrame.size.height <= 0) {
+        screenFrame = CGRectMake(0, 0, 320, 480);
+    }
     UIWebView *wv = [[UIWebView alloc] initWithFrame:screenFrame];
     [wv setScalesPageToFit:YES];
     wv.dataDetectorTypes = UIDataDetectorTypeNone;
@@ -393,7 +410,7 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
     
     [string replaceOccurrencesOfString:@"**[lineHeight]**" withString:S(@"%i%%", _currentLineHeight) options:0 range:NSMakeRange(0, string.length)];
     
-    [self.webView loadHTMLString:string baseURL:[NSURL URLWithString:@"http://www.hi-pda.com/forum/"]];
+    [self.webView loadHTMLString:string baseURL:[NSURL URLWithString:@"https://www.4d4y.com/forum/"]];
     
     BOOL printable = !_forceFullPage && (_current_page == 1 && _current_author_uid == 0);
     
@@ -445,7 +462,7 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
             NSString *final = [HPNewPost preProcessHTML:string];
             
             //NSLog(@"%@", string);
-            [self.webView loadHTMLString:final baseURL:[NSURL URLWithString:@"http://www.hi-pda.com/forum/"]];
+            [self.webView loadHTMLString:final baseURL:[NSURL URLWithString:@"https://www.4d4y.com/forum/"]];
             
             [self endLoad:YES];
             
@@ -616,7 +633,9 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
         // 暂时在未加载好是禁用
         if (_reloadingFooter) return NO;
         
-        [self actionForFloor:[[urlString substringFromIndex:8] integerValue]];
+        if (urlString.length > 8) {
+            [self actionForFloor:[[urlString substringFromIndex:8] integerValue]];
+        }
         return NO;
         
     } else if ([request.URL.scheme isEqualToString:@"image"]) {
@@ -647,7 +666,7 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
         
     } else if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         
-        RxMatch* match = [urlString firstMatchWithDetails:RX(@"hi-pda\\.com/forum/viewthread\\.php\\?tid=(\\d+)")];
+        RxMatch* match = [urlString firstMatchWithDetails:RX(@"4d4y\\.com/forum/viewthread\\.php\\?tid=(\\d+)")];
         
         if (match) {
             
@@ -666,11 +685,11 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
         
         return NO;
         
-    } else if ([urlString isEqualToString:@"http://www.hi-pda.com/forum/"]){
+    } else if ([urlString isEqualToString:@"https://www.4d4y.com/forum/"]){
         
         return YES;
         
-    } else if ([urlString hasPrefix:@"http://www.hi-pda.com/forum/#floor_"]){
+    } else if ([urlString hasPrefix:@"https://www.4d4y.com/forum/#floor_"]){
     
         return YES;
         
@@ -829,13 +848,13 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
                 }
                 case 2://浏览器打开
                 {
-                    NSString *url = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/viewthread.php?tid=%ld&extra=&page=%ld", _thread.tid, _current_page];
+                    NSString *url = [NSString stringWithFormat:@"https://www.4d4y.com/forum/viewthread.php?tid=%ld&extra=&page=%ld", _thread.tid, _current_page];
                     [self openUrl:[NSURL URLWithString:url]];
                     break;
                 }
                 case 3://copy link
                 {
-                    NSString *url = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/viewthread.php?tid=%ld&extra=&page=%ld", _thread.tid, _current_page];
+                    NSString *url = [NSString stringWithFormat:@"https://www.4d4y.com/forum/viewthread.php?tid=%ld&extra=&page=%ld", _thread.tid, _current_page];
                     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
                     [pasteBoard setString:url];
                     [SVProgressHUD showSuccessWithStatus:@"拷贝成功"];
@@ -1084,6 +1103,9 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
 }
 
 - (void)gotoFloorWithUrl:(NSString *)url {
+    if (url.length <= 12) {
+        return;
+    }
     NSArray *arr = [[url substringFromIndex:12] componentsSeparatedByString:@"_"];
     if (arr.count != 2) {
         return;
@@ -1210,7 +1232,7 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
 
 - (void)promptForSendMessage:(HPNewPost *)post {
     NSString *title = [NSString stringWithFormat:@"收件人: %@", post.user.username];
-    [UIAlertView showSendMessageDialogWithTitle:title handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [HPAlert showSendMessageDialogWithTitle:title handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
         
         if (buttonIndex == [alertView cancelButtonIndex]) {
             
@@ -1226,7 +1248,7 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
 
 - (void)report {
     
-    [UIAlertView showConfirmationDialogWithTitle:@"举报"
+    [HPAlert showConfirmationDialogWithTitle:@"举报"
                                          message:@"您确定要举报当前内容为不适合浏览吗?"
                                          handler:^(UIAlertView *alertView, NSInteger buttonIndex)
      {

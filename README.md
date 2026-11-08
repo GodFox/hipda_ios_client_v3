@@ -1,7 +1,7 @@
 # HiPDA iOS 客户端
-- [HiPDA](http://www.hi-pda.com/forum/)
+- [HiPDA](https://www.4d4y.com/forum/)
 - [AppStore](https://itunes.apple.com/cn/app/hipda/id728246342)
-- [讨论帖](http://www.hi-pda.com/forum/viewthread.php?tid=1272557)
+- [讨论帖](https://www.4d4y.com/forum/viewthread.php?tid=1272557)
 
 # 注意
 - 请不要打包后以任何形式分发

@@ -76,7 +76,7 @@
              
          } else {
             
-             [UIAlertView showConfirmationDialogWithTitle:@"出错啦"
+             [HPAlert showConfirmationDialogWithTitle:@"出错啦"
                 message:[NSString stringWithFormat:@"获取回复token失败(错误信息:%@), 是否重试?", [error localizedDescription]]
                 handler:^(UIAlertView *alertView, NSInteger buttonIndex)
               {
@@ -126,7 +126,7 @@
              
              if ([[error localizedDescription] indexOf:@"您两次发表间隔少于 30 秒"] != -1) {
                  [SVProgressHUD dismiss];
-                 [UIAlertView showConfirmationDialogWithTitle:@"太快啦"
+                 [HPAlert showConfirmationDialogWithTitle:@"太快啦"
                                                       message:@"您两次发表间隔少于 30 秒, 是否开启定时器?"
                                                       handler:^(UIAlertView *alertView, NSInteger buttonIndex)
                   {

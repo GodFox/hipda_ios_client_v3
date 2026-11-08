@@ -84,7 +84,7 @@
         [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:[HPCommon NVCWithRootVC:loginvc] animated:YES completion:^{
             ;
         }];
-        block(NO, [NSError errorWithDomain:@".hi-pda.com" code:kHPNoAccountCode userInfo:nil]);
+        block(NO, [NSError errorWithDomain:@".4d4y.com" code:kHPNoAccountCode userInfo:nil]);
         return;
     }
     
@@ -93,10 +93,10 @@
         NSString *src = [HPHttpClient GBKresponse2String:responseObject];
         
         NSString *formhash = [src stringBetweenString:@"formhash\" value=\"" andString:@"\""];
-        if (formhash) {
+        if (formhash || [src indexOf:@"loginform"] != -1) {
             
             NSLog(@"login get formhash %@", formhash);
-            [self _loginWithFormhash:formhash block:block];
+            [self _loginWithFormhash:(formhash ? formhash : @"") block:block];
             
         } else {
             
@@ -109,7 +109,7 @@
             
             if (block) {
                 NSLog(@"login step1 找不到token %@", src);
-                block(NO, [NSError errorWithDomain:@".hi-pda.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:S(@"找不到token, 错误信息: %@", msg)}]);
+                block(NO, [NSError errorWithDomain:@".4d4y.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:S(@"找不到token, 错误信息: %@", msg)}]);
             }
         }
         
@@ -127,7 +127,7 @@
     NSArray *arr = [credential componentsSeparatedByString:@"\n"];
     if ([arr count] < 3) {
         NSLog(@"login credential does not contain 3 components");
-        block(NO, [NSError errorWithDomain:@".hi-pda.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:@"Keychain出问题了"}]);
+        block(NO, [NSError errorWithDomain:@".4d4y.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:@"Keychain出问题了"}]);
         return;
     }
     NSString *password = arr[0];
@@ -141,11 +141,9 @@
          @"questionid":questionid,
          @"answer":answer,
          @"cookietime":@"2592000",
-         @"referer":@"http://www.hi-pda.com/forum/index.php",
+         @"referer":@"https://www.4d4y.com/forum/index.php",
          @"formhash":formhash
     };
-    
-    NSLog(@"login step2 parameters %@", parameters);
     
     [[HPHttpClient sharedClient] postPath:@"forum/logging.php?action=login&loginsubmit=yes&inajax=1&inajax=1" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -160,11 +158,11 @@
         if (isSuccess) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kHPUserLoginSuccess object:nil];
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kHPUserLoginError object:nil userInfo:@{@"error":[NSError errorWithDomain:@".hi-pda.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:errMsg}]}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kHPUserLoginError object:nil userInfo:@{@"error":[NSError errorWithDomain:@".4d4y.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:errMsg}]}];
         }
         
         if (block) {
-            block(isSuccess, [NSError errorWithDomain:@".hi-pda.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:errMsg}]);
+            block(isSuccess, [NSError errorWithDomain:@".4d4y.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:errMsg}]);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -194,11 +192,11 @@
 //        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:[HPCommon NVCWithRootVC:loginvc] animated:YES completion:^{
 //            ;
 //        }];
-//        block(NO, [NSError errorWithDomain:@".hi-pda.com" code:kHPNoAccountCode userInfo:nil]);
+//        block(NO, [NSError errorWithDomain:@".4d4y.com" code:kHPNoAccountCode userInfo:nil]);
 //        return;
 //    }
 //    
-//    NSString *loginPath = [NSString stringWithFormat:@"forum/logging.php?action=login&loginsubmit=yes&inajax=1&answer=%@&cookietime=2592000&formhash=%@&loginfield=%@&password=%@&questionid=%@&referer=http://www.hi-pda.com/forum/forumdisplay.php?fid=2&username=%@", _answer, _formhash, _loginfield, _password, _questionid, _username];
+//    NSString *loginPath = [NSString stringWithFormat:@"forum/logging.php?action=login&loginsubmit=yes&inajax=1&answer=%@&cookietime=2592000&formhash=%@&loginfield=%@&password=%@&questionid=%@&referer=https://www.4d4y.com/forum/forumdisplay.php?fid=2&username=%@", _answer, _formhash, _loginfield, _password, _questionid, _username];
 //    loginPath = [loginPath stringByAddingPercentEscapesUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
 //    
 //    NSLog(@"loginPath %@", loginPath);
@@ -217,10 +215,10 @@
 //        // 3 每次开启和结束是保存cooclie
 //        // 4 httpclient shared set cookie header
 //        /*
-//         //NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:[NSURL URLWithString:@"http://www.hi-pda.com"]];
+//         //NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:[NSURL URLWithString:@"https://www.4d4y.com"]];
 //         //NSLog(@"How many Cookies: %d", all.count);
 //         
-//         //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:all forURL:[NSURL URLWithString:@"http://www.hi-pda.com"] mainDocumentURL:nil];
+//         //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:all forURL:[NSURL URLWithString:@"https://www.4d4y.com"] mainDocumentURL:nil];
 //         */
 //        
 //        NSLog(@"login done");
@@ -242,7 +240,7 @@
 //        }
 //        
 //        if (block) {
-//            block(isSuccess, [NSError errorWithDomain:@".hi-pda.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:errMsg}]);
+//            block(isSuccess, [NSError errorWithDomain:@".4d4y.com" code:NSURLErrorUserAuthenticationRequired userInfo:@{NSLocalizedDescriptionKey:errMsg}]);
 //        }
 //        
 //    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

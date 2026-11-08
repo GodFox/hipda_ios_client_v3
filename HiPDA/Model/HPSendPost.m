@@ -34,7 +34,7 @@
                      images:(NSArray *)images
                       block:(void (^)(NSString *msg, NSError *error))block
 {
-    //http://www.hi-pda.com/forum/post.php?action=reply&fid=57&tid=1272185&extra=&replysubmit=yes
+    //https://www.4d4y.com/forum/post.php?action=reply&fid=57&tid=1272185&extra=&replysubmit=yes
     
     NSString *path;
     
@@ -71,10 +71,10 @@
                            @"usesig":@"1",
                            @"noticeauthor":[NSString stringWithFormat:@"r|%d|[i]%@[/i]",post.user.uid, post.user.username],
                            /*@"noticeauthor":[NSString stringWithFormat:@"r|%d|[i]%@[/i]",644982, @"geka"],*/
-                           @"noticetrimstr":[NSString stringWithFormat:@"[b]回复 [url=http://www.hi-pda.com/forum/redirect.php?goto=findpost&pid=%d&ptid=%d]%d#[/url] [i]%@[/i] [/b]", post.pid, tid, post.floor, post.user.username],
+                           @"noticetrimstr":[NSString stringWithFormat:@"[b]回复 [url=https://www.4d4y.com/forum/redirect.php?goto=findpost&pid=%d&ptid=%d]%d#[/url] [i]%@[/i] [/b]", post.pid, tid, post.floor, post.user.username],
                            @"noticeauthormsg":@"",
                            @"subject":@"",
-                           @"message":[NSString stringWithFormat:@"[b]回复 [url=http://www.hi-pda.com/forum/redirect.php?goto=findpost&pid=%d&ptid=%d]%d#[/url] [i]%@[/i] [/b] \n    %@%@", post.pid, tid, post.floor, post.user.username, content, postTail]
+                           @"message":[NSString stringWithFormat:@"[b]回复 [url=https://www.4d4y.com/forum/redirect.php?goto=findpost&pid=%d&ptid=%d]%d#[/url] [i]%@[/i] [/b] \n    %@%@", post.pid, tid, post.floor, post.user.username, content, postTail]
                            };
             break;
         }
@@ -94,7 +94,7 @@
             
             //NSLog(@"%@", postcontent);
             
-            NSString *noticetrimstr = [NSString stringWithFormat:@"[quote]%@\n[size=2][color=#999999]%@ 发表于 %@[/color][url=http://www.hi-pda.com/forum/redirect.php?goto=findpost&pid=%d&ptid=%d][img]http://www.hi-pda.com/forum/images/common/back.gif[/img][/url][/size][/quote]", postcontent, post.user.username, [HPNewPost dateString:post.date], post.pid, tid];
+            NSString *noticetrimstr = [NSString stringWithFormat:@"[quote]%@\n[size=2][color=#999999]%@ 发表于 %@[/color][url=https://www.4d4y.com/forum/redirect.php?goto=findpost&pid=%d&ptid=%d][img]https://www.4d4y.com/forum/images/common/back.gif[/img][/url][/size][/quote]", postcontent, post.user.username, [HPNewPost dateString:post.date], post.pid, tid];
             
             
             parameters = @{
@@ -279,7 +279,7 @@
             block(@"", error);
         } else {
             
-            //http://www.hi-pda.com/forum/misc.php?action=swfupload&operation=upload&simple=1&type=image
+            //https://www.4d4y.com/forum/misc.php?action=swfupload&operation=upload&simple=1&type=image
             NSString *path = @"forum/misc.php?action=swfupload&operation=upload&simple=1&type=image";
             
             NSString *uid = [parameters objectForKey:@"uid"];
@@ -361,22 +361,22 @@
     switch (actionType) {
         case ActionTypeReply:
         {
-            // http://www.hi-pda.com/forum/post.php?action=reply&fid=57&tid=1278361&reppost=22793296
+            // https://www.4d4y.com/forum/post.php?action=reply&fid=57&tid=1278361&reppost=22793296
             //break;
         }
         case ActionTypeQuote:
         {
-            //http://www.hi-pda.com/forum/post.php?action=reply&fid=57&tid=1278361&repquote=22793296
+            //https://www.4d4y.com/forum/post.php?action=reply&fid=57&tid=1278361&repquote=22793296
             //break;
         }
         case ActionTypeNewPost:
         {
-            //http://www.hi-pda.com/forum/post.php?action=reply&fid=57&tid=1278407
+            //https://www.4d4y.com/forum/post.php?action=reply&fid=57&tid=1278407
             //break;
         }
         case ActionTypeNewThread:
         {
-            //http://www.hi-pda.com/forum/post.php?action=newthread&fid=57
+            //https://www.4d4y.com/forum/post.php?action=newthread&fid=57
             
             path = [NSString stringWithFormat:@"forum/post.php?action=newthread&fid=57"];
             

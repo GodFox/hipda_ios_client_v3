@@ -146,7 +146,7 @@
             
         } else {
             
-            [UIAlertView showConfirmationDialogWithTitle:@"出错啦"
+            [HPAlert showConfirmationDialogWithTitle:@"出错啦"
                                                  message:[NSString stringWithFormat:@"获取回复token失败(错误信息:%@), 是否重试?", [error localizedDescription]]
                                                  handler:^(UIAlertView *alertView, NSInteger buttonIndex)
              {

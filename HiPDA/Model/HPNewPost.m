@@ -279,7 +279,7 @@
     
     NSError *error;
     NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:@"<b>作者: </b>(.*?)&nbsp; &nbsp; <b>时间: </b>([^<]+)<br /><br />\r\n(.*?)<hr noshade size"
+                                  regularExpressionWithPattern:@"<b>作者: </b>(.*?)&nbsp; &nbsp; <b>时间: </b>([0-9\\-]+ [0-9:]+)\\s*(?:&nbsp; &nbsp; <b>标题: </b>[^<]*)?<br /><br />\\r?\\n(.*?)<hr noshade size"
                                   options:NSRegularExpressionDotMatchesLineSeparators
                                   error:&error
                                   ];
@@ -340,7 +340,7 @@
 - (void)processContentHTML {
     
     // 回复
-    _body_html = [RX(@"<a href=\"http://www\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    _body_html = [RX(@"<a href=\"https?://www\\.4d4y\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         RxMatchGroup *m2 = [match.groups objectAtIndex:2];
@@ -351,7 +351,7 @@
     }];
     
     // 引用
-    _body_html = [RX(@"<a href=\"http://www\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    _body_html = [RX(@"<a href=\"https?://www\\.4d4y\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         return [NSString stringWithFormat:@"<a href=\"gotofloor://0_%ld\" >", [m1.value integerValue]];
@@ -385,7 +385,7 @@
             
             RxMatchGroup *m1 = [match.groups objectAtIndex:1];
             //NSLog(@"%@", m1.value);
-            NSString *src = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/%@", m1.value];
+            NSString *src = [NSString stringWithFormat:@"https://www.4d4y.com/forum/%@", m1.value];
             
             [imgsArray addObject:src];
             
@@ -397,7 +397,7 @@
         _body_html = [RX(@"<br /><br /><img src=\"images/attachicons.*?src=\"(.*?)\".*?/>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
             
             RxMatchGroup *m1 = [match.groups objectAtIndex:1];
-            NSString *src = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/%@", m1.value];
+            NSString *src = [NSString stringWithFormat:@"https://www.4d4y.com/forum/%@", m1.value];
             
             if ([imgsArray indexOfObject:src] == NSNotFound) {
                 [imgsArray addObject:src];
@@ -421,37 +421,70 @@
 
 + (NSArray *)extractFuckPosts:(NSString *)string {
     
+    // 4d4y 的 viewthread 模板：主楼 detailcon，回复在 li.replytop + div.replycon
+    NSString *opPattern = @"<div class=\"sub\">.*?<a href=\"space\\.php\\?uid=(\\d+)\"[^>]*>(.*?)</a>.*?<em id=\"authorposton(\\d+)\">发表于 ([^<]+)</em>.*?</div>\\s*<div class=\"detailcon\" id=\"pid(\\d+)\">(.*?)</div>";
+    NSString *replyPattern = @"<li id=\"pid(\\d+)\">\\s*<div class=\"replytop\">.*?(\\d+)#</span><a href=\"space\\.php\\?uid=(\\d+)\"[^>]*>(.*?)</a>/\\s*([^<]+)</div>\\s*<div class=\"replycon\">(.*?)</div>";
     
-    //NSLog(@"html : \n%@", string);
+    NSMutableArray *postsArray = [NSMutableArray arrayWithCapacity:50];
     
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:@"<table id=\"pid(\\d+)\"[^>]*>[\\s\\n]*(<tr class=\"threadad\">.*?</tr>)?.*?<tr class=\"threadad\">"
-                                  options:NSRegularExpressionDotMatchesLineSeparators
-                                  error:&error
-                                  ];
+    static NSDateFormatter *post_date_formatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        post_date_formatter = [[NSDateFormatter alloc] init];
+        [post_date_formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    });
     
-    __block NSMutableArray *postsArray = [NSMutableArray arrayWithCapacity:42];
+    void (^addPost)(NSString *, NSString *, NSString *, NSString *, NSInteger, NSString *) =
+    ^(NSString *pid, NSString *uid, NSString *username, NSString *dateString, NSInteger floor, NSString *body_html) {
+        HPNewPost *post = [HPNewPost new];
+        post.pid = [pid integerValue];
+        post.floor = floor;
+        post.date = [post_date_formatter dateFromString:[dateString trim]];
+        post.body_html = body_html;
+        
+        HPUser *user = [HPUser new];
+        user.uid = [uid integerValue];
+        user.username = [[username trim] stringByDecodingHTMLEntities];
+        user.avatarImageURL = [HPUser avatarStringWithUid:user.uid];
+        post.user = user;
+        
+        [post processFuckContentHTML];
+        [postsArray addObject:post];
+    };
     
-    [regex enumerateMatchesInString:string
-                            options:0
-                              range:NSMakeRange(0, string.length)
-                         usingBlock:
-     ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-         
-         NSString *html = [string  substringWithRange:[result rangeAtIndex:0]];
-         NSString *pidString = [string  substringWithRange:[result rangeAtIndex:1]];
-         
-         HPNewPost *post = [HPNewPost new];
-         post.pid = [pidString integerValue];
-         [post processFuckPostHTML:html];
-         
-         [post processFuckContentHTML];
-          
-         [postsArray addObject:post];
-     }];
+    NSRegularExpression *opRegex = [NSRegularExpression regularExpressionWithPattern:opPattern
+                                                                            options:NSRegularExpressionDotMatchesLineSeparators
+                                                                              error:nil];
+    NSArray *opMatches = [opRegex matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    for (NSTextCheckingResult *result in opMatches) {
+        if ([result numberOfRanges] < 7) {
+            continue;
+        }
+        addPost([string substringWithRange:[result rangeAtIndex:5]],
+                [string substringWithRange:[result rangeAtIndex:1]],
+                [string substringWithRange:[result rangeAtIndex:2]],
+                [string substringWithRange:[result rangeAtIndex:4]],
+                1,
+                [string substringWithRange:[result rangeAtIndex:6]]);
+    }
     
-    return postsArray;
+    NSRegularExpression *replyRegex = [NSRegularExpression regularExpressionWithPattern:replyPattern
+                                                                                options:NSRegularExpressionDotMatchesLineSeparators
+                                                                                  error:nil];
+    NSArray *replyMatches = [replyRegex matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    for (NSTextCheckingResult *result in replyMatches) {
+        if ([result numberOfRanges] < 7) {
+            continue;
+        }
+        addPost([string substringWithRange:[result rangeAtIndex:1]],
+                [string substringWithRange:[result rangeAtIndex:3]],
+                [string substringWithRange:[result rangeAtIndex:4]],
+                [string substringWithRange:[result rangeAtIndex:5]],
+                [[string substringWithRange:[result rangeAtIndex:2]] integerValue],
+                [string substringWithRange:[result rangeAtIndex:6]]);
+    }
+    
+    return [NSArray arrayWithArray:postsArray];
 }
 
 - (void)processFuckPostHTML:(NSString *)html {
@@ -547,14 +580,14 @@
         for (RxMatch *i in imageMatchs) {
             RxMatchGroup *ii = [i.groups objectAtIndex:1];
             NSLog(@"src %@", ii.value);
-            [images addObject:[NSString stringWithFormat:@"http://www.hi-pda.com/forum/%@", ii.value]];
+            [images addObject:[NSString stringWithFormat:@"https://www.4d4y.com/forum/%@", ii.value]];
         }
         
         self.images = [NSArray arrayWithArray:images];
     }
     
     
-    _body_html = [RX(@"<a href=\"http://www\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    _body_html = [RX(@"<a href=\"https?://www\\.4d4y\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         RxMatchGroup *m2 = [match.groups objectAtIndex:2];
@@ -564,7 +597,7 @@
         return [NSString stringWithFormat:@"<a href=\"gotofloor://%ld_%ld\" >%ld#</a>", [m2.value integerValue], [m1.value integerValue], [m2.value integerValue]];
     }];
     
-    _body_html = [RX(@"<a href=\"http://www\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    _body_html = [RX(@"<a href=\"https?://www\\.4d4y\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         RxMatchGroup *m2 = [match.groups objectAtIndex:2];
@@ -574,7 +607,7 @@
         return [NSString stringWithFormat:@"<a href=\"gotofloor://%ld_%ld\" >%ld#</a>", [m2.value integerValue], [m1.value integerValue], [m2.value integerValue]];
     }];
     
-    _body_html = [RX(@"<a href=\"http://www\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    _body_html = [RX(@"<a href=\"https?://www\\.4d4y\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         
@@ -612,7 +645,7 @@
             
             RxMatchGroup *m1 = [match.groups objectAtIndex:1];
             //NSLog(@"%@", m1.value);
-            NSString *src = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/%@", m1.value];
+            NSString *src = [NSString stringWithFormat:@"https://www.4d4y.com/forum/%@", m1.value];
             
             [imgsArray addObject:src];
             
@@ -769,7 +802,7 @@
     }*/
     
     if (url) {
-        //http://www.hi-pda.com/forum/viewthread.php?tid=1365231&rpid=24817242&ordertype=0&page=1#pid24817242
+        //https://www.4d4y.com/forum/viewthread.php?tid=1365231&rpid=24817242&ordertype=0&page=1#pid24817242
         RxMatch *a = [RX(@"page=(\\d+).*?pid(\\d+)") firstMatchWithDetails:url];
         
         if (a.groups.count == 3) {
@@ -840,7 +873,7 @@
                 
                 RxMatchGroup *m1 = [match.groups objectAtIndex:1];
                 //NSLog(@"%@", m1.value);
-                return S(@"<div class='img_placeholder' onclick='img_click(\"http://www.hi-pda.com/forum/%@\")'>点击查看图片</div>",m1.value);
+                return S(@"<div class='img_placeholder' onclick='img_click(\"https://www.4d4y.com/forum/%@\")'>点击查看图片</div>",m1.value);
             }
     
         }];

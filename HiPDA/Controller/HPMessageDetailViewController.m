@@ -15,6 +15,7 @@
 #import <UIImageView+WebCache.h>
 #import <SVProgressHUD.h>
 #import "NSUserDefaults+Convenience.h"
+#import "UIAlertView+Blocks.h"
 
 @interface HPMessageDetailViewController () <JSMessagesViewDataSource, JSMessagesViewDelegate>
 
@@ -80,7 +81,7 @@
      {
          if (error) {
              [SVProgressHUD dismiss];
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] handler:nil];
              
          } else if ([lists count]){
              [SVProgressHUD dismiss];

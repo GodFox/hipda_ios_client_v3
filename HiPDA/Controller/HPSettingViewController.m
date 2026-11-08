@@ -110,7 +110,7 @@
     RETableViewSection *logoutSection = [RETableViewSection sectionWithHeaderTitle:@"  " footerTitle:@" "];
     RETableViewItem *logoutItem = [RETableViewItem itemWithTitle:@"登出" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
         
-        [UIAlertView showConfirmationDialogWithTitle:@"登出"
+        [HPAlert showConfirmationDialogWithTitle:@"登出"
                                              message:@"您确定要登出当前账号吗?"
                                              handler:^(UIAlertView *alertView, NSInteger buttonIndex)
          {
@@ -497,7 +497,7 @@
 
 - (void)reset:(id)sender {
     
-    [UIAlertView showConfirmationDialogWithTitle:@"重置设置"
+    [HPAlert showConfirmationDialogWithTitle:@"重置设置"
                                          message:@"您确定要重置所有设置吗?"
                                          handler:^(UIAlertView *alertView, NSInteger buttonIndex)
      {

@@ -84,14 +84,14 @@
         if (!(username && password)) {
             item.title = @"确定";
             [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:@"请填写用户名和密码" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+            [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:@"请填写用户名和密码" handler:nil];
             return;
         }
         
         if (![password isEqualToString:repassword]) {
             item.title = @"确定";
             [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:@"两次密码不一致" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+            [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:@"两次密码不一致" handler:nil];
             return;
         }
         
@@ -105,7 +105,7 @@
              item.title = @"提交";
              [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
              
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:@"感谢您的注册, 请等待管理人员进行审核" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             [HPAlert showWithTitle:NSLocalizedString(@"提示", nil) message:@"感谢您的注册, 请等待管理人员进行审核" handler:nil];
          }];
     }];
     

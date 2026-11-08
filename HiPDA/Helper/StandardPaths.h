@@ -70,6 +70,7 @@
 #endif
 
 
+#if !defined(__IPHONE_OS_VERSION_MAX_ALLOWED) || __IPHONE_OS_VERSION_MAX_ALLOWED < 30200
 #ifndef UI_USER_INTERFACE_IDIOM
 #define UI_USER_INTERFACE_IDIOM() UIUserInterfaceIdiomDesktop
 
@@ -81,6 +82,7 @@ typedef enum
 }
 UIUserInterfaceIdiom;
 
+#endif
 #endif
 
 #ifndef __IPHONE_OS_VERSION_MAX_ALLOWED

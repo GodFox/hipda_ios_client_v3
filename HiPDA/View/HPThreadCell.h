@@ -18,6 +18,7 @@
 - (void)configure:(HPThread *)thread;
 
 + (CGFloat)heightForCellWithThread:(HPThread *)thread;
++ (CGFloat)heightForCellWithThread:(HPThread *)thread width:(CGFloat)width;
 
 - (void)markRead;
 - (UIView *)viewWithImageName:(NSString *)imageName;

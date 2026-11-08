@@ -20,7 +20,6 @@
 #import "NSString+Additions.h"
 #import <SVProgressHUD.h>
 
-#import <UI7TableViewCell.h>
 #import "SWRevealViewController.h"
 #import "HPRearViewController.h"
 
@@ -117,7 +116,7 @@
         
         if (error) {
             [SVProgressHUD dismiss];
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+            [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] handler:nil];
             
         } else if ([threads count]){
             [SVProgressHUD dismiss];
@@ -190,10 +189,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"HPMyNoticeCell";
-    UI7TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UI7TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
         [cell.detailTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [cell.detailTextLabel setMinimumScaleFactor:FONT_SIZE];
@@ -254,7 +253,7 @@
     HPThread *thread = [_myNotices objectAtIndex:indexPath.row];
     
     // mark read
-    UI7TableViewCell *cell = (UI7TableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell.textLabel setTextColor:[HPTheme readColor]];
     [[HPCache sharedCache] readThread:thread.tid pid:thread.pid];
     

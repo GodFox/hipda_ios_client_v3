@@ -14,13 +14,12 @@
 #import "HPBackgroundViewController.h"
 #import "HPReadViewController.h"
 
-#import <UI7Kit/UI7TableViewCell.h>
 #import <SVProgressHUD.h>
 #import "UIAlertView+Blocks.h"
 
 
 
-@interface HPBackgroundViewController () <UIActionSheetDelegate>
+@interface HPBackgroundViewController ()
 
 @end
 
@@ -61,7 +60,7 @@
     [self addGuesture];
     
     if (![_cachedThreads count] && [NSStandardUserDefaults boolForKey:kHPBgVCTip or:YES]) {
-        [UIAlertView showConfirmationDialogWithTitle:@"提示"
+        [HPAlert showConfirmationDialogWithTitle:@"提示"
                                              message:@"在帖子上左滑滑可以预载入"
                                              handler:^(UIAlertView *alertView, NSInteger buttonIndex)
          {
@@ -107,26 +106,21 @@
 
 
 - (void)clear:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  initWithTitle:nil
-                                  delegate:self cancelButtonTitle:@"取消"
-                                  destructiveButtonTitle:@"清除所有"
-                                  otherButtonTitles:nil, nil];
-    actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
-    [actionSheet showInView:self.view];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    NSLog(@"buttonIndex = %i", buttonIndex);
-    
-    if (buttonIndex == 0) {
-        
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil
+                                                                         message:nil
+                                                                  preferredStyle:UIAlertControllerStyleActionSheet];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"清除所有"
+                                                    style:UIAlertActionStyleDestructive
+                                                  handler:^(UIAlertAction *action) {
         [[HPCache sharedCache] clearBgThreads];
-        
-        //todo
         [self.tableView reloadData];
-    }
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消"
+                                                    style:UIAlertActionStyleCancel
+                                                  handler:nil]];
+    actionSheet.popoverPresentationController.sourceView = self.view;
+    actionSheet.popoverPresentationController.sourceRect = self.view.bounds;
+    [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 
@@ -147,11 +141,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"HPBgCell";
-    UI7TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
     if (!cell) {
-        cell = [[UI7TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     HPThread *thread = [_cachedThreads objectAtIndex:indexPath.row];

@@ -1,0 +1,1336 @@
+<html>
+<head>
+<title>4D4Y - Powered by Discuz! Board</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<style type="text/css">
+body 	   {margin: 10px 80px;}
+body,table {font-size: 13px; font-family: Verdana, Helvetica, Arial, sans-serif;}
+</style>
+<script src="https://img02.4d4y.com/forum/forumdata/cache/common.js?WB2" type="text/javascript"></script>
+<script src="https://img02.4d4y.com/forum/forumdata/cache/viewthread.js?WB2" type="text/javascript"></script>
+<script type="text/javascript">zoomstatus = 0;</script>
+</head>
+
+<body>
+<img src="templates/default/images/logo.gif" alt="Board logo" border="0" /><br /><br />
+<b>标题: </b><a href="forumdisplay.php?fid=7&amp;filter=type&amp;typeid=22">[嵌入式Linux]</a> 迟到的爱 nokia n800（n810通用）使用心得&amp;软件推荐 <b><a href="###" onclick="this.style.visibility='hidden';window.print();this.style.visibility='visible'">[打印本页]</a></b></span><br /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-28 21:41 &nbsp; &nbsp; <b>标题: </b>迟到的爱 nokia n800（n810通用）使用心得&amp;软件推荐<br /><br />
+<p align="center"><font size="4"><font face="宋体 "><strong>迟到的爱</strong></font><strong> nokia n800</strong><font face="宋体 "><strong>（</strong></font><strong>n810</strong><font face="宋体 "><strong>通用）使用心得</strong></font><strong>&amp;</strong><font face="宋体 "><strong>软件推荐</strong></font><strong>&nbsp;&nbsp;by fbscell </strong></font></p><br />
+<font color="red">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<font face="宋体 "><font size="5">首发</font></font><font size="5">hipda </font></font><br />
+<br />
+<font face="宋体 ">以下文字乃个人使用经验和感受</font><font color="sienna">&nbsp;&nbsp;</font><font face="宋体 "><font color="sienna">文中如有引用会加以注明 如果转载请注明出处</font><br />
+</font><br />
+--------------------------------------------------------------------------------<br />
+--------------------------------------------------------------------------------<br />
+<font color="purple">最近更新12.4&nbsp;&nbsp;简单介绍linux文件系统（在第五楼）</font><br />
+<font color="purple">最近更新12.9&nbsp;&nbsp;屏幕反转 &amp; A2dp </font><font color="purple"><font color="purple">（在第五楼）</font></font><br />
+<br />
+<br />
+<br />
+--------------------------------------------------------------------------------<br />
+--------------------------------------------------------------------------------<br />
+<font size="5"><font color="red"><font face="宋体 ">一楼 个人YY</font></font></font><br />
+<font size="5"><font color="red"><font face="宋体 ">二楼 初入感受</font></font></font><br />
+<font size="5"><font color="red"><font face="宋体 ">三楼 软件使用介绍</font></font></font><br />
+<font face="宋体 "><font color="red"><font size="5">四楼 系统克隆和备份还原，安装kde</font></font></font><br />
+<font face="宋体 "><font size="5"><font color="red">五楼 其它相关</font></font><br />
+</font><br />
+<br />
+<font face="黑体 "><font size="4">作为一名学生我不能像其它hper样奉上新机牛机的开箱赏析，但是现在诺基亚n770，n800和n810（以下统一简称n8）虽然不是什么新机了，但伴随着国内行货以及中文gps支持的小道新闻，最近的n8开始吸引了人们的目光。但是自从maemo平台的nokia n700问世以来的几年间，国内论坛还没有一帖丰富翔实的介绍n8的文章，相关的资料也是零零散散，大多都是国外的英文网站例如maemo官方网站及其论坛internettable，给英语不熟练（包括我）和没有足够时间泡坛子的机友带来很大的不便，而我此帖就是希望能通过自己的使用经历给初入n8的机友一些帮助，本人不是挨踢电工只是对此略有兴趣虽然浅浅地接触过ubuntu 但是手持设备的linux还是有许多自己不明白的如有错谬之处 还请原谅&nbsp;&nbsp;</font></font><font size="4"><br />
+<br />
+</font><font face="黑体 "><font size="4"><font color="navy">-------------------------双枪搭配选择了650和800---------------</font></font></font><font size="4"><br />
+</font><font size="4"><br />
+</font><font face="黑体 "><font size="4">&nbsp; &nbsp; 从上大一起便接触到了自己的第一步智能机palm600,后来在学校偶然遇到了palm版的bob，介绍我来到了hipda，我也开始走上了没钱折腾的不归路，后经过无数折腾尝试过了塞班 wm许多机型最终还是将自己的手机定位到了palm650 原因很简单简洁高效，最近更是迷上了bike or die更是对650无法释怀，这里对sb-wm-palm之争不浪费更多言语，论坛的争论已经很多很多，其中自己很佩服的乃李敖大哥的(点击查看)<a href="https://www.4d4y.com/forum/viewthread.php?tid=422317&amp;extra=page%3D1%26amp%3Bfilter%3Ddigest" target="_blank">“</a><a href="https://www.4d4y.com/forum/viewthread.php?tid=422317&amp;extra=page%3D1%26amp%3Bfilter%3Ddigest" target="_blank">treo</a><a href="https://www.4d4y.com/forum/viewthread.php?tid=422317&amp;extra=page%3D1%26amp%3Bfilter%3Ddigest" target="_blank">那些事”</a>嬉笑怒骂 句句精华。还有(点击查看)<a href="https://www.4d4y.com/forum/viewthread.php?tid=420315&amp;extra=page%3D1,hipda" target="_blank">“</a><a href="https://www.4d4y.com/forum/viewthread.php?tid=420315&amp;extra=page%3D1,hipda" target="_blank">PIM，在WM和Palm的彼岸——顺致huxiangyu</a><a href="https://www.4d4y.com/forum/viewthread.php?tid=420315&amp;extra=page%3D1,hipda" target="_blank">同学</a><font color="blue"><font color="purple"><strong><i><u>”</u></i></strong></font></font>无论谁对错,赏析过后都会大呼过瘾哈.</font></font><font size="4"><br />
+</font><font face="黑体 "><font size="4">&nbsp; &nbsp; 但是palm网络和媒体的缺点是有目共睹的，而且我的宿舍环境是有wifi链接的，双枪似乎也是不得已的，于是我就有了650配nokia n770，刚刚出道的770给了人们眼前一亮，开放式的linux，让我这有一些linux基础的玩家有了选择，无奈770速度实在是慢，而且当时的软件和系统都没有完善，加之用770时课业负担还是很重没有仔细把玩就出掉了。后来又中了老p放的毒用650配d900（128ram），d900配了张包月上网卡，ucweb在wm（vga）或是isilo抑或是rss可以说是这几个系统里最优秀的了，但是个人感觉wm的机器的确不是个完美的手持电话（当然现在的hd x1之流还是有些许亮点的）</font></font><font size="4"><br />
+</font><font face="黑体 "><font size="4">最后将目标定在了itouch和nokia 800（810小贵了些），选择n800理由很简单，了解linux，电脑上安装了linux，自己拥有770的使用经历，系统开放 基本算是成熟，对于爱好折腾的人来说n8可以让你寝食难安，为此着迷！！</font></font><br />
+<br />
+[<i> 本帖最后由 fbscell 于 2009-3-15 19:23 编辑 </i>]<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>论坛1.jpg</b> (2008-11-28 21:41, 170.99 KB) / 下载次数 2675<br />https://www.4d4y.com/forum/attachment.php?aid=520995&k=ac44b1a8f24a494b072ec32131f2583d&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081128/wtvMszE=_8aMYIiGEoICJ.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>DSCF6984.jpg</b> (2008-12-4 19:56, 212.2 KB) / 下载次数 1582<br />https://www.4d4y.com/forum/attachment.php?aid=522485&k=74bc2c78c677ad81f3e62b8a56a7c718&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081204/DSCF6984_QeBP6M3fN3pu.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-28 21:42<br /><br />
+<font face="宋体 ">由于本人使用的是</font>800<font face="宋体 ">这里简单介绍一下</font>800 <br />
+<br />
+810<font face="宋体 ">的具体参数可以放狗一下，除了屏幕和键盘的改进差别不是很大</font><br />
+<a href="http://dict.pconline.com.cn/dic/sort.jsp?kindId=-1&amp;dicId=3159" target="_blank"><font face="宋体 ">外屏参数</font></a> <br />
+800×480<font face="宋体 ">像素</font>,4.1<font face="宋体 ">英寸</font><br />
+<a href="http://dict.pconline.com.cn/dic/sort.jsp?kindId=-1&amp;dicId=3330" target="_blank">CPU</a> <br />
+TI OMAP2420 320MHz<font face="宋体 ">（在</font>2008<font face="宋体 ">系统下是</font>400mhz<font face="宋体 ">）</font><br />
+<a href="http://dict.pconline.com.cn/dic/sort.jsp?kindId=-1&amp;dicId=302" target="_blank"><font face="宋体 ">内存容量</font></a> <br />
+128MB RAM+256MB ROM<br />
+<a href="http://dict.pconline.com.cn/dic/sort.jsp?kindId=-1&amp;dicId=3171" target="_blank"><font face="宋体 ">系统</font></a> <br />
+<a href="http://product.pconline.com.cn/so/s31990/" target="_blank">Linux</a>,2007 Tablet Edition<font face="宋体 ">（可升级</font>2008<font face="宋体 ">）</font><br />
+<br />
+<font size="4"><font face="黑体 "><font color="Red">什么是maemo系统 ，下面引用维基的话来介绍一下maemo系统</font><br />
+What is maemo?<br />
+　　Maemo is an open source development platform to create applications for Nokia Internet Tablet products like Nokia N800 and Nokia 770. The platform gives developers a powerful Linux based development environment and optimized end-user interface for handhelds.<br />
+
+
+<span style="position: absolute; display: none" id="attach_521000" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081128/wtvMszI=_SmSFquMKsEG0.jpg" width="175" id="aimg_521000" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="论坛2.jpg" />
+
+<div class="t_attach" id="aimg_521000_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMDAwfDljNjQwODk0fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="论坛2.jpg" target="_blank"><strong>下载</strong></a> (44.32 KB)<br />
+
+<div class="t_smallfont">2008-11-28 21:58</div>
+
+</div>
+
+<br />
+<br />
+简单说一下优点 <br />
+1. 做工很好，继承nokia的一贯风格，简洁大方，自带支架，背面的弧线很适合手持操作，大小和psp相当（可以使用psp的保护套子）在有wifi的地方拿出来查看邮件上网看新闻，肯定要比mac，epc，小黑更吸引人们眼球。&nbsp;&nbsp;<br />
+2. 屏幕分辩率高，上网几乎所有的页面都可以全屏查看，当然也带+—缩放功能，省去了横向滚动条的烦恼，虽然相比810的屏幕亮度不高，但是毕竟在阳光下操作还是少数的,当然导航是需要亮度的。<br />
+3.电池能更换，而且是通用的bp-5l（飞毛腿的20多块）。貌似这点是我直接否定touch的了。<br />
+Touch的电池不能更换，试想使用一年二年后电池老化（不否认消费数码寿命不过1年）而800对于经常长途旅行的来说可更换的电池的确很重要。<br />
+4.系统开放，适合动手能力强的机友，买礼物送人还是算了吧。有很多人说maemo平台没有多少软件，但是可以仔细搜搜，几乎你能想象的软件都有提供。我会在下面介绍一些常用的。<br />
+5.强大的wifi信号，自从用了770就发现wifi信号强大到秒杀我身边的所有笔记本，现在用800也是，从无线路由上查看信号强度，800永远是top！<br />
+<br />
+&nbsp; &nbsp;总之N800对于懂些ppc和palm的人来说是个好玩的玩具，对于精通linux的人来说是个梦寐以求的伴侣，对于不懂电脑或者打算买个mp4 mp5当礼物的人来说，还是去买IPOD TOUCH吧。</font></font><br />
+<br />
+[<i> 本帖最后由 fbscell 于 2008-11-29 17:18 编辑 </i>]<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>论坛2.jpg</b> (2008-11-28 21:58, 44.32 KB) / 下载次数 1438<br />https://www.4d4y.com/forum/attachment.php?aid=521000&k=9c640894322d9c5e61ef3d2011c3614c&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081128/wtvMszI=_SmSFquMKsEG0.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-28 21:44<br /><br />
+<p align="center"><font face="黑体 "><font size="4"><strong>软件使用介绍</strong><br />
+</font></font></p><font size="4"><font face="黑体 "><br />
+</font></font><font size="4"><font color="blue"><font face="黑体 "><strong>1.简单的刷机</strong></font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">&nbsp; &nbsp; 相比较当年的</font></font></font><font size="4"><font face="黑体 ">nokia n770</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的系统，现在</font></font></font><font size="4"><font face="黑体 ">8x0</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上的系统已经很成熟了，新系统更多的改进请自行放狗，当然国人最希望看到的还是中文界面的支持和能够完美的输入法</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">论坛已经有人写出较全面的刷机方法具体做法很简单，这里就不重复了，请参阅</font></font></font><font size="4"><font face="黑体 ">[url=viewpro.php?uid=462162]nwgale[/url] </font></font><font face="宋体 "><font size="4"><font face="黑体 ">大侠的</font></font></font><font size="4"><font face="黑体 "><a href="https://www.4d4y.com/forum/viewthread.php?tid=428989&amp;highlight=n800" target="_blank">（点击）N800刷机方法/中文显示, 专给新手看</a></font></font><font face="宋体 "><font size="4"><font face="黑体 ">很简单刷新速度很快，几乎是</font></font></font><font size="4"><font face="黑体 ">20</font></font><font face="宋体 "><font size="4"><font face="黑体 ">几秒钟就好了，现在</font></font></font><font size="4"><font face="黑体 ">800</font></font><font face="宋体 "><font size="4"><font face="黑体 ">最新的rom貌似就是</font></font></font><font size="4"><font face="黑体 ">RX-34_DIABLO_4.2008.36-5_PR_COMBINED_MR0_ARM</font></font><font size="4"><font face="黑体 ">这个了<br />
+</font></font><font size="4"><font color="blue"><font face="黑体 "><strong>2.恼人的输入法</strong></font></font></font><font size="4"><font face="黑体 "><br />
+&nbsp; &nbsp; </font></font><font face="宋体 "><font size="4"><font face="黑体 ">可以说目前在</font></font></font><font size="4"><font face="黑体 ">maemo</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上还没有完善的输入法，插一句，影响掌上设备普及流行的最主要因素貌似也在于此，现在针对</font></font></font><font size="4"><font face="黑体 ">8x0</font></font><font face="宋体 "><font size="4"><font face="黑体 ">主要有</font></font></font><font size="4"><font face="黑体 ">scim</font></font><font face="宋体 "><font size="4"><font face="黑体 ">和网页离线输入法（手写输入法现在在</font></font></font><font size="4"><font face="黑体 ">myhtpc</font></font><font face="宋体 "><font size="4"><font face="黑体 ">论坛有国人已经开发并在测试阶段，希望不久能让大家满意）</font></font></font><font size="4"><font face="黑体 "><br />
+<br />
+<strong>选择1.</strong><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">网页输入法很简单</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">一句话就是调用离线网页</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">在网页输入后复制</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">粘贴到需要的地方</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">具体使用方法</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">保存网页至书签</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">进入网页</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">输入词语</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">点击复制</font></font></font><font size="4"><font face="黑体 ">&nbsp;&nbsp;</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，至需要打字的地方</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">调出虚拟键盘</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">点击左下角的</font></font></font><font size="4"><font face="黑体 ">opt</font></font><font face="宋体 "><font size="4"><font face="黑体 ">选择粘贴即可</font></font></font><font size="4"><font face="黑体 "><br />
+<br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">优点：经过国人的完善</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">界面美观</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">录入速度满意</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">词库还算可以</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">不使用时不影响机器运行</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">缺点：要开启浏览器，粘贴复制比较麻烦，论坛回贴</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">聊天软件</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">使用极为不方便</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">下面是最新</font></font></font><font size="4"><font face="黑体 ">sinosure</font></font><font face="宋体 "><font size="4"><font face="黑体 ">大侠</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">修改的比较好的网页输入法</font></font></font><font size="4"><font face="黑体 ">&nbsp;&nbsp;</font></font><font face="宋体 "><font size="4"><font face="黑体 ">网页自带搜索</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">清空</font></font></font><font size="4"><font face="黑体 ">&nbsp;&nbsp;</font></font><font face="宋体 "><font size="4"><font face="黑体 ">复制（点击查看）<a href="http://www.myhtpc.com.cn/viewthread.php?tid=810&amp;extra=page%3D1%26amp%3Bfilter%3Ddigest&amp;page=4" target="_blank">sinosure修改的输入法</a></font></font></font> <font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">此输入法目前只支持第一个字全拼</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">第二个字首字母输入</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">联想词库有待改进</font></font></font><font size="4"><font face="黑体 "><br />
+<br />
+<strong>选择2.</strong><br />
+Cjk<br />
+&nbsp; &nbsp;<a href="http://maemocjk.garage.maemo.org/os2008.html" target="_blank">http://maemocjk.garage.maemo.org/os2008.html</a></font></font><font face="宋体 "><font size="4"><font face="黑体 ">选择中文</font></font></font><font size="4"><font face="黑体 ">cjk<br />
+安装完之后重启，就有一个智能拼音输入法。<br />
+800安装完会出现不能调出虚拟键盘的问题，补救办法是在更新源后再application-manager找到matchbox-keyboard安装它重启&nbsp;&nbsp;810由于具有按键就不用担心此问题。<br />
+优点：融合到了系统当中<br />
+缺点：占内存影响速度，安装它后自带虚拟键盘对于800用户经常不能调用，用机友的话说就是要看人品………<br />
+</font></font><font face="新宋体 "><font size="4"><font face="黑体 "><strong>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <font size="5"><font color="red">&nbsp; &nbsp;软件篇：</font></font></strong></font></font></font><font size="4"><font face="黑体 "><br />
+8x0</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的软件安装基本上要靠源，当然如果下载的</font></font></font><font size="4"><font face="黑体 ">deb</font></font><font face="宋体 "><font size="4"><font face="黑体 ">包就像是</font></font></font><font size="4"><font face="黑体 ">xp</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上的</font></font></font><font size="4"><font face="黑体 ">setup</font></font><font face="宋体 "><font size="4"><font face="黑体 ">双击即可安装了</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">什么是源？</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">像</font></font></font><font size="4"><font face="黑体 ">pc </font></font><font face="宋体 "><font size="4"><font face="黑体 ">上</font></font></font><font size="4"><font face="黑体 ">ubuntu</font></font><font face="宋体 "><font size="4"><font face="黑体 ">样，安装软件都是通过软件管理器（当然命令行也可）</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">更新源</font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">来安装的，所谓源可以理解为软件的下载地址，一个源会为你提供一系列的软件，你在源里看到的软件只是介绍说明，当你点击后连上网才会下载安装，所以源的多少直接影响了你能查看安装软件的多少</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">这里可选的源有很多</font></font></font><font size="4"><font face="黑体 ">xxxxxxxx</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，另外即使你不加入源，在你安装很多软件时都会把这个软件的所在源加入到你的目录里，便于日后更新</font></font></font><font size="4"><font face="黑体 "><br />
+<br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">附1：比较全面的软件<a href="http://www.gronmayer.com/it/" target="_blank">http://www.gronmayer.com/it/</a> 用n8进入选择需要的打勾加入你的源即可，如果是安装文件时提醒你缺少xxlib或是其它库文件什么的都可以到这里搜索缺少的来完成安装</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font size="4"><font face="黑体 ">Tips</font></font><font face="宋体 "><font size="4"><font face="黑体 ">：其实不要一下子全都加入上面的源，这样在每次</font></font></font><font size="4"><font face="黑体 ">update</font></font><font face="宋体 "><font size="4"><font face="黑体 ">时会等很久</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">附2：maomo的官方站点 <a href="http://maemo.org/downloads/OS2008/" target="_blank">http://maemo.org/downloads/OS2008/</a>&nbsp; &nbsp;基本上第一手新闻在这里都能了解到</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">,download页面也提供大量的软件，通过n8直接点击即可安装</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">附3：</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">如果要在命令行修改系统配置等，获得</font></font></font><font size="4"><font face="黑体 ">root</font></font><font face="宋体 "><font size="4"><font face="黑体 ">权限是必需的，而像pc样正常输入sudo是无法真正获得权&nbsp; &nbsp;</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">限的，用</font></font></font><font size="4"><font face="黑体 ">n8</font></font><font face="宋体 "><font size="4"><font face="黑体 ">点击<a href="http://maemo.org/downloads/product/raw/OS2008/rootsh?get_installfile" target="_blank">“我”</a>安装后每次运行</font></font></font><font size="4"><font face="黑体 ">sudo gainroot就可以获得root权限.<br />
+</font></font><p align="center"><font color="red"><font face="黑体 "><font size="5"><strong>网络</strong></font></font></font></p><font size="4"><font face="黑体 "><br />
+<strong>1.浏览器</strong><br />
+&nbsp; &nbsp;</font></font><font face="宋体 "><font size="4"><font face="黑体 ">目前</font></font></font><font size="4"><font face="黑体 ">2008</font></font><font face="宋体 "><font size="4"><font face="黑体 ">系统自带的浏览器相比较</font></font></font><font size="4"><font face="黑体 ">07</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的已经有了很大的改进，通过插件已经可以直接观看网页中的视频了，另外还有其它浏览器有兴趣的可以试试</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">例如</font></font></font><font size="4"><font face="黑体 ">tear </font></font><font face="宋体 "><font size="4"><font face="黑体 ">（本人安装时提醒缺少</font></font></font><font size="4"><font face="黑体 ">libwebkit</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，加入</font></font></font><font size="4"><font face="黑体 ">extras</font></font><font face="宋体 "><font size="4"><font face="黑体 ">后仍然无法找到）有兴趣的可以试试看，</font></font></font><font size="4"><font face="黑体 ">deb</font></font><font face="宋体 "><font size="4"><font face="黑体 ">附件在此
+
+<img src="https://img02.4d4y.com/forum/images/attachicons/binary.gif" border="0" class="absmiddle" alt="" /> <span style="white-space: nowrap" id="attach_521150" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"><a href="attachment.php?aid=NTIxMTUwfDE2OWY4ZjljfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D" target="_blank"><strong>tear-0.1.2-1_armel.deb</strong></a></span> (66.75 KB)
+<div class="t_attach" id="attach_521150_menu" style="position: absolute; display: none">
+tear浏览器<br />
+下载次数: 3517<br />
+
+<div class="t_smallfont">2008-11-29 18:24</div>
+
+</div>
+
+</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 "><br />
+<a href="http://bundyo.org/maemo/webkit/libwebkit-1.0-1_1.0-svn40663-1_armel.deb" target="_blank"><font color="#0066cc">http://bundyo.org/maemo/webkit/l ... vn40663-1_armel.deb</font></a><br />
+<a href="http://bundyo.org/maemo/tear/tear-0.3-4_armel.deb" target="_blank"><font color="#0066cc">http://bundyo.org/maemo/tear/tear-0.3-4_armel.deb</font></a><br />
+<br />
+上面两个,先装webkit<br />
+dpkg -i libwebkit-1.0-1_1.0-svn40663-1_armel.deb<br />
+可能会提示缺包<br />
+apt-get install -f<br />
+这样缺的包和webkit都能装好<br />
+最后<br />
+dpkg -i tear-0.3-4_armel.deb<br />
+就行了<br />
+ <br />
+</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">引用作者的话</font></font></font><font size="4"><font face="黑体 "><br />
+What it has (not much):<br />
+&nbsp; &nbsp; * Works with the WebKit in Extras-devel fornow.<br />
+&nbsp; &nbsp; *Multi-windows.<br />
+&nbsp; &nbsp; *Forward, back, refresh, go buttons, Full screen.<br />
+&nbsp; &nbsp; *Hardware keys for full screen, Esc for back and arrow scroll.<br />
+&nbsp; &nbsp; *Hildon interface<br />
+</font>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</font><font size="4"><font face="黑体 ">*About dialog... Ha!</font></font><font size="4"><font face="黑体 "><br />
+&nbsp; &nbsp;
+
+<span style="position: absolute; display: none" id="attach_521146" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/07_yP2x8dbhDBt9.jpg" width="400" id="aimg_521146" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="07.jpg" />
+
+<div class="t_attach" id="aimg_521146_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTQ2fDgwMzlhMmRmfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="07.jpg" target="_blank"><strong>下载</strong></a> (35.15 KB)<br />
+全屏hp<br />
+<div class="t_smallfont">2008-11-29 18:22</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_521147" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/08_3yHWklNuCYt5.jpg" width="400" id="aimg_521147" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="08.jpg" />
+
+<div class="t_attach" id="aimg_521147_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTQ3fGQ0NTg2NWMwfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="08.jpg" target="_blank"><strong>下载</strong></a> (36.58 KB)<br />
+网页视频ok<br />
+<div class="t_smallfont">2008-11-29 18:22</div>
+
+</div>
+
+<br />
+</font><font size="4"><font face="黑体 "><strong><font color="blue">2.Rss</font> <a href="http://maemo.org/downloads/product/raw/OS2008/feedcircuit/?get_installfile" target="_blank">用n8点我下载feedcirciut</a></strong><br />
+&nbsp; &nbsp;feed circuit</font></font><font face="宋体 "><font size="4"><font face="黑体 ">支持导入导出的</font></font></font><font size="4"><font face="黑体 ">rss</font></font><font face="宋体 "><font size="4"><font face="黑体 ">软件，虽然还不是很满意，但是还是比自带的强大一些的，加入源后在主题前打勾，点击更新即可，打开时是调用</font></font></font><font size="4"><font face="黑体 ">web</font></font><font face="宋体 "><font size="4"><font face="黑体 ">浏览器浏览的（这点和自带</font></font></font><font size="4"><font face="黑体 ">rss</font></font><font face="宋体 "><font size="4"><font face="黑体 ">不同），以前</font></font></font><font size="4"><font face="黑体 ">770</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上还没有这个软件。</font></font></font><font size="4"><font face="黑体 ">rss</font></font><font face="宋体 "><font size="4"><font face="黑体 ">是我的最爱，早上起来打开</font></font></font><font size="4"><font face="黑体 ">wifi</font></font><font face="宋体 "><font size="4"><font face="黑体 ">更新一下，嘿嘿一天闲着的时候就可以慢慢看。</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">附上几个不错的支持全文输出的</font></font></font><font size="4"><font face="黑体 ">rss</font></font><font face="宋体 "><font size="4"><font face="黑体 ">源，这样就可以完全离线浏览了（很可惜以前的</font></font></font><font size="4"><font face="黑体 ">3gpda</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的</font></font></font><font size="4"><font face="黑体 ">rss</font></font><font face="宋体 "><font size="4"><font face="黑体 ">被禁止了）</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">附：不错的全文输出rss 地址收集txt
+
+<img src="https://img02.4d4y.com/forum/images/attachicons/text.gif" border="0" class="absmiddle" alt="" /> <span style="white-space: nowrap" id="attach_521151" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"><a href="attachment.php?aid=NTIxMTUxfGFjYzZlNTEyfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D" target="_blank"><strong>推荐的全文rss地址.txt</strong></a></span> (1.78 KB)
+<div class="t_attach" id="attach_521151_menu" style="position: absolute; display: none">
+很全面的rss地址<br />
+下载次数: 3892<br />
+
+<div class="t_smallfont">2008-11-29 18:26</div>
+
+</div>
+
+<br />
+
+
+<span style="position: absolute; display: none" id="attach_521148" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/03_2IPyhxVho93F.jpg" width="400" id="aimg_521148" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="03.jpg" />
+
+<div class="t_attach" id="aimg_521148_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTQ4fGFlYzAxYWU3fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="03.jpg" target="_blank"><strong>下载</strong></a> (22.22 KB)<br />
+rss界面<br />
+<div class="t_smallfont">2008-11-29 18:24</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_521149" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/06_nX2bxuxyrZ35.jpg" width="400" id="aimg_521149" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="06.jpg" />
+
+<div class="t_attach" id="aimg_521149_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTQ5fDhiYTE2NDhjfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="06.jpg" target="_blank"><strong>下载</strong></a> (44.08 KB)<br />
+浏览效果<br />
+<div class="t_smallfont">2008-11-29 18:24</div>
+
+</div>
+
+<br />
+<font color="red">rss更新 新软</font></font></font></font></font> PenguinTV<font size="4"><font face="宋体 "><font size="4"><font face="黑体 "><font color="red"> <a href="http://penguintv.sourceforge.net/" target="_blank"><font color="black">点击查看下载地址</font></a><br />
+<font color="black">一个近似完美的rss新闻阅读器，最显著的特点就是不再像上面的样要调用web浏览了速度很快点击，即可以查看，页表背景颜色也不是单调的白色了，引用网站的话介绍一下</font></font></font></font></font></font><br />
+<ul><li>One-button downloading of new videos and podcasts<li>Integrated media player based on GStreamer.<li>Integrated search with context highlighting<li>BitTorrent support<li>Tagging categorization, no ugly trees<li>Works well with two feeds or two hundred<li>Multiple window layouts, including two-pane &quot;Planet&quot; style,classic, widescreen, and vertical style<li>Sync media to external folders or USB devices<li>Support for OPML subscription files<li>Auto-tuning polling, so that PenguinTV only pollsfeeds as often as they update<li>Powered by Mark Pilgrim's famous <a href="http://feedparser.org/" target="_blank">feedparser</a><li>Support for Apple iTunes podcast links<li>
+
+<span style="position: absolute; display: none" id="attach_521389" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081130/zerDwLXEcnNz_oVwbKmhwj9bn.jpg" width="479" id="aimg_521389" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="完美的rss.jpg" />
+
+<div class="t_attach" id="aimg_521389_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMzg5fDhlYjgwMGFhfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="完美的rss.jpg" target="_blank"><strong>下载</strong></a> (156.89 KB)<br />
+
+<div class="t_smallfont">2008-11-30 18:25</div>
+
+</div>
+
+</ul><font size="4"><font face="宋体 "><font size="4"><font face="黑体 "><font color="red"></font></font></font></font><font size="4"><font face="黑体 "><strong><font color="blue">3.Fm–radio</font> </strong><br />
+&nbsp; &nbsp;810</font></font><font face="宋体 "><font size="4"><font face="黑体 ">不具有</font></font></font><font size="4"><font face="黑体 ">fm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">模块，</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">这是</font></font></font><font size="4"><font face="黑体 ">800</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的优势哦，一个收听本地</font></font></font><font size="4"><font face="黑体 ">fm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的软件需要插上耳机，耳机充当天线，在待机画面</font></font></font><font size="4"><font face="黑体 ">home</font></font><font face="宋体 "><font size="4"><font face="黑体 ">菜单</font></font></font><font size="4"><font face="黑体 ">select applets</font></font><font face="宋体 "><font size="4"><font face="黑体 ">中调出桌面的</font></font></font><font size="4"><font face="黑体 ">fm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">插件，另外点击那个小收音机，就可以在插耳机状态下外放收听了，软件右下角自带了中国一些地区的调频但不是很全面，还是要自己动手搜的，像</font></font></font><font size="4"><font face="黑体 ">mp3</font></font><font face="宋体 "><font size="4"><font face="黑体 ">样点击快进，它会停留在清晰的频率上，点击加号即可保存。</font></font></font><font size="4"><font face="黑体 "><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">当然在系统自带的媒体播放器中可以添加网络电台，方法是在</font></font></font><font size="4"><font face="黑体 ">player</font></font><font face="宋体 "><font size="4"><font face="黑体 ">菜单中点击左上角菜单</font></font></font><font size="4"><font face="黑体 ">—-clip---add media bookmark</font></font><font face="宋体 "><font size="4"><font face="黑体 ">即可，和</font></font></font><font size="4"><font face="黑体 ">fm radio</font></font><font face="宋体 "><font size="4"><font face="黑体 ">样可以添加到桌面方便使用，就像我的截图中样</font></font></font><font size="4"><font face="黑体 ">fm radio</font></font><font face="宋体 "><font size="4"><font face="黑体 ">收听本地，而</font></font></font><font size="4"><font face="黑体 ">media player</font></font><font face="宋体 "><font size="4"><font face="黑体 ">收听家乡电台。<br />
+
+
+<span style="position: absolute; display: none" id="attach_521153" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/05_tudeMdlluKWT.jpg" width="400" id="aimg_521153" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="05.jpg" />
+
+<div class="t_attach" id="aimg_521153_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTUzfDhjNzQ1MGQ0fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="05.jpg" target="_blank"><strong>下载</strong></a> (25.66 KB)<br />
+
+<div class="t_smallfont">2008-11-29 18:37</div>
+
+</div>
+
+<br />
+</font></font></font><font size="4"><font face="黑体 "><strong><font color="blue">4.Email</font> <a href="http://maemo.org/downloads/product/raw/OS2008/claws-mail/?get_installfile" target="_blank">用n8点我下载clawsemail</a></strong><br />
+&nbsp; &nbsp;&nbsp;&nbsp;</font></font><font face="宋体 "><font size="4"><font face="黑体 ">本人用的雅虎邮箱用</font></font></font><font size="4"><font face="黑体 ">n8</font></font><font face="宋体 "><font size="4"><font face="黑体 ">自带的邮件管理器已经配置好了但是只能发送邮件，但是不能收取邮件，自带的功能很简单，第一次进入会要求设置，请查阅你使用邮箱的官方说明，另外第三方邮箱软件还有</font></font></font><font size="4"><font face="黑体 ">claws-mail</font></font><font face="宋体 "><font size="4"><font face="黑体 ">这是功能极为强大的邮件收发软件，而且可以增加其它插件来扩充服务例如</font></font></font><font size="4"><font face="黑体 ">rss</font></font><font face="宋体 "><font size="4"><font face="黑体 ">等。<br />
+
+
+<span style="position: absolute; display: none" id="attach_521152" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/02_KMtZyg2CHfuj.jpg" width="408" id="aimg_521152" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="02.jpg" />
+
+<div class="t_attach" id="aimg_521152_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTUyfGEyNDNiNWY0fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="02.jpg" target="_blank"><strong>下载</strong></a> (20.84 KB)<br />
+
+<div class="t_smallfont">2008-11-29 18:37</div>
+
+</div>
+
+<br />
+</font></font></font><font size="4"><font face="黑体 "><strong>5.Skype</strong><br />
+&nbsp; &nbsp; </font></font><font face="宋体 "><font size="4"><font face="黑体 ">这个不用介绍了，界面简单，虽然本人用不上但是曾经亲自试了一下通话情况，</font></font></font><font size="4"><font face="黑体 ">800</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的网络通话情况很好</font></font></font><font size="4"><font face="黑体 "><br />
+<strong>6.google talk</strong><br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">&nbsp; &nbsp;系统自带，类似于</font></font></font><font size="4"><font face="黑体 ">skype</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，不多介绍。</font></font></font></font><br />
+<font size="4"><font face="黑体 "><font color="blue">7.</font><strong>牛c的bt下载</strong> </font><a href="http://maemo.org/downloads/product/raw/OS2008/transmission/?get_installfile" target="_blank">用n8点我下载</a><br />
+<font face="黑体 ">&nbsp; &nbsp;&nbsp; &nbsp;maemo上的bt下载，貌似wm上没有吧，试想买张大些的sd卡把n8作为动物机下载......那天试了一个国内的电影种子速度在40k，截图这张稍稍慢了一些</font></font>
+
+<span style="position: absolute; display: none" id="attach_521157" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/13_peFCJCYwtIJX.jpg" width="400" id="aimg_521157" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="13.jpg" />
+
+<div class="t_attach" id="aimg_521157_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTU3fDgzYTRlOGRifDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="13.jpg" target="_blank"><strong>下载</strong></a> (32.34 KB)<br />
+
+<div class="t_smallfont">2008-11-29 19:22</div>
+
+</div>
+
+<br />
+<p align="center"><font size="5"><strong><font color="red">媒体</font> </strong></font>&nbsp;&nbsp;<br />
+</p><p align="left"><font face="黑体 "><font size="4">首先是简单的nokia媒体视频转换软件，操作简单傻瓜式界面，pc<a href="http://maemo.org/downloads/product/PC/internettabletvideoconverter/" target="_blank">点击我下载</a>，当然国内很多软件都可以完成，在此不多介绍<br />
+<font color="blue">1.Mplayer</font> <a href="http://maemo.org/downloads/product/raw/OS2008/mplayer/?get_installfile" target="_blank">用n8点我下载</a><br />
+</font></font></p><font size="4"><font face="黑体 ">&nbsp; &nbsp; 可以说是媒体相关必须安装的了，因为下面许多媒体和影音有关的在播放时都是在后台调用mplayer的播放的。Mpalyer的操作界面很简单，按硬件menu调出菜单</font><font face="黑体 ">支持大多数主流的文件，mp4，avi，wmv，flv等，但是不支持psp能支持的h264编码，播放flv不能快进，这些在ppc上都不是问题，希望开发人员能够尽快跟进，另外由于屏幕分辨率过“高”播放常见的手机电影效果很差，建议自己压缩，这里推荐“格式工厂”这个免费的压缩软件，无需复杂的设置，我一般选择720×430，20帧的样子的mp4或是avi都可以全屏流畅播放</font><br />
+<font color="blue"><font face="黑体 ">2.Canola</font></font><a href="http://maemo.org/downloads/product/raw/OS2008/canola2/?get_installfile" target="_blank">用n8点我下载</a><br />
+<font face="黑体 ">&nbsp; &nbsp; 全能媒体中心 通过安装插件已经可以管理你所有的媒体，而且现在已经有了youku插件增加了对网络的支持，有了flickr的插件支持网络相册，有last fm插件（一个有趣的应用详情请查看cn.lastfm.com）有podcast的插件等等 ，第一次使用记得在setting—media library—media folder然后选择文件夹update一下即可，也就是要canola知道你的媒体在哪里，软件播放列表支持直接手指滑动，类似itouch。</font><br />
+<font face="黑体 ">推荐的podcast</font><br />
+<font face="黑体 ">凤凰卫视 锵锵三人行</font><br />
+<a href="http://feed.feedsky.com/qiangqiang3" target="_blank">http://feed.feedsky.com/qiangqiang3</a><br />
+<font face="黑体 ">反波</font><br />
+<a href="http://feed.antiwave.net" target="_blank">http://feed.antiwave.net</a><font face="黑体 ">等等</font><br />
+<font face="黑体 ">如果你的歌曲名是中文，可能显示的是乱码，请下载mp3 tag这个软件，选择导入的歌曲右键remove all&nbsp;&nbsp;tags即可</font><br />
+<font color="blue"><font face="黑体 ">3.Ukmp</font></font><a href="http://maemo.org/downloads/product/raw/OS2008/ukmp/?get_installfile" target="_blank">用n8点我下载</a><br />
+<font face="黑体 ">&nbsp; &nbsp; 一个界面极为类似itouch的音乐播放软件，现在最新版本1.8已经是竖屏操作了，在youku上可以看到作者的演示视频，但是我发现软件remove tag以后还是不能显示中文而且歌曲lists全是以cover显示的，没有歌曲封面信息，显示得会让你抓狂，所以这个还是推荐给从苹果店里下载歌曲的苹果迷们使用吧。</font><br />
+<font color="blue"><font face="黑体 ">4.Quiver image viewer</font></font><a href="http://maemo.org/downloads/product/raw/OS2008/quiver/?get_installfile" target="_blank">用n8点我下载</a><br />
+<font face="黑体 ">&nbsp; &nbsp; 功能强大界面美观的图片浏览器，这个出现的比较早了，在刚刚出现770时就已经使用过了，同样支持手指滑动和幻灯片播放</font><br />
+<font color="blue"><font face="黑体 ">5.Camera (刷机后 lists里有的 居然没找到下载)</font></font><br />
+<font face="黑体 ">&nbsp; &nbsp; N8自带的摄像头似乎作用不大，在待机下如果想启动摄像头就需要这个软件，可以用可怜的摄像头拍摄可怕的马赛克照片</font><br />
+<font color="blue"><font face="黑体 ">6. mytube</font></font><a href="http://maemo.org/downloads/product/raw/OS2008/mytube/?get_installfile" target="_blank">用n8点我下载</a><br />
+<font face="黑体 ">&nbsp; &nbsp; 在wm和塞班系统下这种软件越来越多，越来越完善了，软件会列出最近youku的热门视频（当然是境外youku的），软件会在卡上建立一个my download文件夹，会把你选择的视频下载到这里
+
+<span style="position: absolute; display: none" id="attach_521156" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/w73M5brPsqI=_T6n9Ram9f1WA.jpg" width="600" class="zoom" onclick="zoom(this, this.src)" id="aimg_521156" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="媒体合并.jpg" />
+
+<div class="t_attach" id="aimg_521156_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTU2fDI2NzVhOTRhfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="媒体合并.jpg" target="_blank"><strong>下载</strong></a> (282.08 KB)<br />
+
+<div class="t_smallfont">2008-11-29 19:03</div>
+
+</div>
+
+<br />
+</font></font><font face="宋体 ">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<font size="4"></font><font size="5"><font color="red"><font face="黑体 ">阅读</font></font></font></font><font size="4"><br />
+<font face="黑体 "><font color="blue">1.Fbreader</font> </font><a href="http://maemo.org/downloads/product/raw/OS2008/fbreader/?get_installfile" target="_blank">用n8点击我下载</a><br />
+</font><font face="宋体 "><font size="4"><font face="黑体 ">&nbsp; &nbsp; 强大的阅读软件，支持很多常用格式</font></font></font><font size="4"><font face="黑体 ">html</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，</font></font></font><font size="4"><font face="黑体 ">txt</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，</font></font></font><font size="4"><font face="黑体 ">chm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">，</font></font></font><font size="4"><font face="黑体 ">plucker</font></font><font face="宋体 "><font size="4"><font face="黑体 ">并可以直接读取</font></font></font><font size="4"><font face="黑体 ">zip</font></font><font face="宋体 "><font size="4"><font face="黑体 ">和</font></font></font><font size="4"><font face="黑体 ">tar</font></font><font face="宋体 "><font size="4"><font face="黑体 ">里的文档，显示效果很不错，可以和当年的</font></font></font><font size="4"><font face="黑体 ">d900</font></font><font face="宋体 "><font size="4"><font face="黑体 ">有的一拼，但缺点就是不像</font></font></font><font size="4"><font face="黑体 ">isilo</font></font><font face="宋体 "><font size="4"><font face="黑体 ">那样支持自动滚屏，具体效果见截图，第一次启动选择下面的加号按钮，选择文档路径一般卡上的就是</font></font></font><font size="4"><font face="黑体 ">/media/mmc1</font></font><font face="宋体 "><font size="4"><font face="黑体 ">或是</font></font></font><font size="4"><font face="黑体 ">mmc2</font></font><font face="宋体 "><font size="4"><font face="黑体 ">对于，开始要在选项里修改一下使其支持中文显示，找到下面的菜单</font></font></font><font size="4"><font face="黑体 ">&quot;Preference &gt; Styles &gt; Family &gt; MHeiGB18030C-Medium'.</font></font><font face="宋体 "><font size="4"><font face="黑体 ">即可</font></font></font><font size="4">
+
+<span style="position: absolute; display: none" id="attach_521170" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/45_wmOdRq0enYHA.jpg" width="240" id="aimg_521170" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="45.jpg" />
+
+<div class="t_attach" id="aimg_521170_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTcwfDQ2OWQ3NzdhfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="45.jpg" target="_blank"><strong>下载</strong></a> (82.18 KB)<br />
+fbreader<br />
+<div class="t_smallfont">2008-11-29 20:45</div>
+
+</div>
+
+<br />
+<font face="黑体 "><font color="blue">2.Evince </font></font><a href="http://maemo.org/downloads/product/raw/OS2008/evince?get_installfile" target="_blank">用n8点击我下载</a><br />
+<font face="黑体 ">&nbsp; &nbsp; </font></font><font face="宋体 "><font size="4"><font face="黑体 ">完美的浏览</font></font></font><font size="4"><font face="黑体 ">pdf</font></font><font face="宋体 "><font size="4"><font face="黑体 ">软件，以前在手机上浏览</font></font></font><font size="4"><font face="黑体 ">pdf</font></font><font face="宋体 "><font size="4"><font face="黑体 ">简直就是折磨，论坛里也经常讨论掌上设备</font></font></font><font size="4"><font face="黑体 ">pdf</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的解决方案，如今这个</font></font></font><font size="4"><font face="黑体 ">evince</font></font><font face="宋体 "><font size="4"><font face="黑体 ">会让你满意，</font></font></font><font size="4"><font face="黑体 ">maemo</font></font><font face="宋体 "><font size="4"><font face="黑体 ">自带的</font></font></font><font size="4"><font face="黑体 ">pdf</font></font><font face="宋体 "><font size="4"><font face="黑体 ">阅读不支持连续翻页，也就是它对待页码是一整页整页的读取，想看上一页就要加载整个上页面，这个</font></font></font><font size="4"><font face="黑体 ">evince</font></font><font face="宋体 "><font size="4"><font face="黑体 ">就可以连续浏览，前提是你要以我们正常阅读的速度来，加之</font></font></font><font size="4"><font face="黑体 ">n8</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的分辨率放大百分之</font></font></font><font size="4"><font face="黑体 ">120</font></font><font face="宋体 "><font size="4"><font face="黑体 ">足够你看清字体的每个笔画，至于载入速度，我是用鸟哥的</font></font></font><font size="4"><font face="黑体 ">linux</font></font><font face="宋体 "><font size="4"><font face="黑体 ">私房菜</font></font></font><font size="4"><font face="黑体 "> 36m</font></font><font face="宋体 "><font size="4"><font face="黑体 ">图文混编版测试的，完全可以保证你的顺利阅读</font></font></font><font size="4">
+
+<span style="position: absolute; display: none" id="attach_521171" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/27_0R4cotWvkeGO.jpg" width="400" id="aimg_521171" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="27.jpg" />
+
+<div class="t_attach" id="aimg_521171_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTcxfGFjYzdhNWQ4fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="27.jpg" target="_blank"><strong>下载</strong></a> (34.04 KB)<br />
+pdf<br />
+<div class="t_smallfont">2008-11-29 20:45</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_521172" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/29_cgMDuhCuqhjN.jpg" width="400" id="aimg_521172" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="29.jpg" />
+
+<div class="t_attach" id="aimg_521172_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTcyfDMzMTQwNjVkfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="29.jpg" target="_blank"><strong>下载</strong></a> (25.98 KB)<br />
+pdf图文全屏<br />
+<div class="t_smallfont">2008-11-29 20:45</div>
+
+</div>
+
+<br />
+<font face="黑体 "><font color="blue">3.Abiword</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">（很差劲）</font></font></font><font size="4"><br />
+<font face="黑体 ">&nbsp; &nbsp; Word</font></font><font face="宋体 "><font size="4"><font face="黑体 ">编辑浏览器，具备常用的格式编辑工具，但是在</font></font></font><font size="4"><font face="黑体 ">800</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上居然无法调用虚拟键盘，想想现在</font></font></font><font size="4"><font face="黑体 ">maemo</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上的输入法，即使调用出了这个也</font></font></font><font size="4"><font face="黑体 ">…….,</font></font><font face="宋体 "><font size="4"><font face="黑体 ">至于打开</font></font></font><font size="4"><font face="黑体 ">word</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的速度，我曾经在电脑上编辑了</font></font></font><font size="4"><font face="黑体 ">90k</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的文档，</font></font></font><font size="4"><font face="黑体 ">word2007</font></font><font face="宋体 "><font size="4"><font face="黑体 ">环境下是无法打开的，最后</font></font></font><font size="4"><font face="黑体 ">kill</font></font><font face="宋体 "><font size="4"><font face="黑体 ">掉了这个进程，而换了</font></font></font><font size="4"><font face="黑体 ">50k</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的就可以打开但是在选择了字体和</font></font></font><font size="4"><font face="黑体 ">chinese</font></font><font face="宋体 "><font size="4"><font face="黑体 ">语言后显示仍为乱码</font></font></font><font size="4"><br />
+</font><p align="left"><font face="宋体 "><font size="4"><font face="黑体 ">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <font color="red">&nbsp;&nbsp;<font size="5">游戏</font></font></font></font></font><br />
+</p><br />
+<font face="宋体 "><font size="4"><font face="黑体 ">&nbsp; &nbsp; 系统下自带的游戏不是很多</font></font></font><font size="4"><font face="黑体 ">，第三方的还是很多的，</font></font><font face="宋体 "><font size="4"><font face="黑体 ">有名气的是不多</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">，但是个人认为比较耐玩的还是这个</font></font></font><font size="4"><font face="黑体 ">Vgba（<a href="http://maemo.org/downloads/product/raw/OS2008/vgba/?get_installfile" target="_blank">点我下载</a>）</font></font><font face="宋体 "><font size="4"><font face="黑体 ">就是</font></font></font><font size="4"><font face="黑体 ">gba</font></font><font face="宋体 "><font size="4"><font face="黑体 ">模拟器了，进入模拟器打开选择游戏后在菜单打开“stylus cues”就会将屏幕分为几部分，这几部分作为a，b，start等点击对应屏幕即可，</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">下载的</font></font></font><font size="4"><font face="黑体 ">gba</font></font><font face="宋体 "><font size="4"><font face="黑体 ">游戏放到卡上基本都可以玩，可以重温一下</font></font></font><font size="4"><font face="黑体 ">gba</font></font><font size="4"><font face="黑体 ">游戏了。
+
+<span style="position: absolute; display: none" id="attach_521173" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/01_tjacfZNFZwZI.jpg" width="400" id="aimg_521173" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="01.jpg" />
+
+<div class="t_attach" id="aimg_521173_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTczfDRhNGVhMjIxfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="01.jpg" target="_blank"><strong>下载</strong></a> (105.3 KB)<br />
+gba游戏<br />
+<div class="t_smallfont">2008-11-29 20:45</div>
+
+</div>
+
+</font><br />
+</font>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<font face="宋体 "><font size="4"><font face="黑体 ">另外还有这个可爱的游戏（<a href="http://maemo.org/downloads/product/raw/OS2008/numptyphysics/?get_installfile" target="_blank">点我下载</a>），通过话图形来通关，好像只有7，8关，一会就通过了。<br />
+</font></font></font><p align="center"><font face="黑体 "><font size="4">&nbsp; &nbsp;</font><font size="5"><font color="red">其它小工具插件</font></font></font></p><font size="4"><br />
+</font><font face="宋体 "><font size="4"><font face="黑体 "><font color="blue">1.状态栏插件</font>（安装</font></font></font><font size="4"><a href="http://maemo.org/downloads/product/raw/OS2008/statusbarclock/?get_installfile" target="_blank">点击我</a></font><font face="宋体 "><font size="4"><font face="黑体 ">后，在</font></font></font><font size="4"><font face="黑体 ">control panel—paneles-status bar</font></font><font face="宋体 "><font size="4"><font face="黑体 ">调出）</font></font></font><font size="4"><br />
+</font><font size="4"><font face="黑体 ">Large-statusbar-clock</font></font><font face="宋体 "><font size="4"><font face="黑体 ">美观的时钟插件，安装后到</font></font></font><font size="4"><font face="黑体 "> paneles-status bar</font></font><font face="宋体 "><font size="4"><font face="黑体 ">注意它是小时和分钟分别显示的，调整位置组合起来就</font></font></font><font size="4"><font face="黑体 ">ok</font></font><font face="宋体 "><font size="4"><font face="黑体 ">了<br />
+<br />
+<font color="blue">2.</font></font></font></font><font size="4"><font face="黑体 "><font color="blue">Advanced-backlight</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">将音量和背光调节到一个按键，<a href="http://maemo.org/downloads/product/raw/OS2008/advanced-backlight/?get_installfile" target="_blank">n8点击我下载</a></font></font></font><font size="4"><font face="黑体 "> </font></font><font face="宋体 "><font size="4"><font face="黑体 ">如图所示 在状态栏最上面时钟即是<br />
+<br />
+</font></font></font><font size="4"><font color="blue"><font face="黑体 ">3.Load-applet</font></font></font><font face="宋体 "><font size="4"><font face="黑体 "><a href="http://maemo.org/downloads/product/raw/OS2008/load-applet?get_installfile" target="_blank">n8点我下载</a>，直观的显示</font></font></font><font size="4"><font face="黑体 ">cpu</font></font><font face="宋体 "><font size="4"><font face="黑体 ">和内存的载荷量，另外亮点在于</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">点击拥有任务管理功能可以</font></font></font><font size="4"><font face="黑体 ">kill</font></font><font face="宋体 "><font size="4"><font face="黑体 ">掉程序，自带截图功能，这里的截图均出自它手。<br />
+<br />
+<font color="blue">4.</font></font></font></font><font size="4"><font face="黑体 "><font color="blue">Emelfm2</font><a href="http://maemo.org/downloads/product/raw/OS2008/emelfm2/?get_installfile" target="_blank">n8点我下载</a></font></font><font face="宋体 "><font size="4"><font face="黑体 ">强大的文件管理工具</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">自带的不能查看系统文件</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">如果不会用ls mv cp命令等这个不错。
+
+<span style="position: absolute; display: none" id="attach_521187" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081129/02_GkrxSx9zW4g0.jpg" width="400" id="aimg_521187" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="02.jpg" />
+
+<div class="t_attach" id="aimg_521187_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxMTg3fDgxMTMyNjNjfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="02.jpg" target="_blank"><strong>下载</strong></a> (96.79 KB)<br />
+
+<div class="t_smallfont">2008-11-29 21:06</div>
+
+</div>
+
+<br />
+<br />
+<font color="blue">5.</font></font></font></font><font size="4"><font color="blue"><font face="黑体 ">Omwweather</font></font></font><font size="4"><a href="http://maemo.org/downloads/product/raw/OS2008/omweather/?get_installfile" target="_blank">n8点我下载</a></font><font face="宋体 "><font size="4"><font face="黑体 ">类似于</font></font></font><font size="4"><font face="黑体 ">wm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的天气秀</font></font></font><font size="4"></font><font face="宋体 "><font size="4"><font face="黑体 ">功能强大</font></font></font><font size="4"></font><font face="宋体 "><font size="4"><font face="黑体 ">美观，安装成功后回到桌面点击</font></font></font><font size="4"><font face="黑体 ">home—appletsetting-omw</font></font><font face="宋体 "><font size="4"><font face="黑体 ">可以选择你的地区</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">需要输入地区码，当然源中有一个</font></font></font><font size="4"><font face="黑体 ">omw-weather-com-station-db</font></font><font face="宋体 "><font size="4"><font face="黑体 ">文件包含了中国大多数的城市，还有许多图标包可以下载替换。<br />
+<br />
+</font></font></font><font size="4"><font face="黑体 "><font color="blue">6.Homediskfree</font> n8<a href="http://maemo.org/downloads/product/raw/OS2008/homememfree/?get_installfile" target="_blank">点我下载</a> homememfree</font></font><font size="4"><a href="http://maemo.org/downloads/product/raw/OS2008/homediskfree/?get_installfile" target="_blank">点我下载</a></font><font face="宋体 "><font size="4"><font face="黑体 ">类似于</font></font></font><font size="4"><font face="黑体 ">wm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">上的</font></font></font><font size="4"><font face="黑体 ">resco explore</font></font><font face="宋体 "><font size="4"><font face="黑体 ">桌面插件样即时的现实各种状态，个人感觉每当退出一程序这些插件都会</font></font></font><font size="4"><font face="黑体 ">refresh</font></font><font face="宋体 "><font size="4"><font face="黑体 ">一下的确会影响速度。<br />
+<br />
+</font></font></font><font size="4"><font color="blue"><font face="黑体 ">7.Hometools </font></font></font><font size="4"><a href="http://maemo.org/downloads/product/raw/OS2008/hometools/?get_installfile" target="_blank">n8点我下载</a></font><font face="宋体 "><font size="4"><font face="黑体 ">一个集成上面那些</font></font></font><font size="4"><font face="黑体 ">home</font></font><font face="宋体 "><font size="4"><font face="黑体 ">等等的软件但是是显示的全部信息会占用半个屏幕，根据个人需要选择下载</font></font></font><font size="4"><br />
+<br />
+</font><font size="4"><font color="blue"><font face="黑体 ">8.</font></font></font><font size="4"><font face="黑体 "><font color="blue">Personallauncher</font> <a href="http://repository.maemo.org/extras/dists/chinook/install/personal-launch.install" target="_blank">n8点击我下载</a></font></font><font face="宋体 "><font size="4"><font face="黑体 ">呵呵</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">顾名思义就是可以在桌面显示的快捷方式，很简单在设置页面直接拖拽就可以<br />
+<br />
+</font></font></font><font size="4"><font face="黑体 "><font color="blue">9.Personalmenu</font> <a href="http://maemo.org/downloads/product/raw/OS2008/personal-menu/?get_installfile" target="_blank">n8点击我下载</a></font></font><font face="宋体 "><font size="4"><font face="黑体 "><a href="http://maemo.org/downloads/product/raw/OS2008/personal-menu/?get_installfile" target="_blank">就是</a>可以代替系统左侧菜单的安装后</font></font></font><font size="4"><font face="黑体 ">control panel—paneles-task navigator</font></font><font face="宋体 "><font size="4"><font face="黑体 ">我把</font></font></font><font size="4"><font face="黑体 ">contacts</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的勾取消了</font></font></font><font face="宋体 "><font size="4"><font face="黑体 ">换成了</font></font></font><font size="4"><font face="黑体 ">menu</font></font><font face="宋体 "><font size="4"><font face="黑体 ">自定义了几个常用程序</font></font></font><font size="4"><font face="黑体 ">，直接将程序拖拉即可<br />
+<br />
+</font></font><font face="宋体 "><font size="4"><font face="黑体 ">10.最后就是让我又爱又恨的</font></font></font><font size="4"><font color="blue"><font face="黑体 ">trafficcounter-applet</font></font></font><font size="4"><font face="黑体 ">&nbsp;&nbsp;</font><a href="http://maemo.org/downloads/product/raw/OS2008/trafficcounter-applet/?get_installfile" target="_blank">n8点击我下载</a></font><font face="宋体 "><font size="4"><font face="黑体 ">看名字就知道和</font></font></font><font size="4"><font face="黑体 ">palm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的</font></font></font><font size="4"><font face="黑体 ">traffic stat</font></font><font face="宋体 "><font size="4"><font face="黑体 ">相似，可以显示</font></font></font><font size="4"><font face="黑体 ">wifi</font></font><font face="宋体 "><font size="4"><font face="黑体 ">和蓝牙流量的，由于我经常</font></font></font><font size="4"><font face="黑体 ">650</font></font><font face="宋体 "><font size="4"><font face="黑体 ">蓝牙带动其上网（后面介绍）而</font></font></font><font size="4"><font face="黑体 ">palm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的</font></font></font><font size="4"><font face="黑体 ">stat</font></font><font face="宋体 "><font size="4"><font face="黑体 ">（</font></font></font><font size="4"><font face="黑体 ">cocodata</font></font><font face="宋体 "><font size="4"><font face="黑体 ">也是）不会显示蓝牙流量（</font></font></font><font size="4"><font face="黑体 ">wm</font></font><font face="宋体 "><font size="4"><font face="黑体 ">的</font></font></font><font size="4"><font face="黑体 ">traffic</font></font><font face="宋体 "><font size="4"><font face="黑体 ">就可以显示蓝牙数据）所以这个软件就很有用，但是其显示的只是实时流量下次连接就会从零开始所以软件还是有待改进的，当然没它给移动发短信查流量也可</font></font></font><br />
+<br />
+[<i> 本帖最后由 fbscell 于 2009-2-12 21:32 编辑 </i>]<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [全屏hp] <b>07.jpg</b> (2008-11-29 18:22, 35.15 KB) / 下载次数 1455<br />https://www.4d4y.com/forum/attachment.php?aid=521146&k=8039a2df64570574bd8e2b1368574dd5&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/07_yP2x8dbhDBt9.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [网页视频ok] <b>08.jpg</b> (2008-11-29 18:22, 36.58 KB) / 下载次数 1413<br />https://www.4d4y.com/forum/attachment.php?aid=521147&k=d45865c0770c6b6680a943e9cc7aad4a&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/08_3yHWklNuCYt5.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [rss界面] <b>03.jpg</b> (2008-11-29 18:24, 22.22 KB) / 下载次数 1416<br />https://www.4d4y.com/forum/attachment.php?aid=521148&k=aec01ae72ab676396c228867dc2f22d1&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/03_2IPyhxVho93F.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [浏览效果] <b>06.jpg</b> (2008-11-29 18:24, 44.08 KB) / 下载次数 1432<br />https://www.4d4y.com/forum/attachment.php?aid=521149&k=8ba1648c76c2134c34a119a5015de436&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/06_nX2bxuxyrZ35.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/binary.gif" border="0" class="absmiddle" alt="" />附件: [tear浏览器] <b>tear-0.1.2-1_armel.deb</b> (2008-11-29 18:24, 66.75 KB) / 下载次数 3517<br />https://www.4d4y.com/forum/attachment.php?aid=521150&k=169f8f9c05ba80f0c10c6489e8b1182d&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/text.gif" border="0" class="absmiddle" alt="" />附件: [很全面的rss地址] <b>推荐的全文rss地址.txt</b> (2008-11-29 18:26, 1.78 KB) / 下载次数 3892<br />https://www.4d4y.com/forum/attachment.php?aid=521151&k=acc6e512efb155251ab6a4f2cc8a2dab&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>02.jpg</b> (2008-11-29 18:37, 20.84 KB) / 下载次数 1401<br />https://www.4d4y.com/forum/attachment.php?aid=521152&k=a243b5f47ac11f1390d1f663fea7ab7f&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/02_KMtZyg2CHfuj.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>05.jpg</b> (2008-11-29 18:37, 25.66 KB) / 下载次数 1427<br />https://www.4d4y.com/forum/attachment.php?aid=521153&k=8c7450d4cab3de05b2fad72577a5387e&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/05_tudeMdlluKWT.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>媒体合并.jpg</b> (2008-11-29 19:03, 282.08 KB) / 下载次数 1508<br />https://www.4d4y.com/forum/attachment.php?aid=521156&k=2675a94a1d0fa7b346fe86eb6b510caf&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/w73M5brPsqI=_T6n9Ram9f1WA.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>13.jpg</b> (2008-11-29 19:22, 32.34 KB) / 下载次数 1405<br />https://www.4d4y.com/forum/attachment.php?aid=521157&k=83a4e8db5089eb6e98d88fe02efc0424&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/13_peFCJCYwtIJX.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [fbreader] <b>45.jpg</b> (2008-11-29 20:45, 82.18 KB) / 下载次数 1414<br />https://www.4d4y.com/forum/attachment.php?aid=521170&k=469d777a6052775ae87e419c183375da&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/45_wmOdRq0enYHA.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [pdf] <b>27.jpg</b> (2008-11-29 20:45, 34.04 KB) / 下载次数 1424<br />https://www.4d4y.com/forum/attachment.php?aid=521171&k=acc7a5d83ff748a2173a01837a69fa31&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/27_0R4cotWvkeGO.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [pdf图文全屏] <b>29.jpg</b> (2008-11-29 20:45, 25.98 KB) / 下载次数 1420<br />https://www.4d4y.com/forum/attachment.php?aid=521172&k=3314065dbbd1df374bd1b78a19e01877&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/29_cgMDuhCuqhjN.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [gba游戏] <b>01.jpg</b> (2008-11-29 20:45, 105.3 KB) / 下载次数 1408<br />https://www.4d4y.com/forum/attachment.php?aid=521173&k=4a4ea2214fd827f5934a39a402c80af9&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/01_tjacfZNFZwZI.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>部分插件.jpg</b> (2008-11-29 21:06, 25.67 KB) / 下载次数 1301<br />https://www.4d4y.com/forum/attachment.php?aid=521181&k=25553e30d6d3636edde4c16d76ddf8ce&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/sr+31rLlvP4=_5LTEU24scJJo.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>部分插件2.jpg</b> (2008-11-29 21:06, 26.97 KB) / 下载次数 1355<br />https://www.4d4y.com/forum/attachment.php?aid=521183&k=29c7e0c6ae5d04de8b1bc9e6f90da5e2&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/sr+31rLlvP4y_tw62pEjPhmSw.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>02.jpg</b> (2008-11-29 21:06, 96.79 KB) / 下载次数 1321<br />https://www.4d4y.com/forum/attachment.php?aid=521187&k=8113263cd8277b1b4c03bae224ed0852&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081129/02_GkrxSx9zW4g0.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>完美的rss.jpg</b> (2008-11-30 18:25, 156.89 KB) / 下载次数 1388<br />https://www.4d4y.com/forum/attachment.php?aid=521389&k=8eb800aa593b8b08478063a11cdff177&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081130/zerDwLXEcnNz_oVwbKmhwj9bn.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-28 21:47<br /><br />
+<p align="center">&nbsp;&nbsp;<font size="5"><font color="Red">实现n800（810类似）sd卡启动系统 <br />
+</font></font></p><p align="center"><font size="5"><font color="Red">（无论如何请备份好你的sd卡资料！）<br />
+</font></font></p><p align="left"><font size="4"><strong>系统刷到sd</strong><strong>卡上实现卡启动</strong></font><font size="4"><font face="黑体 ">为什么要sd卡启动？</font>&nbsp; &nbsp;&nbsp;&nbsp;</font><font face="黑体 "> </font><font size="4"><font color="Black"><font face="黑体 "><font size="10"><font size="4">像pc样双系统便于管理遇到问题可以还原，其次机器自带空间比较小，目前还不能像ppc样将软件游戏装到卡上，系统做到卡上以我的4g卡为例，可用的空间就为3.3g了这样足够了（嫌弃大的后面有方法可以修改），最后也是我的疑问机器自带的ram在速度上应该快与目前主流的sd卡吧（qq群里的机友说8x0的ram没有sd快）但是实测下来其它软件不明显针对打开网页来看速度的确有了提升，可能也是4g的卡安装包是分了256m的swap吧</font></font></font></font>。</font><font size="4"><font face="黑体 ">&nbsp; &nbsp; 以前在我使用770时，克隆系统到卡上的方法都是通过命令行来实现的，这样对于不熟悉linux命令的玩家来说的确是一种痛苦，现在好了国外的知名玩家penguinbait为我们做好了安装包，你只需要安装一个程序重启即可以将系统克隆到sd了<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" />&nbsp; &nbsp; 这是作者的空间（<a href="http://tablethacker.com/wp/?cat=3%E2%8C%A9=en-us" target="_blank"><u>点击查看</u></a>）下面用到的软件和方法都是引自这里，目前论坛还没有它的中文翻译，所以我在这里只是引上来翻译给大家，提醒一下注意什么。（由于本人没有810不能提供810的详细信息）下面以n800为例，本人已经安装成功 <br />
+</font></font></p><p align="left"><font size="4"><font face="黑体 "><br />
+</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp;&nbsp;&nbsp;<font color="Red">方法1（n810不能使用此方法）</font>&nbsp; &nbsp; 首先下载deb包&nbsp;&nbsp;<a href="http://penguinbait.com/install-tools.deb" target="_blank"><u>点击下载</u></a>&nbsp; &nbsp; 1.下载后拷贝到sd卡，通过资源管理器将deb包拷贝到机身内存例如 我的文&nbsp; &nbsp; 档文件夹。（deb包一定要复制到机器内安装）&nbsp; &nbsp; 2.将sd卡有用的资料备份到电脑，安装过程会格式化你的sd卡。&nbsp; &nbsp; 3.将sd卡插入到机器。800的二个插槽都可以，但是只能插入一张sd卡，另一卡槽为空。如果只是希望克隆系统而不需要安装后面提到的kde的话，2g卡就足够了，如果安装kde那么4g卡比较安全。&nbsp; &nbsp; 4.在文件管理器（或是程序管理）双击刚刚复制进的deb安装&nbsp; &nbsp; 5.重启开机，默认菜单非常快，一旦屏幕上方出现黑字，按住menu就会看到启动画面（下面会介绍如何修改启动画面和默认启动选项），第一项flash就是机器内存启动，而第二项即是卡启动。</font></font></p><p align="left"><font size="4"><font face="黑体 ">具体截图</font></font></p><p align="left"><font size="4"><font face="黑体 ">
+
+<span style="position: absolute; display: none" id="attach_522052" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6952_128rXKltXp4H.jpg" width="580" id="aimg_522052" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="DSCF6952.JPG" />
+
+<div class="t_attach" id="aimg_522052_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDUyfDNiODVmZTk3fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="DSCF6952.JPG" target="_blank"><strong>下载</strong></a> (143.8 KB)<br />
+开机启动提示<br />
+<div class="t_smallfont">2008-12-2 21:01</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_522053" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6958_EyLRIUoVFXbg.jpg" width="580" id="aimg_522053" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="DSCF6958.JPG" />
+
+<div class="t_attach" id="aimg_522053_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDUzfDBmYTk4YTg4fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="DSCF6958.JPG" target="_blank"><strong>下载</strong></a> (177.97 KB)<br />
+需要你选择的启动方式<br />
+<div class="t_smallfont">2008-12-2 21:01</div>
+
+</div>
+
+<br />
+</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp;&nbsp;&nbsp;<font color="Red">方法2 （800和810应该是通用，没有810我不能做测试）</font></font></font></p><p align="left"><font size="4"><font face="黑体 "><font color="Red">&nbsp; &nbsp;&nbsp;&nbsp;如果你已经按上面方法安装成功双系统那么安装下面的是对你无害的，可以完善你的管理，如果还没有实现sd启动，那么下面的方法也可以帮你实现</font>&nbsp;&nbsp;</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp; 这同样是上面那个deb安装包作者提供的，ps这人太牛了，小众设备世界上有几个这样的人支持就不怕没得玩了</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp; 1.下载二个deb包，点击下载 <a href="http://penguinbait.com/gparted-hack.deb" target="_blank">（1）gparted-hack</a> <a href="http://penguinbait.com/mgmt-tools.deb" target="_blank">（2） mgmt-tools</a></font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp; 简单介绍一下这二个安装包，第一个看名字就猜得差不多了，就是类似于pc上大名鼎鼎的pqm，也就是磁盘分区软件，它可以要你在n8上任意分配磁盘空间，这也就回答了49楼hper的疑问，第二个软件，嘿嘿，这可是类似于pc上的ghost，但是功能貌似比ghost还要牛一些，首先它允许你将flash上的系统克隆到sd卡上，注：：这里的克隆是类似方法一的，也就是将系统安装到卡上，其次才是在sd和flash之间备份还原系统，可以选择压缩备份，但是我曾经选择后等待了1个小时还是没有结束强行退了出来。</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp; 2.先安装hack.deb然后安装tools.deb（如果你已经用第一种方法实现双启动这里安装到哪里都无所谓了，但是如果是卡启动那个分区工具又装在卡上，这样是无法使用的，所以个人建议无论是哪种启动都安装到flash上） </font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp; 3.如果你已经安装上面二个deb到了flash那么重新启动后，在菜单extra下就能看到partition editor和management tools了如图所示</font></font></p><p align="left">-----------------------------------------</p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">首先是tools的初始菜单</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">1.克隆 就是在sd和flash之间克隆系统&nbsp;&nbsp;如图1和图2 先自己用分区管理tools在sd卡上分三个区，分别为fat16，ext2（不小于1g），swap（256m），然后根据克隆选项将flash克隆到ext2分区，用下面的选项修改bootmenu即可<br />
+</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">
+
+<span style="position: absolute; display: none" id="attach_521742" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081201/02_NYPbzndV4SYV.jpg" width="600" class="zoom" onclick="zoom(this, this.src)" id="aimg_521742" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="02.jpg" />
+
+<div class="t_attach" id="aimg_521742_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxNzQyfDhmOGRlNTg5fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="02.jpg" target="_blank"><strong>下载</strong></a> (139.39 KB)<br />
+tools开始菜单<br />
+<div class="t_smallfont">2008-12-1 22:28</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_521743" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081201/04_5HEDRJ6Pi8H6.jpg" width="600" class="zoom" onclick="zoom(this, this.src)" id="aimg_521743" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="04.jpg" />
+
+<div class="t_attach" id="aimg_521743_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxNzQzfGUwYzBlYWI4fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="04.jpg" target="_blank"><strong>下载</strong></a> (218.32 KB)<br />
+克隆说明<br />
+<div class="t_smallfont">2008-12-1 22:32</div>
+
+</div>
+
+<br />
+</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">2.remove 就是可以通过程序或是lib的首字母来进行删除 很简单一步一步next next就可以看懂</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">3.bootmenu菜单 <br />
+</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">&nbsp;&nbsp;进入bootmenu有很多选项</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">&nbsp; &nbsp;（1）install安装，如果你已经用第一种方法安装好了，它不会破坏你原先的菜单反而它对你很有用，因为第一种方法安装后开机菜单一下子就过去了，现在这个选项就可以修复停留时间，如图所示</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">&nbsp; &nbsp;（2）updgrade 意思是更新bootmenu我试过了没有什么效果，知道的说一声</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">&nbsp; &nbsp;（3）boot 这就是修改默认启动的，用第一种方法安装后，默认启动的是flash现在用它修改就可以了</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">&nbsp; &nbsp;（4）（5开启关闭磁盘检测）</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">&nbsp; &nbsp; 
+
+<span style="position: absolute; display: none" id="attach_521744" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081201/01_qSddX6ycyHtK.jpg" width="600" class="zoom" onclick="zoom(this, this.src)" id="aimg_521744" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="01.jpg" />
+
+<div class="t_attach" id="aimg_521744_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxNzQ0fDcyMGZkMTYyfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="01.jpg" target="_blank"><strong>下载</strong></a> (101.26 KB)<br />
+bootmenu选项<br />
+<div class="t_smallfont">2008-12-1 22:32</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_521745" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081201/06_OqxgGi24hZE7.jpg" width="600" class="zoom" onclick="zoom(this, this.src)" id="aimg_521745" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="06.jpg" />
+
+<div class="t_attach" id="aimg_521745_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxNzQ1fGMxNWFmMDlmfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="06.jpg" target="_blank"><strong>下载</strong></a> (227.33 KB)<br />
+开机等待延时间<br />
+<div class="t_smallfont">2008-12-1 22:32</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_521746" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081201/05_4SlofUV7tQ52.jpg" width="600" class="zoom" onclick="zoom(this, this.src)" id="aimg_521746" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="05.jpg" />
+
+<div class="t_attach" id="aimg_521746_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxNzQ2fDgxMzE1YzI4fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="05.jpg" target="_blank"><strong>下载</strong></a> (85.57 KB)<br />
+默认启动，是sd？还是flash？<br />
+<div class="t_smallfont">2008-12-1 22:32</div>
+
+</div>
+
+<br />
+</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">4.backup 就是n8上的ghost</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">5.restore 可以恢复备份过的压缩包</font></font></font></p><p align="left"><font color="Blue"><font face="黑体 "><font size="4">6.在指定的分区开启swap 不熟悉不要使用，用不好他会格式化你的sd卡！！<br />
+</font></font></font></p><p align="left"><font size="4"><font color="Blue"><font face="黑体 ">7.貌似是支持usb host的选项，手上没有设备，无法实验</font></font></font></p><p align="left"><font face="黑体 "> <font size="4"><font face="黑体 ">&nbsp; &nbsp; 下面是分区软件的截图很简单，和pqm样简单了解分区规则的都可以上手 和pc上相差 无几，不熟悉的请放狗搜索</font>，如果你对默认的sd空间分配不满意&nbsp;&nbsp;它可以帮助你修改（再次强调请备份你的sd卡资料！！谨慎操作）</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp; 另外如果你有兴趣安装后面介绍的kde那么2g卡建议还是不要修改了，因为即使你不修改容量也是很吃紧的，如果是4g卡可以略微修改一下，总之为了以后安装的程序着想，还是默认为好。</font></font></p><p align="left">
+
+<span style="position: absolute; display: none" id="attach_521934" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/03_pcDAg3JeVnR5.jpg" width="580" id="aimg_521934" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="03.jpg" />
+
+<div class="t_attach" id="aimg_521934_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIxOTM0fDQwM2RlMjkwfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="03.jpg" target="_blank"><strong>下载</strong></a> (177.81 KB)<br />
+
+<div class="t_smallfont">2008-12-2 16:06</div>
+
+</div>
+
+<br />
+</p><p align="left"><font face="黑体 "><font size="4">从上图就可以看到fat16即是我们常见的sd文件系统，直白的说这段分区也就是你把sd插到电脑上能够认出的，而第二分区ext2即是linux特有的文件系统，也就是系统在这里，可以看到我的4g卡已经安装了kde，所以使用情况大家就能有所把握，第三个分区就是swap交换分区，也是linux特有的，可以简单的理解它能够使你运行得更快。（ps：在系统高负荷运行时，会反复读取swap分区这也就很好解释了我当年用770时劣质mmc卡无故损坏的原因了）</font></font></p><p align="left"><font face="黑体 "><font size="4">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <font size="5"><font color="Red">安装kde （选择性安装，量力而行）<br />
+</font></font></font></font></p><p align="left"><font face="黑体 "><font size="4">什么是kde？（引自kde网站）</font></font></p><p align="left"><font face="黑体 "><font size="4">&nbsp; &nbsp;</font></font>KDE是一个用于UNIX工作站的网络透明的现代化桌面环境。KDE会为满足在Unix工作站上对于易用桌面的需求而不断探索，例如在Mac OS和微软的Windows那样的桌面环境。我们相信UNIX操作系统是当今可用的最好的操作系统。实际上在这些年来UNIX已经成为信息技术专业人员无可争议的选择，当提到稳定性、可扩展性和开放性，没有什么可以和UNIX竞争。但无论如何，在UNIX上缺乏易于使用的现代化桌面环境已成为了让UNIX成为办公和家庭场合中普通计算机用户的桌面系统的重大阻碍。UNIX在服务器市场占有优势，并且是计算机专业人士和科学领域中的首选计算平台，没有UNIX，就没有互联网。但是UNIX也从事于满足普通计算机用户的需求。自从大量的类UNIX（<a href="http://www.debian.org/" target="_blank">Debian GNU/Linux</a>、<a href="http://www.freebsd.org/" target="_blank">FreeBSD</a>和<a href="http://www.netbsd.org/" target="_blank">NetBSD</a>等等）在互联网上自由可用的时候，这种情况更加使人遗憾。上述的几个平台都具有非凡的品质和稳定性。 <br />
+</p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp;最开始听说在n8上可以安装kde，的确给我兴奋坏了，试想像电脑双系统样开机</font><font face="黑体 ">选择启动的系统该是多么美妙的一件事，但后来安装完才发现，原来此kde也是在maemo下虚拟的kde（不知道这样说是否得当，但给我的感觉是的）</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp;安装说明：<font color="Blue">首先保证你已经完成了sd卡启动系统</font>，因为kde的个头也只能装在卡上，如果你是2g的卡那么请保证你在安装系统时是按照作者的默认分区调配的，如果自己缩小了ext2的空间你有可能不能完成安装。如果你是4g卡那么请保证ext2空间有1.35g以上才能顺利安装</font></font>。</p><p align="left">&nbsp; &nbsp;&nbsp; &nbsp;<font size="4"><font face="黑体 ">这是作者的详细说明</font><a href="http://tablethacker.com/wp/?p=7&amp;lang=en-us" target="_blank">（点击查看）</a><font face="黑体 ">，如果能略微看懂的话还是先看一下，我在这里只是提供方法，kde的具体使用情况由于时间有限我还没有深入研究，以后有时间会慢慢放上来。</font></font></p><p align="left"><font face="黑体 "><font size="4">&nbsp; &nbsp;&nbsp; &nbsp;方法很简单，下载此安装包<a href="http://penguinbait.com/kde-installer-v4.deb" target="_blank">（点击下载）</a>放到机器任意位置，在程序管理器中选择它，安装，在安装过程中它会下载kde的安装程序并且安装它，过程根据网络情况有所不同，我的电信网络下载了1个半小时如截图所示。<br />
+</font></font></p><p align="left"><font size="4"><font face="黑体 ">&nbsp; &nbsp;&nbsp; &nbsp;</font></font>
+
+<span style="position: absolute; display: none" id="attach_522048" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/33_FqFmKezYc8O2.jpg" width="400" id="aimg_522048" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="33.jpg" />
+
+<div class="t_attach" id="aimg_522048_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDQ4fGEyYmM4ZGE4fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="33.jpg" target="_blank"><strong>下载</strong></a> (24.56 KB)<br />
+
+<div class="t_smallfont">2008-12-2 20:55</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_522049" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/37_xgrJDcsievPO.jpg" width="400" id="aimg_522049" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="37.jpg" />
+
+<div class="t_attach" id="aimg_522049_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDQ5fGQ3MzExZmExfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="37.jpg" target="_blank"><strong>下载</strong></a> (25.71 KB)<br />
+
+<div class="t_smallfont">2008-12-2 20:55</div>
+
+</div>
+
+</p><p align="left"><font size="4"><font face="黑体 ">kde桌面环境具体截图&nbsp;&nbsp;和pc上的kde很相近差别不大</font></font></p><p align="left">
+
+<span style="position: absolute; display: none" id="attach_522055" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/52_dEJODZnef5iZ.jpg" width="400" id="aimg_522055" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="52.jpg" />
+
+<div class="t_attach" id="aimg_522055_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDU1fDYwYmRmY2YwfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="52.jpg" target="_blank"><strong>下载</strong></a> (44.53 KB)<br />
+
+<div class="t_smallfont">2008-12-2 21:06</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_522056" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/53_GqPyA1DYs2M1.jpg" width="400" id="aimg_522056" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="53.jpg" />
+
+<div class="t_attach" id="aimg_522056_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDU2fDA0NzcxNDUyfDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="53.jpg" target="_blank"><strong>下载</strong></a> (40.53 KB)<br />
+
+<div class="t_smallfont">2008-12-2 21:06</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_522057" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/48_94YddIAQfNov.jpg" width="400" id="aimg_522057" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="48.jpg" />
+
+<div class="t_attach" id="aimg_522057_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDU3fDA2MTc5OWY3fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="48.jpg" target="_blank"><strong>下载</strong></a> (40.18 KB)<br />
+多窗口  视频播放（截图问题实际是有图像的）<br />
+<div class="t_smallfont">2008-12-2 21:06</div>
+
+</div>
+
+
+
+<span style="position: absolute; display: none" id="attach_522060" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/51_2e0FDd8Mfosj.jpg" width="400" id="aimg_522060" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="51.jpg" />
+
+<div class="t_attach" id="aimg_522060_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDYwfGNhYWFkNGU3fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="51.jpg" target="_blank"><strong>下载</strong></a> (26.72 KB)<br />
+kde下安装的mplayer<br />
+<div class="t_smallfont">2008-12-2 21:14</div>
+
+</div>
+
+</p><p align="left">还没有长时间使用，目前的简单体会<br />
+</p><p align="left">1.目前现在800是无法调用虚拟键盘的，810不清楚是否可行</p><p align="left">2.我们安装在maemo系统上的程序，都在程序分类---hilden系统，都可以运行，而且是可以调整窗口大小的。</p><p align="left">3.截图左面的任务栏有个鼠标选项，点击一次就切换到触摸笔为右键动作，再次点击恢复到默认的左键动作。</p><p align="left">4.kde系统自动带的软件运行基本流畅，但是个人猜测毕竟是在maemo下模拟的，运行速度肯定慢于原系统<br />
+</p><p align="left"><font size="4"><font face="黑体 "><br />
+</font></font></p><br />
+<br />
+[<i> 本帖最后由 fbscell 于 2008-12-4 19:33 编辑 </i>]<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [tools开始菜单] <b>02.jpg</b> (2008-12-1 22:28, 139.39 KB) / 下载次数 1347<br />https://www.4d4y.com/forum/attachment.php?aid=521742&k=8f8de589d78c8f31b74a3450053d84d5&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081201/02_NYPbzndV4SYV.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [克隆说明] <b>04.jpg</b> (2008-12-1 22:32, 218.32 KB) / 下载次数 1344<br />https://www.4d4y.com/forum/attachment.php?aid=521743&k=e0c0eab8312c8aee62678ebfb84fb500&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081201/04_5HEDRJ6Pi8H6.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [bootmenu选项] <b>01.jpg</b> (2008-12-1 22:32, 101.26 KB) / 下载次数 1318<br />https://www.4d4y.com/forum/attachment.php?aid=521744&k=720fd162feff6024c219cda679bf366e&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081201/01_qSddX6ycyHtK.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [开机等待延时间] <b>06.jpg</b> (2008-12-1 22:32, 227.33 KB) / 下载次数 1343<br />https://www.4d4y.com/forum/attachment.php?aid=521745&k=c15af09f18b88a29991c322fedfbade2&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081201/06_OqxgGi24hZE7.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [默认启动，是sd？还是flash？] <b>05.jpg</b> (2008-12-1 22:32, 85.57 KB) / 下载次数 1342<br />https://www.4d4y.com/forum/attachment.php?aid=521746&k=81315c28484fc395706bb8db1f4d1276&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081201/05_4SlofUV7tQ52.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>03.jpg</b> (2008-12-2 16:06, 177.81 KB) / 下载次数 1339<br />https://www.4d4y.com/forum/attachment.php?aid=521934&k=403de2906cbfb9da6243cdaeea550245&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/03_pcDAg3JeVnR5.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>33.jpg</b> (2008-12-2 20:55, 24.56 KB) / 下载次数 1299<br />https://www.4d4y.com/forum/attachment.php?aid=522048&k=a2bc8da83c5cba5800fa4614059acb04&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/33_FqFmKezYc8O2.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>37.jpg</b> (2008-12-2 20:55, 25.71 KB) / 下载次数 1300<br />https://www.4d4y.com/forum/attachment.php?aid=522049&k=d7311fa14b9c89d9c3afd75ae8913272&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/37_xgrJDcsievPO.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [开机启动提示] <b>DSCF6952.JPG</b> (2008-12-2 21:01, 143.8 KB) / 下载次数 1344<br />https://www.4d4y.com/forum/attachment.php?aid=522052&k=3b85fe97a901fd5a1bf7e2c627962eea&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6952_128rXKltXp4H.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [需要你选择的启动方式] <b>DSCF6958.JPG</b> (2008-12-2 21:01, 177.97 KB) / 下载次数 1349<br />https://www.4d4y.com/forum/attachment.php?aid=522053&k=0fa98a880f85c62fc38db98e8c3d5dc4&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6958_EyLRIUoVFXbg.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [kde开始] <b>DSCF6957.JPG</b> (2008-12-2 21:06, 162.79 KB) / 下载次数 1293<br />https://www.4d4y.com/forum/attachment.php?aid=522054&k=3f1db43181ec745b31146d32a659c653&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6957_ZSl9wMook1Qe.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>52.jpg</b> (2008-12-2 21:06, 44.53 KB) / 下载次数 1314<br />https://www.4d4y.com/forum/attachment.php?aid=522055&k=60bdfcf0376766e5d0444bbf7e7aeeae&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/52_dEJODZnef5iZ.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>53.jpg</b> (2008-12-2 21:06, 40.53 KB) / 下载次数 1311<br />https://www.4d4y.com/forum/attachment.php?aid=522056&k=047714529500f9084610b7ff58b2d8c9&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/53_GqPyA1DYs2M1.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [多窗口  视频播放（截图问题实际是有图像的）] <b>48.jpg</b> (2008-12-2 21:06, 40.18 KB) / 下载次数 1325<br />https://www.4d4y.com/forum/attachment.php?aid=522057&k=061799f7bc5bf8cc4b5f4e94b559692c&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/48_94YddIAQfNov.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [kde下安装的mplayer] <b>51.jpg</b> (2008-12-2 21:14, 26.72 KB) / 下载次数 1321<br />https://www.4d4y.com/forum/attachment.php?aid=522060&k=caaad4e735602db65ac60fc63a7c9fb8&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/51_2e0FDd8Mfosj.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-28 21:49<br /><br />
+<font size="4"><font color="Red">没有wifi接入如何用n8上网？</font></font><font size="4">（请注意你的gprs流量使用）<br />
+&nbsp; &nbsp;&nbsp;&nbsp;在没有wifi接入的地方难道我们的n8就没有用处了吗？不，只要你有一部支持蓝牙拨号的手机，即可以用手机蓝牙带动n8上网，那句话怎么说来着......无限你的无线吧！<br />
+&nbsp; &nbsp;&nbsp; &nbsp;具体方法根据手机不同有所差异，以我的palm650来说明，还是很容易的，首先保证你已经开通了我们可爱移动或是联通公司的相关gprs套餐，并且手机已经可以上网。<br />
+&nbsp; &nbsp;&nbsp; &nbsp;1.配对。打开650的蓝牙，<font color="Red">打开图中的拨号网络</font>，打开n8的control-panle————phone选择new搜索附近设备，这时应该找到你的手机了，现在n8上应该显示一个4位数字，点击ok，好了，现在650那边也应该有提示要你输入code了，把这数字输入到650上，在650上选择加入到可信设备列表。<br />
+&nbsp; &nbsp;&nbsp; &nbsp;
+
+<span style="position: absolute; display: none" id="attach_522063" onmouseover="showMenu({'ctrlid':this.id,'pos':'13'})"><img src="https://img02.4d4y.com/forum/images/default/attachimg.gif" border="0"></span>
+<img src="https://img02.4d4y.com/forum/images/common/none.gif" file="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6997_c7TF9DjKnAI1.jpg" width="580" id="aimg_522063" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" alt="DSCF6997.JPG" />
+
+<div class="t_attach" id="aimg_522063_menu" style="position: absolute; display: none">				
+<a href="attachment.php?aid=NTIyMDYzfDk4ZGZiODI3fDE3OTQwNjczNjJ8MjUxYXpaMGlmb05nY0M1VnlvM21yUkdoZy9oTGtFWFRRTW1YRmh1bGN3Z3ZoZUU%3D&amp;nothumb=yes" title="DSCF6997.JPG" target="_blank"><strong>下载</strong></a> (161.82 KB)<br />
+
+<div class="t_smallfont">2008-12-2 21:46</div>
+
+</div>
+
+<br />
+&nbsp; &nbsp;&nbsp; &nbsp;2.然后n8上会显示设置向导，点击next，选择地区，china，gprs连接。完成<br />
+&nbsp; &nbsp;&nbsp; &nbsp;3.在</font><font size="4">control-panle————connectivity，点击下面的connections————，选择gprs，点击edit，名称不变，选择packet data，next下一步，access point（接入点）cmwap或是cmnet（根据你的套餐种类我目前的net接入在800上不成功），地区码应该已经是*99***1#了，用户密码空，点击next，advance，ip10.0.0.172，后面填80.好了</font><br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<font size="4"><font color="Blue"><font face="黑体 ">以后需要上网即可以在网络连接中选择gprs即可以了</font></font></font><br />
+<br />
+<font size="4"><br />
+</font><font size="4"><font color="Red">linux相关知识补充 （才疏学浅 共同学习）</font></font><font size="4"><br />
+了解linux文件系统 <br />
+<font face="黑体 ">&nbsp; &nbsp; <font face="楷体_GB2312 ">我们在Linux中常用的文件系统主要有ext3、ext2及reiserfs ；Windows和Dos常用的文件系统是fat系列（包括fat16及fat32等）和ntfs 文件系统</font></font></font>，<font size="4"><font face="楷体_GB2312 ">而maemo使用的是ext2，而Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。这样，系统总是在物理内存不够时，才进行Swap交换。<br />
+&nbsp; &nbsp; 所以我们能明白上面对sd卡进行分区的规划原则了，fat16是可以在pc和n8上直接读取的，我们通常把影音文档等放到这里，所以如果你的卡足够大可以扩大这个区的容量，而ext2是linux机器的文件系统，如果不装kde等等的话，那么个人认为1g-2g是足够的，swap作为交换分区考虑到n8机器的性能256m也是足够的。<br />
+</font></font><p align="center"><font size="4"><font face="楷体_GB2312 "><font color="Red"><font size="5"><font face="黑体 ">翻转你的屏幕</font><br />
+</font></font></font></font></p><p align="left"><font face="黑体 "><font size="4">&nbsp; &nbsp; 首先论坛里已经有玩家翻译了一个反转屏幕的方法，具体<a href="https://www.4d4y.com/forum/viewthread.php?tid=449752&amp;extra=page%3D2" target="_blank">点击我查看</a></font></font>，<font size="4"><font face="黑体 ">开始我也在尝试用此方法实现，但是在wget时总是提示404错误，而且需要输入大量的命令行，于是在寻找其它方法时找到了这个<a href="http://www.internettablettalk.com/forums/showthread.php?t=24120" target="_blank">（点击查看）</a>此方法看似比上一个简单一些，于是试验了一下还是可以的。<br />
+&nbsp; &nbsp; 方法步骤：<br />
+&nbsp; &nbsp; 1.下载下载下面的install（可以用n8直接点击安装，同样可以pc另存为然后copy到n8上安装）<br />
+&nbsp; &nbsp; 2.安装好后，按住home按键会调出一个菜单，如图所示，然后点击最下面的（re）install xrandr support，等待一会，安装好后，机器会自动重启。<br />
+&nbsp; &nbsp; 3.重启后在程序分类-extras会看到slide setting菜单进入<br />
+&nbsp; &nbsp; 4.我的设置是将第一个取消勾选（就是按power旋转），第二个选勾,其它均是勾选上的。<br />
+&nbsp; &nbsp; 好了，退出，现在在任何时候按住home按键，就可以旋转了<br />
+&nbsp; &nbsp; 基本界面还算可以，如果你的状态栏很满，那么竖屏后会挤在一起。壁纸被压缩了。程序菜单竖屏只能显示一半了。桌面的home和fm插件在竖屏下如果你放到最下面，横屏后就找不到了，其实是有的只是无法显示出来，很多不能完全显示了。但是。。。。阅读效果更好了，还是看图吧</font></font></p><p align="center">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<font size="5"><font color="Red"><font face="黑体 ">蓝牙耳机的支持 A2DP</font></font></font></p><br />
+<p align="left"><font face="黑体 "><font size="4">&nbsp; &nbsp; 作者的原帖地址在此 <a href="http://www.internettablettalk.com/forums/showthread.php?t=13468" target="_blank">点击查看</a><br />
+</font><font size="4"></font></font></p><br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<font size="4"><font face="黑体 ">由于目前我的蓝牙耳机落在家里（周末回家）所以暂时无法实验，还是希望大家试验一下如果成功了，我会尽快把方法翻译后贴上来</font></font>。<br />
+&nbsp; &nbsp;&nbsp; &nbsp; <font size="4"><font face="黑体 "><font color="Red">补充：</font>一点自己的想法</font></font>，<font size="4"><font face="黑体 ">其实像是e2dp enable</font><font face="黑体 ">这样的代码</font>，<font face="黑体 ">或是我使用的截图软件默认截图都是在机身的images文件夹中每次截图后都要进文件管理器将图片考到sd然后放到电脑里，像上面这些经常使用的步骤其实可以通过</font><font face="黑体 ">personal menu 中的添加command然后在终端的选项前打勾来实现</font><br />
+</font><br />
+<font size="4"><font face="楷体_GB2312 "></font></font><br />
+<br />
+[<i> 本帖最后由 fbscell 于 2008-12-9 15:12 编辑 </i>]<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>DSCF6997.JPG</b> (2008-12-2 21:46, 161.82 KB) / 下载次数 1327<br />https://www.4d4y.com/forum/attachment.php?aid=522063&k=98dfb82778955998f13bee7fcc36904a&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081202/DSCF6997_c7TF9DjKnAI1.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/binary.gif" border="0" class="absmiddle" alt="" />附件:  <b>sliderotate-diablo.install</b> (2008-12-9 14:31, 255 Bytes) / 下载次数 1431<br />https://www.4d4y.com/forum/attachment.php?aid=523429&k=a670380541813e0d6116e493344d97ec&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [hp论坛效果 截图有些模糊] <b>screenshot11.png</b> (2008-12-9 14:31, 104.06 KB) / 下载次数 1313<br />https://www.4d4y.com/forum/attachment.php?aid=523430&k=e082a70a894387e59fa60a061e4bb8f3&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081209/screenshot11_JMnR86rGITWv.png" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [evince pdf阅读效果] <b>screenshot08.png</b> (2008-12-9 14:33, 83.58 KB) / 下载次数 1287<br />https://www.4d4y.com/forum/attachment.php?aid=523431&k=33f5e3ba1e2599a42471427993beccff&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081209/screenshot08_bnG3iwEMWwGv.png" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [完美的rss penguin tv阅读效果] <b>screenshot15.png</b> (2008-12-9 14:33, 182.33 KB) / 下载次数 1273<br />https://www.4d4y.com/forum/attachment.php?aid=523432&k=60a11e97acbb9639afbc07b420ee00e3&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081209/screenshot15_krEasea13n5Z.png" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件: [桌面效果] <b>screenshot13.png</b> (2008-12-9 14:37, 147.48 KB) / 下载次数 1290<br />https://www.4d4y.com/forum/attachment.php?aid=523433&k=f831639e6dcb54aa3a4def1a132bfbb4&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081209/screenshot13_CnYXisisZpXp.png" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>请我吃饭吧&nbsp; &nbsp; <b>时间: </b>2008-11-28 22:03<br /><br />
+我在几楼了？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>lycheejet&nbsp; &nbsp; <b>时间: </b>2008-11-28 22:55<br /><br />
+插一下，期待楼主继续<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>4A554E&nbsp; &nbsp; <b>时间: </b>2008-11-28 23:45<br /><br />
+那只狗很帅<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>saradoc&nbsp; &nbsp; <b>时间: </b>2008-11-29 00:35<br /><br />
+等待～～<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>雪山飞猪&nbsp; &nbsp; <b>时间: </b>2008-11-29 00:38<br /><br />
+继续 N770老枪<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>worlderic&nbsp; &nbsp; <b>时间: </b>2008-11-29 05:54<br /><br />
+n810上面装player/stage不知道能不能用？看那个狗可能只是用了usb host来虚拟串口来控制<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>blue889&nbsp; &nbsp; <b>时间: </b>2008-11-29 09:54<br /><br />
+期待全文……<br />
+更期待中文导航！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>tearstone&nbsp; &nbsp; <b>时间: </b>2008-11-29 17:01<br /><br />
+mark下，本人也是N800玩家，可以多交流<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-29 17:20<br /><br />
+先吃晚饭了 写了几个晚上了 今天争取完工<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>quitchat&nbsp; &nbsp; <b>时间: </b>2008-11-29 17:44<br /><br />
+800用户支持一把<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>coolfire31&nbsp; &nbsp; <b>时间: </b>2008-11-29 18:37<br /><br />
+N810 用户顶楼主一下， 顺便送大家一些 漂亮的桌面壁纸。 <br />
+<a href="http://obukhoff.su/photos/" target="_blank">http://obukhoff.su/photos/</a><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>lycheejet&nbsp; &nbsp; <b>时间: </b>2008-11-29 18:47<br /><br />
+呵呵，最顶全文RSS<img src="https://img02.4d4y.com/forum/images/smilies/default/biggrin.gif" smilieid="3" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>figojs&nbsp; &nbsp; <b>时间: </b>2008-11-29 19:25<br /><br />
+<img src="https://img02.4d4y.com/forum/images/smilies/default/smile.gif" smilieid="1" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/smile.gif" smilieid="1" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>金牙&nbsp; &nbsp; <b>时间: </b>2008-11-29 19:27<br /><br />
+中文手写还不错现在就是用的手写输入回的<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-29 19:37<br /><br />
+<div class="quote"><blockquote>原帖由 <i>金牙</i> 于 2008-11-29 19:27 发表<br />
+中文手写还不错现在就是用的手写输入回的 </blockquote></div><br />
+据说是内测吧？少数人才有的&nbsp;&nbsp;已经公开了吗？ 如果实现了手写输入那么&nbsp;&nbsp;及时聊天和论坛回贴都会大有改进<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>quitchat&nbsp; &nbsp; <b>时间: </b>2008-11-29 20:46<br /><br />
+<div class="quote"><blockquote>原帖由 <i>fbscell</i> 于 2008-11-29 19:37 发表<br />
+<br />
+据说是内测吧？少数人才有的&nbsp;&nbsp;已经公开了吗？ 如果实现了手写输入那么&nbsp;&nbsp;及时聊天和论坛回贴都会大有改进 </blockquote></div><br />
+是啊<br />
+非常期待正式发布<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-29 21:09<br /><br />
+<div class="quote"><blockquote>原帖由 <i>coolfire31</i> 于 2008-11-29 18:37 发表<br />
+N810 用户顶楼主一下， 顺便送大家一些 漂亮的桌面壁纸。 <br />
+<a href="http://obukhoff.su/photos/" target="_blank">http://obukhoff.su/photos/</a> </blockquote></div><br />
+太棒了！ 自己压得就是不行<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-11-29 22:18<br /><br />
+准备入Ｎ８１０了<img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-29 22:19<br /><br />
+<div class="quote"><blockquote>原帖由 <i>yongfengxi</i> 于 2008-11-29 22:18 发表<br />
+准备入Ｎ８１０了<img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /> </blockquote></div><br />
+价格好便宜了<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-11-29 22:50<br /><br />
+８１０就是ＧＰＳ白瞎了　，国内迟迟不出导航软阿<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>quitchat&nbsp; &nbsp; <b>时间: </b>2008-11-29 23:49<br /><br />
+请教一下lz，用evince看PDF的时候，可不可以加书签啊？比如今天我看到15页，然后退出evince，下次再打开的时候，又回到第一页了。。。然后每次都要记住上次看到第几页了。。。超不方便的。<br />
+记得以前用palm的某个pdf浏览器的时候，每次打开都是在上次退出的位置。<br />
+<br />
+不晓得evince里头有没有设置？<br />
+<br />
+谢谢<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>jtxql&nbsp; &nbsp; <b>时间: </b>2008-11-29 23:50<br /><br />
+写的很好！！谢谢！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>金牙&nbsp; &nbsp; <b>时间: </b>2008-11-30 08:38<br /><br />
+<div class="quote"><blockquote>原帖由 <i>fbscell</i> 于 2008-11-29 19:37 发表<br />
+<br />
+据说是内测吧？少数人才有的&nbsp;&nbsp;已经公开了吗？ 如果实现了手写输入那么&nbsp;&nbsp;及时聊天和论坛回贴都会大有改进 </blockquote></div><br />
+是的现在确实还有些问题但已经接近实用了<br />
+相信正式版很不错myhtpc里有反馈<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>jf9901&nbsp; &nbsp; <b>时间: </b>2008-11-30 09:18<br /><br />
+<img src="https://img02.4d4y.com/forum/images/smilies/default/cool.gif" smilieid="5" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/cool.gif" smilieid="5" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/cool.gif" smilieid="5" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>zuot48287&nbsp; &nbsp; <b>时间: </b>2008-11-30 10:24<br /><br />
+800用户顶一下<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>锐锐&nbsp; &nbsp; <b>时间: </b>2008-11-30 11:28<br /><br />
+不错。。这样可以少走弯路<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>Callas&nbsp; &nbsp; <b>时间: </b>2008-11-30 11:50<br /><br />
+楼主真是有心人，把N8x0相关的信息都整理在一起，谢过了！<br />
+请问给N8x0转换视频用哪个软件比较好？自己google没找到合适的<br />
+支持的格式多（特别是rm），速度快<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>coolfire31&nbsp; &nbsp; <b>时间: </b>2008-11-30 12:29<br /><br />
+<div class="quote"><blockquote>原帖由 <i>Callas</i> 于 2008-11-30 11:50 发表<br />
+楼主真是有心人，把N8x0相关的信息都整理在一起，谢过了！<br />
+请问给N8x0转换视频用哪个软件比较好？自己google没找到合适的<br />
+支持的格式多（特别是rm），速度快 </blockquote></div><br />
+<br />
+推荐mediacoder, 压缩方法和码率以前也有帖子介绍过或者自己去mediacoder他的论坛看看吧。 反正这个是我现在用的最好的一个转换软件。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-30 13:31<br /><br />
+mediacoder的确是最好的，但是在我的vista上（amd处理器）转换到一会都会出错退出<br />
+后来用的格式工厂就很好没有m这么复杂 比较傻瓜 修改屏幕比为1.66666在800上即可完美全屏播放，另外我上面提供了一个maemo的官方nokia转换软件<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-30 13:48<br /><br />
+<div class="quote"><blockquote>原帖由 <i>quitchat</i> 于 2008-11-29 23:49 发表<br />
+请教一下lz，用evince看PDF的时候，可不可以加书签啊？比如今天我看到15页，然后退出evince，下次再打开的时候，又回到第一页了。。。然后每次都要记住上次看到第几页了。。。超不方便的。<br />
+记得以前用palm的某 ... </blockquote></div><br />
+让你失望了 没有你说的书签选项&nbsp;&nbsp;但是如果是同一文档会从上次浏览结束处恢复<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>Callas&nbsp; &nbsp; <b>时间: </b>2008-11-30 13:56<br /><br />
+谢谢LS！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>supkzg&nbsp; &nbsp; <b>时间: </b>2008-11-30 18:39<br /><br />
+800用的SD卡，从相机里取出SD卡就能直接看；810就不行了，哈哈，做那么精致没用的<br />
+期待N900也用SD卡<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>land.rover&nbsp; &nbsp; <b>时间: </b>2008-11-30 19:12<br /><br />
+曾经的N800用户飘过，，，感谢楼主的辛勤劳动。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>geektrick&nbsp; &nbsp; <b>时间: </b>2008-11-30 20:29<br /><br />
+赞楼主的劳动成果!<br />
+准备入手N810了.<br />
+ <br />
+借地方问个关于N810的问题, N810的屏幕有N800那种背光不均匀的问题吗?<br />
+听IT上人说N810问题很小:<br />
+<a href="http://www.internettablettalk.com/forums/showpost.php?p=92167&amp;postcount=6" target="_blank">http://www.internettablettalk.com/forums/showpost.php?p=92167&amp;postcount=6</a><br />
+<br />
+[<i> 本帖最后由 geektrick 于 2008-11-30 21:20 编辑 </i>]<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>Callas&nbsp; &nbsp; <b>时间: </b>2008-11-30 22:58<br /><br />
+搭车问一下你们的N800用什么样（什么牌子）的屏幕保护贴？<br />
+效果怎样？<br />
+淘宝上用N800的ARM金贴吗？<br />
+据说PSP屏幕和N800差不多大，但是现场对比PSP保护帖用在N800上左右要剪掉一些，要命的是上下会少一小节<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-11-30 23:01<br /><br />
+<div class="quote"><blockquote>原帖由 <i>geektrick</i> 于 2008-11-30 20:29 发表<br />
+赞楼主的劳动成果!<br />
+准备入手N810了.<br />
+ <br />
+借地方问个关于N810的问题, N810的屏幕有N800那种背光不均匀的问题吗?<br />
+听IT上人说N810问题很小:<br />
+<a href="http://www.internettablettalk.com/forums/showpost.php?p=92167&amp;am" target="_blank">http://www.internettablettalk.co ... .php?p=92167&amp;am</a> ... </blockquote></div><br />
+以前用770时没有一点经验 国内也没有相关说明&nbsp;&nbsp;很麻烦 虽然现在的也不多 但还是希望我写的能帮助刚刚入手的机友<br />
+800的屏幕的确是背光不均 尤其是fbreader在竖屏观看时 最为严重 感觉已经到了应该召回的地步了&nbsp;&nbsp;但是日常使用不留意真的不明显 现在810便宜很多了 还是值得入手的<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>sinosure&nbsp; &nbsp; <b>时间: </b>2008-12-1 14:04<br /><br />
+想看看 PenguinTV，但是总是下载不下来，能把麻烦把需要的几个deb文件直接贴上来<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-1 15:03<br /><br />
+<div class="quote"><blockquote>原帖由 <i>sinosure</i> 于 2008-12-1 14:04 发表<br />
+想看看 PenguinTV，但是总是下载不下来，能把麻烦把需要的几个deb文件直接贴上来<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> </blockquote></div><br />
+penguin的确很好用 官方网站我也无法下载 我是在lists里直接安装的&nbsp;&nbsp;怎么提取deb。。？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-1 15:10<br /><br />
+用偶得大雄顶！<br />
+<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<img src="https://img02.4d4y.com/forum/images/smilies/default/tongue.gif" smilieid="8" border="0" alt="" /><img src="https://img02.4d4y.com/forum/images/smilies/default/tongue.gif" smilieid="8" border="0" alt="" /><img src="https://img02.4d4y.com/forum/images/smilies/default/tongue.gif" smilieid="8" border="0" alt="" /><img src="https://img02.4d4y.com/forum/images/smilies/default/tongue.gif" smilieid="8" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>sinosure&nbsp; &nbsp; <b>时间: </b>2008-12-1 15:38<br /><br />
+<div class="quote"><blockquote>原帖由 &lt;i&gt;fbscell&lt;/i&gt; 于 2008-12-1 15:03 发表&lt;br /&gt;<br />
+<br />
+&lt;br /&gt;<br />
+penguin的确很好用 官方网站我也无法下载 我是在lists里直接安装的&#160;&#160;怎么提取deb。。？ </blockquote></div>&lt;br /&gt;<br />
+<br />
+哦知道了，谢谢，那不用麻烦去找deb的链接了，我晚上回家直接从源安装吧<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-1 15:59<br /><br />
+<div class="quote"><blockquote>原帖由 <i>yongfengxi</i> 于 2008-12-1 15:10 发表<br />
+用偶得大雄顶！<br />
+<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><br />
+... </blockquote></div><br />
+。。。。无语 这么好的帖子 被你毁容了啊<img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-1 16:26<br /><br />
+maemocjk.garage.maemo.orgos2008.html<br />
+有谁在一部N810上同时安装过2种以上输入法，最好是CJK全部安装过<br />
+不知全部安装能否正常使用？<img src="https://img02.4d4y.com/forum/images/smilies/default/mad.gif" smilieid="6" border="0" alt="" /> <br />
+欧的810快到手里了<img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-1 16:33<br /><br />
+<div class="quote"><blockquote>原帖由 <i>fbscell</i> 于 2008-12-1 15:59 发表<br />
+<br />
+。。。。无语 这么好的帖子 被你毁容了啊<img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /> </blockquote></div><br />
+主要是你的帖子太合适宜了，刚买了810<br />
+<br />
+不过建议把刷机部分写的详细一些<br />
+尤其是要把SWAP键在哪里写清楚<img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+顶！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>love93414&nbsp; &nbsp; <b>时间: </b>2008-12-1 19:43<br /><br />
+最关心后面的部分。我的2G卡，最后只剩128M可以在XP下认出来，交换文件N不方便啊。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-1 23:06<br /><br />
+<div class="quote"><blockquote>原帖由 <i>love93414</i> 于 2008-12-1 19:43 发表<br />
+最关心后面的部分。我的2G卡，最后只剩128M可以在XP下认出来，交换文件N不方便啊。 </blockquote></div><br />
+方法已经写好了 2g卡 不能装kde哦<img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /><img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-2 00:36<br /><br />
+支持,楼主这篇文章我用n800仔细体会了半个小时!<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-2 14:37<br /><br />
+<div class="quote"><blockquote>原帖由 <i>xudachao</i> 于 2008-12-2 00:36 发表<br />
+支持,楼主这篇文章我用n800仔细体会了半个小时! </blockquote></div><br />
+其实我写了几个晚上<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>worlderic&nbsp; &nbsp; <b>时间: </b>2008-12-2 15:09<br /><br />
+<font size="5">支持LZ继续为大家贡献好的资源！<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /></font><br />
+ <br />
+明天N810到手就开始实践，现在N810简直就是白菜价!<br />
+<br />
+[<i> 本帖最后由 worlderic 于 2008-12-2 15:11 编辑 </i>]<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>Cyuet&nbsp; &nbsp; <b>时间: </b>2008-12-2 15:10<br /><br />
+马上就要入手N810,楼主的文章简直就是雪中送炭！ 谢谢！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-2 15:34<br /><br />
+希望不久在G区能刮起internet table的热潮 这样相关的输入法导航 等等才能完善 <br />
+貌似现在已经起风了<img src="https://img02.4d4y.com/forum/images/smilies/default/loveliness.gif" smilieid="26" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>worlderic&nbsp; &nbsp; <b>时间: </b>2008-12-2 15:41<br /><br />
+可以预见，价格降下来，机器普及了。呵呵<br />
+LZ好好编辑下，把内容丰富了，我们好学习<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>worlderic&nbsp; &nbsp; <b>时间: </b>2008-12-2 15:45<br /><br />
+另外，对N810用的GPS导航比较感兴趣，LZ有没有研究N8*0能用的GPS软件<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>王小败&nbsp; &nbsp; <b>时间: </b>2008-12-2 16:10<br /><br />
+谢谢楼主的奉献，刚入了N810，哈哈。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>love93414&nbsp; &nbsp; <b>时间: </b>2008-12-2 16:31<br /><br />
+clone后了，还可以更改分区的大小吗？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>quitchat&nbsp; &nbsp; <b>时间: </b>2008-12-2 16:36<br /><br />
+我boot from MMC以后，每次开机状态下连接UBS到PC，都会提示<br />
+unable to connect via usb memory card in use<br />
+<br />
+不知有没有解？<br />
+谢谢<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-2 20:07<br /><br />
+<div class="quote"><blockquote>原帖由 <i>love93414</i> 于 2008-12-2 16:31 发表<br />
+clone后了，还可以更改分区的大小吗？ </blockquote></div><br />
+是的&nbsp;&nbsp;可以的 就是用那个分区软件在n8上可以直接分区 如果是2g卡安装kde那么就不要改默认的了 <br />
+4g的还是可以修改一下的<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>lycheejet&nbsp; &nbsp; <b>时间: </b>2008-12-2 20:15<br /><br />
+<div class="quote"><blockquote>原帖由 <i>fbscell</i> 于 2008-12-2 14:37 发表<br />
+<br />
+其实我写了几个晚上 </blockquote></div><br />
+<br />
+呵呵，原创是比较辛苦的，顶了。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>overfly&nbsp; &nbsp; <b>时间: </b>2008-12-2 20:24<br /><br />
+超级好文，很毒狠毒~~~~~~~~<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>dsosdf&nbsp; &nbsp; <b>时间: </b>2008-12-2 20:47<br /><br />
+提示: <em>作者被禁止或删除 内容自动屏蔽</em>
+<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-2 22:56<br /><br />
+顶上去，楼主我偶像！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>满脸无辜&nbsp; &nbsp; <b>时间: </b>2008-12-3 02:02<br /><br />
+3k多米也叫白菜价。这棵大白菜够贵的。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>love93414&nbsp; &nbsp; <b>时间: </b>2008-12-3 12:14<br /><br />
+<div class="quote"><blockquote>原帖由 &lt;i&gt;quitchat&lt;/i&gt; 于 2008-12-2 16:36 发表&lt;br /&gt;<br />
+我boot from MMC以后，每次开机状态下连接UBS到PC，都会提示&lt;br /&gt;<br />
+unable to connect via usb memory card in use&lt;br /&gt;<br />
+&lt;br /&gt;<br />
+不知有没有解？&lt;br /&gt;<br />
+谢谢 </blockquote></div>&lt;br /&gt;<br />
+<br />
+我也是这个问题，而且两张卡都没办法操作。只能Flash启动才可以。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 13:13<br /><br />
+<div class="quote"><blockquote>原帖由 <i>love93414</i> 于 2008-12-3 12:14 发表<br />
+&lt;br /&gt;<br />
+<br />
+我也是这个问题，而且两张卡都没办法操作。只能Flash启动才可以。 </blockquote></div><br />
+我没装系统的那张卡是可以usb电脑读取的。。。。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 13:21<br /><br />
+<div class="quote"><blockquote>原帖由 <i>dsosdf</i> 于 2008-12-2 20:47 发表<br />
+问一下，<br />
+楼主天津的吗？<br />
+<br />
+<br />
+对于N810，<br />
+没见过实物，<br />
+一直不敢下手。 </blockquote></div><br />
+寒假回天津 我用的n800 不是810&nbsp; &nbsp;&nbsp;&nbsp;如果有兴趣可以和威廉我们一起出来玩<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 13:22<br /><br />
+<div class="quote"><blockquote>原帖由 <i>满脸无辜</i> 于 2008-12-3 02:02 发表<br />
+3k多米也叫白菜价。这棵大白菜够贵的。 </blockquote></div><br />
+火星了&nbsp;&nbsp;你去交易区看看吧<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>Da_nao_yan&nbsp; &nbsp; <b>时间: </b>2008-12-3 21:45 &nbsp; &nbsp; <b>标题: </b>回复 #1 fbscell 的帖子<br /><br />
+penguin tv 的源是哪个，我把55个都添加了，里面也没有，网站上始终down不下来。。。<img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:02<br /><br />
+楼主为啥安装那个pidign后QQ能上而hotmail就是上不去？<br />
+需要设置吗？<br />
+请指教<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:04<br /><br />
+<div class="quote"><blockquote>原帖由 <i>Da_nao_yan</i> 于 2008-12-3 21:45 发表<br />
+penguin tv 的源是哪个，我把55个都添加了，里面也没有，网站上始终down不下来。。。<img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /> </blockquote></div><br />
+哦？ 我加入55个后 每次更新太慢了 于是全删了 我把那55个源前面的6个加入了，在程序分类communication分类下中仍然可以找到tv<br />
+你的没有? 再试试呢？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:10<br /><br />
+<div class="quote"><blockquote>原帖由 <i>yongfengxi</i> 于 2008-12-3 22:02 发表<br />
+楼主为啥安装那个pidign后QQ能上而hotmail就是上不去？<br />
+需要设置吗？<br />
+请指教 </blockquote></div><br />
+pidign用了800就没安装过&nbsp;&nbsp;没有完善的输入法 即时通讯意义何在<br />
+ps：今天我又安装了scim可是即使是卡启动但那个速度让人抓狂&nbsp;&nbsp;又再次删了 <br />
+今天还实验了那个火狐for&nbsp;&nbsp;maemo810&nbsp;&nbsp;首先800是无法调用键盘的 支持的指划效果像是pc上没装显卡驱动拖动窗口的效果。。。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:12<br /><br />
+继续支持，同时请教为什么我用install-tools.deb装双系统老提示安装失败？已经重新刷了最新的Diablo也是不行。只再里面放了一张创见4G的SDHC。难道RP不好？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:14<br /><br />
+<div class="quote"><blockquote>原帖由 <i>fbscell</i> 于 2008-12-3 22:10 发表<br />
+<br />
+pidign用了800就没安装过&nbsp;&nbsp;没有完善的输入法 即时通讯意义何在<br />
+ps：今天我又安装了scim可是即使是卡启动但那个速度让人抓狂&nbsp;&nbsp;又再次删了 <br />
+今天还实验了那个火狐for&nbsp;&nbsp;maemo810&nbsp;&nbsp;首先800是无法调用键盘的 支持 ... </blockquote></div><br />
+<br />
+810用pidign上QQ 用中文挺好的啊<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yangcd99&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:26<br /><br />
+N800/810用的是miniSD卡吧<br />
+最大可以支持到8G吗？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:42<br /><br />
+<div class="quote"><blockquote>原帖由 <i>xudachao</i> 于 2008-12-3 22:12 发表<br />
+继续支持，同时请教为什么我用install-tools.deb装双系统老提示安装失败？已经重新刷了最新的Diablo也是不行。只再里面放了一张创见4G的SDHC。难道RP不好？ </blockquote></div><br />
+需要把tools拷贝到机器flash内 在机器上安装 我的也是4d创见sdhc<br />
+这是作者的原帖 注意的我应该都说了<br />
+还是不行就是rp问题了吧。。<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:45<br /><br />
+<div class="quote"><blockquote>原帖由 <i>yangcd99</i> 于 2008-12-3 22:26 发表<br />
+N800/810用的是miniSD卡吧<br />
+最大可以支持到8G吗？ </blockquote></div><br />
+800用的是sd卡 不是minisd 至少支持8gsd<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-3 22:59<br /><br />
+每次都是到格式化卡的时候错误，然后提示无法安装，用文件管理打开卡也提示有错误，有没有人遇到过这个情况？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yangcd99&nbsp; &nbsp; <b>时间: </b>2008-12-3 23:09<br /><br />
+<div class="quote"><blockquote>原帖由 <i>fbscell</i> 于 2008-12-3 22:45 发表<br />
+<br />
+800用的是sd卡 不是minisd 至少支持8gsd </blockquote></div><br />
+N800好像支持双卡的<br />
+N810看到只支持miniSD，现在16G的卡也就200多，不知道支持吗？<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-3 23:18<br /><br />
+用的8G TF外加MINI套<br />
+16的就免了<br />
+<br />
+剩下钱买16G 记忆棒 <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-3 23:22<br /><br />
+厄，终于好了，原来第一次安装不成功好像是install-tools再格式化卡，第二次装直接就好了。<br />
+我太敏感了，每次还把格好的卡再格回fat32……<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>leoxing09&nbsp; &nbsp; <b>时间: </b>2008-12-4 00:38<br /><br />
+用能播放flv快进的软件吗。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-4 09:52<br /><br />
+有的，光我知道的KMplayer就可以<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-4 09:54<br /><br />
+pidign没人用？MSN还是不可以，QQ倒是用着很爽<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-4 10:16<br /><br />
+强烈期待n800的手写输入法<img src="https://img02.4d4y.com/forum/images/smilies/default/mad.gif" smilieid="6" border="0" alt="" /> <br />
+现在上了QQ也是白搭<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>yongfengxi&nbsp; &nbsp; <b>时间: </b>2008-12-4 10:27<br /><br />
+<div class="quote"><blockquote>原帖由 <i>xudachao</i> 于 2008-12-4 10:16 发表<br />
+强烈期待n800的手写输入法<img src="https://img02.4d4y.com/forum/images/smilies/default/mad.gif" smilieid="6" border="0" alt="" /> <br />
+现在上了QQ也是白搭 </blockquote></div><br />
+<br />
+试过MSN吗？怎么设置阿<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-4 10:38<br /><br />
+MSN也没试过……<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>worlderic&nbsp; &nbsp; <b>时间: </b>2008-12-4 11:37<br /><br />
+<div class="quote"><blockquote>原帖由 <i>yongfengxi</i> 于 2008-12-3 23:18 发表<br />
+用的8G TF外加MINI套<br />
+16的就免了<br />
+<br />
+剩下钱买16G 记忆棒 <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> </blockquote></div><br />
+<br />
+<a href="http://www.internettablettalk.com/forums/showthread.php?s=596a4a8737e433dda1a131c8e6d5a110&amp;t=23205" target="_blank">http://www.internettablettalk.com/forums/showthread.php?s=596a4a8737e433dda1a131c8e6d5a110&amp;t=23205</a><br />
+<br />
+作者原文：。。。。I am making everything needed to extend the memory to 32GB or to 64GB when the cards are available。。。<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/image.gif" border="0" class="absmiddle" alt="" />图片附件:  <b>N810%20Memoryupgrade3.jpg</b> (2008-12-4 11:38, 35.57 KB) / 下载次数 1910<br />https://www.4d4y.com/forum/attachment.php?aid=522388&k=af69e898c8f924d5b315c2209b9100dd&t=1794067362&sid=dgGG9S<br /><br /><img src="https://img02.4d4y.com/forum/attachments/day_081204/TjgxMCUyME1lbQ==_fC9w1ZHDzgmn.jpg" border="0" onload="if(this.width >screen.width*0.8) this.width=screen.width*0.8" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-4 12:17<br /><br />
+n800二块电池 都不能把卡上的4g电影播放完毕 32g做什么用哦<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>worlderic&nbsp; &nbsp; <b>时间: </b>2008-12-4 12:41<br /><br />
+这个改造我看是背面电池盖那里加了一层，至于32G有什么用，那得看需求，否则厂家就不用生产32G的卡了，<img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <img src="https://img02.4d4y.com/forum/images/smilies/default/lol.gif" smilieid="9" border="0" alt="" /> <br />
+短期内估计用不上这么大<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-4 13:28<br /><br />
+LZ可不可以把PenguinTV的PenguinTV-3.60-maemo.armv5tel.deb传一份上来，我这边试了好几次都下不下来，sourceforge.net老是连不上。谢！<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>quitchat&nbsp; &nbsp; <b>时间: </b>2008-12-4 13:41<br /><br />
+对了，哪里有卖比较好的N800的兼容电池啊<br />
+出去旅游的时候，一块电池不够用，原装电又太贵了<img src="https://img02.4d4y.com/forum/images/smilies/default/mad.gif" smilieid="6" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-4 13:42<br /><br />
+<div class="quote"><blockquote>原帖由 <i>xudachao</i> 于 2008-12-4 13:28 发表<br />
+LZ可不可以把PenguinTV的PenguinTV-3.60-maemo.armv5tel.deb传一份上来，我这边试了好几次都下不下来，sourceforge.net老是连不上。谢！ </blockquote></div><br />
+对不起 刚刚重装了双系统 这是我在官网下载的 另外安装它需要<a href="http://downloads.sourceforge.net/penguintv/python2.5-gnome-extras_2.19.1.armel.deb" target="_blank">python2.5的支持 这个容易找到</a><img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /><br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/binary.gif" border="0" class="absmiddle" alt="" />附件:  <b>PenguinTV-3.60-maemo.armv5tel.deb</b> (2008-12-4 13:42, 27.73 KB) / 下载次数 799<br />https://www.4d4y.com/forum/attachment.php?aid=522418&k=970d0cbebb34479b60c7fa65bd2b2c03&t=1794067362&sid=dgGG9S<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>fbscell&nbsp; &nbsp; <b>时间: </b>2008-12-4 13:44<br /><br />
+<div class="quote"><blockquote>原帖由 <i>quitchat</i> 于 2008-12-4 13:41 发表<br />
+对了，哪里有卖比较好的N800的兼容电池啊<br />
+出去旅游的时候，一块电池不够用，原装电又太贵了<img src="https://img02.4d4y.com/forum/images/smilies/default/mad.gif" smilieid="6" border="0" alt="" /> </blockquote></div><br />
+淘宝搜 飞毛腿n92电池 也就是bp-5l是和n8兼容的&nbsp;&nbsp;但是电量很差&nbsp;&nbsp;<br />
+原电提醒几次电量不足才会关机&nbsp;&nbsp;<br />
+而这个飞电 提醒一次马上就关机了。。。不过价格便宜20几块&nbsp;&nbsp;你可以买2块<img src="https://img02.4d4y.com/forum/images/smilies/default/funk.gif" smilieid="27" border="0" alt="" /><hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>王小败&nbsp; &nbsp; <b>时间: </b>2008-12-4 14:24<br /><br />
+楼主，我用的是N810，关于获得root权限的几个软件我都下载不下来，能不能麻烦你提供一下.deb安装文件?谢谢。<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>xudachao&nbsp; &nbsp; <b>时间: </b>2008-12-4 14:25<br /><br />
+谢哦！继续再顶！小众机器缺的就是一起玩的人，现在不愁了！<img src="https://img02.4d4y.com/forum/images/smilies/default/wink.gif" smilieid="4" border="0" alt="" /><br />
+LS，rootsh很好用，直接sudo gainroot就能获得root权限。<br />
+deb没找到，给你个install试试。<br />
+<br />
+[<i> 本帖最后由 xudachao 于 2008-12-4 14:27 编辑 </i>]<br /><br /><img src="https://img02.4d4y.com/forum/images/attachicons/binary.gif" border="0" class="absmiddle" alt="" />附件:  <b>rootsh.install</b> (2008-12-4 14:27, 148 Bytes) / 下载次数 281<br />https://www.4d4y.com/forum/attachment.php?aid=522430&k=59435a4054184e733c828fcc200e0ef3&t=1794067362&sid=dgGG9S<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>coolfire31&nbsp; &nbsp; <b>时间: </b>2008-12-4 14:31<br /><br />
+<div class="quote"><blockquote>原帖由 <i>王小败</i> 于 2008-12-4 14:24 发表<br />
+楼主，我用的是N810，关于获得root权限的几个软件我都下载不下来，能不能麻烦你提供一下.deb安装文件?谢谢。 </blockquote></div><br />
+在application manager 找到rootsh 装这个软件几可以了.<hr noshade size="2" width="100%" color="#808080">
+<b>作者: </b>王小败&nbsp; &nbsp; <b>时间: </b>2008-12-4 14:40<br /><br />
+谢谢楼上两位兄弟。<br />
+<br />
+install文件下来后不能下载软件，不知道为什么，所以想XD们提供一下.deb格式的文件，看看直接安装能行不...<br />
+<br />
+在application manager里找不到rootsh，郁闷。<br />
+<br />
+我拿到N810后，刷了OS2008，版本是4.2008.36-5，不知道大家刷的哪个？<br /><br /><br /><br /><hr noshade size="2" width="100%" color="BORDERCOLOR">
+<table cellspacing="0" cellpadding="0" border="0" width="95%" align="center" style="font-size: 0.8em; font-family: Verdana, Helvetica, Arial, sans-serif">
+<tr><td>欢迎光临 4D4Y (https://www.4d4y.com/forum/)</td>
+<td align="right">
+Powered by Discuz! 7.2</td></tr></table>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a56d90583cb5e4ec',t:'MTc5NDA2NzM2Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a56d90583cb5e4ec',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -39,7 +39,10 @@
 
 - (void)loadSetting {
     
-    _globalSettings = [NSStandardUserDefaults objectForKey:HPSettingDic];
+    // UserDefaults 返回的是不可变 NSDictionary；这里必须转成 mutableCopy，
+    // 否则后续 saveObject:/saveInteger: 会因 setObject:forKey: 抛异常。
+    NSDictionary *storedSettings = [NSStandardUserDefaults objectForKey:HPSettingDic];
+    _globalSettings = storedSettings ? [storedSettings mutableCopy] : nil;
     
     ///////////
     // app update setting
@@ -134,6 +137,9 @@
     if (!key || !value) {
         NSLog(@"ERROR: saveObject %@: %@", key, value);
         return;
+    }
+    if (![_globalSettings isKindOfClass:[NSMutableDictionary class]]) {
+        _globalSettings = [_globalSettings mutableCopy];
     }
     [_globalSettings setObject:value forKey:key];
     [self save];

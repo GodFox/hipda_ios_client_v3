@@ -66,7 +66,7 @@
     
     
     // 2 submit
-    //http://www.hi-pda.com/forum/my.php?item=favorites&tid=1273648&inajax=1&ajaxtarget=favorite_msg
+    //https://www.4d4y.com/forum/my.php?item=favorites&tid=1273648&inajax=1&ajaxtarget=favorite_msg
     
     NSString *path = [NSString stringWithFormat:@"forum/my.php?item=favorites&tid=%ld&inajax=1&ajaxtarget=favorite_msg", thread.tid];
     
@@ -142,7 +142,7 @@
     if (index < 0 || index > [_favorites count]) {
         NSLog(@"index < 0 || index > [_favorites count]");
         NSDictionary *details = [NSDictionary dictionaryWithObject:@"您本设备没有收藏过这个帖子" forKey:NSLocalizedDescriptionKey];
-        block(nil, [NSError errorWithDomain:@".hi-pda.com" code:404 userInfo:details]);
+        block(nil, [NSError errorWithDomain:@".4d4y.com" code:404 userInfo:details]);
         return;
     }
     
@@ -185,8 +185,8 @@
             if (DEBUG_del_Favorite) NSLog(@"%@", html);
             
             /*<div class="postbox"><div class="alert_right">
-             <p>收藏夹已成功更新，现在将转入更新后的收藏夹。<script>setTimeout("window.location.href ='http://www.hi-pda.com/forum/forumdisplay.php?fid=2';", 1000);</script></p>
-             <p class="alert_btnleft"><a href="http://www.hi-pda.com/forum/forumdisplay.php?fid=2">如果您的浏览器没有自动跳转，请点击此链接</a></p>
+             <p>收藏夹已成功更新，现在将转入更新后的收藏夹。<script>setTimeout("window.location.href ='https://www.4d4y.com/forum/forumdisplay.php?fid=2';", 1000);</script></p>
+             <p class="alert_btnleft"><a href="https://www.4d4y.com/forum/forumdisplay.php?fid=2">如果您的浏览器没有自动跳转，请点击此链接</a></p>
              </div></div>
              */
             

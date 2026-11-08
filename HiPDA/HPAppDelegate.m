@@ -23,6 +23,7 @@
 
 #import "HPMessage.h"
 #import "HPNotice.h"
+#import "UIAlertView+Blocks.h"
 
 #define AlertPMTag 1357
 #define AlertNoticeTag 2468
@@ -37,9 +38,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     // clean
     if ([NSStandardUserDefaults objectForKey:@"hp-mark-old-273"] == nil) {
         [self clean];
@@ -99,22 +97,7 @@
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     }
     
-    //
-    _rearViewController = [HPRearViewController sharedRearVC];
-    UINavigationController *frontNavigationController = [HPRearViewController threadNavViewController];
-    
-	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:_rearViewController frontViewController:frontNavigationController];
-    
-    revealController.rearViewRevealWidth = 100.f;
-    revealController.rearViewRevealOverdraw = 0.f;
-    revealController.frontViewShadowRadius = 0.f;
-
-    revealController.delegate = _rearViewController;
-    
-    self.viewController = revealController;
-    self.window.rootViewController = self.viewController;
-    self.window.backgroundColor = [UIColor blackColor];
-    [self.window makeKeyAndVisible];
+    // 根控制器在 HPSceneDelegate 连接 scene 后创建（见文件末尾）
     
     [[HPAccount sharedHPAccount] startCheckWithDelay:30.f];
     
@@ -135,13 +118,33 @@
 }
 
 
+- (void)setupRootViewControllerWithWindow:(UIWindow *)window {
+    self.window = window;
+    
+    _rearViewController = [HPRearViewController sharedRearVC];
+    UINavigationController *frontNavigationController = [HPRearViewController threadNavViewController];
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:_rearViewController frontViewController:frontNavigationController];
+    
+    revealController.rearViewRevealWidth = 100.f;
+    revealController.rearViewRevealOverdraw = 0.f;
+    revealController.frontViewShadowRadius = 0.f;
+    
+    revealController.delegate = _rearViewController;
+    
+    self.viewController = revealController;
+    window.rootViewController = self.viewController;
+    window.backgroundColor = [UIColor blackColor];
+    [window makeKeyAndVisible];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     
     //
-    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:@"www.hi-pda.com"]];
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:@"https://www.4d4y.com"]];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookies];
     //NSLog(@"save cookies %@", data);
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"kUserDefaultsCookie"];
@@ -185,26 +188,37 @@
     NSInteger notice_count = [Setting integerForKey:HPNoticeCount];
     
     NSString *msg = nil;
-    int tag = -1;
+    BOOL isPM = NO;
     if (pm_count > 0) {
         msg = S(@"您有新的短消息(%d)", pm_count);
-        tag = AlertPMTag;
+        isPM = YES;
     } else if (notice_count > 0){
         msg = S(@"您有新的帖子消息(%d)", notice_count);
-        tag = AlertNoticeTag;
     } else {
         
         //
         return;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒"
-                                                    message:msg
-                                                   delegate:self
-                                          cancelButtonTitle:@"忽略"
-                                          otherButtonTitles:@"查看", nil];
-    alert.tag = tag;
-    [alert show];
+    [HPAlert showConfirmationDialogWithTitle:@"提醒"
+                                         message:msg
+                                         handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == 0) {
+            if (isPM) {
+                [HPMessage ignoreMessage];
+            } else {
+                [HPNotice ignoreNotice];
+            }
+        } else if (buttonIndex == 1) {
+            if (self->_rearViewController) {
+                if (isPM) {
+                    [self->_rearViewController switchToMessageVC];
+                } else {
+                    [self->_rearViewController switchToNoticeVC];
+                }
+            }
+        }
+    }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -353,5 +367,44 @@
 }
 
 
+
+@end
+
+
+#pragma mark - Scene lifecycle
+
+/*
+ * iOS 26+ SDK 要求使用 UIScene 生命周期；这里把原来的 window 搭建从
+ * application:didFinishLaunchingWithOptions: 移到 scene 连接时执行。
+ */
+@interface HPSceneDelegate : UIResponder <UIWindowSceneDelegate>
+@property (strong, nonatomic) UIWindow *window;
+@end
+
+@implementation HPSceneDelegate
+
+- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+    if (![scene isKindOfClass:[UIWindowScene class]]) {
+        return;
+    }
+    
+    UIWindowScene *windowScene = (UIWindowScene *)scene;
+    self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
+    
+    HPAppDelegate *appDelegate = (HPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate setupRootViewControllerWithWindow:self.window];
+}
+
+- (void)sceneWillResignActive:(UIScene *)scene {
+    // 沿用 AppDelegate 里原有的 cookie 归档逻辑
+    HPAppDelegate *appDelegate = (HPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate applicationWillResignActive:[UIApplication sharedApplication]];
+}
+
+- (void)sceneDidEnterBackground:(UIScene *)scene {
+    // 沿用 AppDelegate 里原有的角标刷新逻辑
+    HPAppDelegate *appDelegate = (HPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate applicationDidEnterBackground:[UIApplication sharedApplication]];
+}
 
 @end

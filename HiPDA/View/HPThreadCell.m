@@ -96,11 +96,18 @@
     
     // subtitle
     //
-    NSString *subtitle = [NSString stringWithFormat:@" %ld/%ld  %@",
-                          _thread.replyCount,
-                          _thread.openCount,
-                          [thread shortDate]
-                          ];
+    NSString *subtitle = nil;
+    if (_thread.openCount > 0) {
+        subtitle = [NSString stringWithFormat:@" %ld/%ld  %@",
+                    _thread.replyCount,
+                    _thread.openCount,
+                    [thread shortDate]];
+    } else {
+        // 4d4y 的列表模板不提供浏览数，避免显示成 "459/0"
+        subtitle = [NSString stringWithFormat:@" %ld  %@",
+                    _thread.replyCount,
+                    [thread shortDate]];
+    }
     
     NSMutableAttributedString *subAttrString =
     [[NSMutableAttributedString alloc] initWithString:subtitle];
@@ -185,6 +192,10 @@
 }
 
 + (CGFloat)titleHeight:(NSString *)title {
+    return [self titleHeight:title width:[UIScreen mainScreen].bounds.size.width];
+}
+
++ (CGFloat)titleHeight:(NSString *)title width:(CGFloat)cellWidth {
     
     // text
     //
@@ -195,14 +206,18 @@
     [attrString addAttribute:NSFontAttributeName value:baseFont range:NSMakeRange(0, [title length])];
     
     
-    // size
+    // size：使用实际 cell 宽度，而不是固定的 320
     //
+    if (cellWidth <= 0) {
+        cellWidth = CELL_CONTENT_WIDTH;
+    }
     CGFloat width = 0.f;
     if ([Setting boolForKey:HPSettingShowAvatar]) {
-        width = CELL_CONTENT_WIDTH - CELL_IMAGE_WIDTH - (CELL_CONTENT_MARGIN * 2) - CELL_IMAGE_MARGIN;
+        width = cellWidth - CELL_IMAGE_WIDTH - (CELL_CONTENT_MARGIN * 2) - CELL_IMAGE_MARGIN;
     } else {
-        width = CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2);
+        width = cellWidth - (CELL_CONTENT_MARGIN * 2);
     }
+    width = MAX(width, 40.f);
     
     CGSize constraint = CGSizeMake(width, 20000.0f);
     CGRect rect = [attrString boundingRectWithSize:constraint
@@ -214,11 +229,15 @@
 }
 
 + (CGFloat)heightForCellWithThread:(HPThread *)thread {
+    return [self heightForCellWithThread:thread width:[UIScreen mainScreen].bounds.size.width];
+}
+
++ (CGFloat)heightForCellWithThread:(HPThread *)thread width:(CGFloat)width {
     
     // text
     //
     NSString *title = thread.title;
-    CGFloat titleHeight = [[self class] titleHeight:title];
+    CGFloat titleHeight = [[self class] titleHeight:title width:width];
     
     
     CGFloat height = 0.f;
@@ -248,9 +267,18 @@
     }
     
     
-    CGFloat titleHeight = [HPThreadCell titleHeight:_thread.title];
+    CGFloat cellWidth = CGRectGetWidth(self.contentView.bounds);
+    if (cellWidth <= 0) {
+        cellWidth = CGRectGetWidth(self.bounds);
+    }
+    if (cellWidth <= 0) {
+        cellWidth = [UIScreen mainScreen].bounds.size.width;
+    }
     
-    CGFloat width = CELL_CONTENT_WIDTH - image_width - (CELL_CONTENT_MARGIN * 2) - image_margin;
+    CGFloat titleHeight = [HPThreadCell titleHeight:_thread.title width:cellWidth];
+    
+    CGFloat width = cellWidth - image_width - (CELL_CONTENT_MARGIN * 2) - image_margin;
+    width = MAX(width, 40.f);
     [_titleLabel setFrame:CGRectMake(CELL_CONTENT_MARGIN + image_width + image_margin ,  CELL_SUB_HEIGHT + CELL_CONTENT_MARGIN * 1.7 , width, titleHeight)];
     
     [_dateLabel setFrame:CGRectMake(CELL_CONTENT_MARGIN + image_width + image_margin , CELL_CONTENT_MARGIN, width, CELL_SUB_HEIGHT)];

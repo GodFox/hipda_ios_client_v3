@@ -18,7 +18,7 @@
  */
 @interface DZWebBrowser : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate,
 UISearchBarDelegate, UISearchDisplayDelegate,
-UIActionSheetDelegate, MFMailComposeViewControllerDelegate,
+MFMailComposeViewControllerDelegate,
 UIGestureRecognizerDelegate>
 
 /** The WebView control rendering the web contents. */

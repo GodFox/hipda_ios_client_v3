@@ -41,7 +41,7 @@
 + (void)ayscnMyNoticesWithBlock:(void (^)(NSArray *threads, NSError *error))block
                            page:(NSInteger)page {
     
-    NSString *path = [NSString stringWithFormat:@"forum/notice.php?filter=threads&page=%ld", page];
+    NSString *path = [NSString stringWithFormat:@"forum/notice.php?filter=threads&page=%ld&inajax=1", page];
     
     [[HPHttpClient sharedClient] getPathContent:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSString *html)
      {

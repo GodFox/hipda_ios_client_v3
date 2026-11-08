@@ -12,7 +12,7 @@
 
 #import "NSString+Additions.h"
 
-static NSString * const kHPClientBaseURLString = @"http://www.hi-pda.com/";
+static NSString * const kHPClientBaseURLString = @"https://www.4d4y.com/";
 
 @implementation HPHttpClient
 
@@ -27,7 +27,7 @@ static NSString * const kHPClientBaseURLString = @"http://www.hi-pda.com/";
      * login cookies
      */
     /*
-    NSArray * availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://www.hi-pda.com"]];
+    NSArray * availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"https://www.4d4y.com"]];
     NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:availableCookies];
     //NSLog(@"headers %@", headers);
     */
@@ -51,13 +51,13 @@ static NSString * const kHPClientBaseURLString = @"http://www.hi-pda.com/";
     
     [self registerHTTPOperationClass:[AFHTTPRequestOperation class]];
     
-    [self setDefaultHeader:@"Host" value:@"www.hi-pda.com"];
+    [self setDefaultHeader:@"Host" value:@"www.4d4y.com"];
     [self setDefaultHeader:@"User-Agent" value:@"Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_3 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B508 Safari/9537.53"];
     [self setDefaultHeader:@"Accept" value:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"];
     [self setDefaultHeader:@"Accept-Encoding" value:@"gzip, deflate"];
     [self setDefaultHeader:@"Accept-Language" value:@"zh-cn"];
     
-    [self setDefaultHeader:@"Referer" value:@"http://www.hi-pda.com/forum/forumdisplay.php?fid=2"];
+    [self setDefaultHeader:@"Referer" value:@"https://www.4d4y.com/forum/forumdisplay.php?fid=2"];
     
     return self;
 }
@@ -133,7 +133,7 @@ static NSString * const kHPClientBaseURLString = @"http://www.hi-pda.com/";
         }];
         
         if (error) {
-            *error = [NSError errorWithDomain:@".hi-pda.com" code:NSURLErrorUserAuthenticationRequired userInfo:nil];
+            *error = [NSError errorWithDomain:@".4d4y.com" code:NSURLErrorUserAuthenticationRequired userInfo:nil];
         }
     }
     

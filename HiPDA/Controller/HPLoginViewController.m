@@ -131,12 +131,12 @@
         if (!(username && password)) {
             item.title = @"确定";
             [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:@"请填写用户名和密码" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+            [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:@"请填写用户名和密码" handler:nil];
             return;
         }
         
         NSString *questionid = @"";
-        if (![questionidString isEqualToString:@"安全提问"]) {
+        if (![questionidString isEqualToString:@"安全提问"] && questionidString.length > 0) {
             questionid = [questionidString substringToIndex:1];
         }
         
@@ -172,7 +172,7 @@
                  } else {
                      [SVProgressHUD dismiss];
                      NSLog(@"%@", [error localizedDescription]);
-                     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+                     [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] handler:nil];
                      
                      [[HPAccount sharedHPAccount] logout];
                  }
@@ -193,7 +193,7 @@
 - (void)zhuce:(id)sender {
     
     /*
-    NSURL *url = [NSURL URLWithString:@"http://www.hi-pda.com/forum/register.php"];
+    NSURL *url = [NSURL URLWithString:@"https://www.4d4y.com/forum/register.php"];
     DZWebBrowser *webBrowser = [[DZWebBrowser alloc] initWebBrowserWithURL:url];
     webBrowser.showProgress = YES;
     webBrowser.allowSharing = YES;
@@ -252,7 +252,7 @@
                  
                  [SVProgressHUD dismiss];
                  NSLog(@"%@", [error localizedDescription]);
-                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+                 [HPAlert showWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] handler:nil];
                  
                  [[HPAccount sharedHPAccount] logout];
              }

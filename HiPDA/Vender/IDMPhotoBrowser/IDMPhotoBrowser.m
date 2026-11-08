@@ -44,7 +44,6 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
     UILabel *_counterLabel;
     
     // Actions
-    UIActionSheet *_actionsSheet;
     UIActivityViewController *activityViewController;
     
     // Control
@@ -72,7 +71,6 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
 }
 
 // Private Properties
-@property (nonatomic, strong) UIActionSheet *actionsSheet;
 @property (nonatomic, strong) UIActivityViewController *activityViewController;
 
 // Private Methods
@@ -130,7 +128,7 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
 @synthesize leftArrowImage = _leftArrowImage, rightArrowImage = _rightArrowImage, leftArrowSelectedImage = _leftArrowSelectedImage, rightArrowSelectedImage = _rightArrowSelectedImage;
 @synthesize displayArrowButton = _displayArrowButton, actionButtonTitles = _actionButtonTitles;
 @synthesize arrowButtonsChangePhotosAnimated = _arrowButtonsChangePhotosAnimated;
-@synthesize actionsSheet = _actionsSheet, activityViewController = _activityViewController;
+@synthesize activityViewController = _activityViewController;
 @synthesize trackTintColor = _trackTintColor, progressTintColor = _progressTintColor;
 @synthesize delegate = _delegate;
 
@@ -1323,43 +1321,44 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
         }
         else
         {
-            // Action sheet
-            self.actionsSheet = [UIActionSheet new];
-            self.actionsSheet.delegate = self;
-            for(NSString *action in _actionButtonTitles) {
-                [self.actionsSheet addButtonWithTitle:action];
+            // Action sheet (UIAlertController)
+            UIAlertController *sheet = [UIAlertController alertControllerWithTitle:nil
+                                                                           message:nil
+                                                                    preferredStyle:UIAlertControllerStyleActionSheet];
+            __weak typeof(self) weakSelf = self;
+            NSUInteger pageIndex = _currentPageIndex;
+            for (NSString *actionTitle in _actionButtonTitles) {
+                [sheet addAction:[UIAlertAction actionWithTitle:actionTitle
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                    if ([weakSelf.delegate respondsToSelector:@selector(photoBrowser:didDismissActionSheetWithButtonIndex:photoIndex:)]) {
+                        NSUInteger index = [weakSelf.actionButtonTitles indexOfObject:actionTitle];
+                        [weakSelf.delegate photoBrowser:weakSelf didDismissActionSheetWithButtonIndex:index photoIndex:pageIndex];
+                    }
+                    [weakSelf hideControlsAfterDelay];
+                }]];
             }
-            
-            self.actionsSheet.cancelButtonIndex = [self.actionsSheet addButtonWithTitle:IDMPhotoBrowserLocalizedStrings(@"Cancel")];
-            self.actionsSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+            [sheet addAction:[UIAlertAction actionWithTitle:IDMPhotoBrowserLocalizedStrings(@"Cancel")
+                                                      style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction *action) {
+                [weakSelf hideControlsAfterDelay];
+            }]];
             
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                [_actionsSheet showFromBarButtonItem:sender animated:YES];
-            } else {
-                [_actionsSheet showInView:self.view];
+                UIPopoverPresentationController *popover = sheet.popoverPresentationController;
+                if ([sender isKindOfClass:[UIBarButtonItem class]]) {
+                    popover.barButtonItem = sender;
+                } else {
+                    popover.sourceView = self.view;
+                    popover.sourceRect = self.view.bounds;
+                }
             }
+            [self presentViewController:sheet animated:YES completion:nil];
         }
         
         // Keep controls hidden
         [self setControlsHidden:NO animated:YES permanent:YES];
     }
-}
-
-#pragma mark - Action Sheet Delegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (actionSheet == _actionsSheet) {
-        self.actionsSheet = nil;
-        
-        if (buttonIndex != actionSheet.cancelButtonIndex) {
-            if ([_delegate respondsToSelector:@selector(photoBrowser:didDismissActionSheetWithButtonIndex:photoIndex:)]) {
-                [_delegate photoBrowser:self didDismissActionSheetWithButtonIndex:buttonIndex photoIndex:_currentPageIndex];
-                return;
-            }
-        }
-    }
-    
-    [self hideControlsAfterDelay]; // Continue as normal...
 }
 
 #pragma mark - SVProgressHUD

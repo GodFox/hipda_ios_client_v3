@@ -22,120 +22,154 @@
  */
 
 #import "UIAlertView+Blocks.h"
-#import <objc/runtime.h>
 
 /*
- * Runtime association key.
+ * UIAlertView 在基于 UIScene 的应用里不可用（iOS 26+ 会直接抛异常），
+ * 这里保留原有 category 的调用方式，但内部改用 UIAlertController 实现。
  */
-static NSString *kHandlerAssociatedKey = @"kHandlerAssociatedKey";
 
-@implementation UIAlertView (Blocks)
+@interface HPAlertViewProxy : NSObject
+@property (nonatomic, weak) UITextField *textField;
+- (UITextField *)textFieldAtIndex:(NSInteger)index;
+- (NSInteger)cancelButtonIndex;
+@end
 
-#pragma mark - Showing
+@implementation HPAlertViewProxy
 
-/*
- * Shows the receiver alert with the given handler.
- */
-- (void)showWithHandler:(UIAlertViewHandler)handler {
-    
-    objc_setAssociatedObject(self, (__bridge const void *)(kHandlerAssociatedKey), handler, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
-    [self setDelegate:self];
-    [self show];
+- (UITextField *)textFieldAtIndex:(NSInteger)index {
+    return self.textField;
 }
 
-#pragma mark - UIAlertViewDelegate
+- (NSInteger)cancelButtonIndex {
+    return 0;
+}
 
-/*
- * Sent to the delegate when the user clicks a button on an alert view.
- */
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    UIAlertViewHandler completionHandler = objc_getAssociatedObject(self, (__bridge const void *)(kHandlerAssociatedKey));
-    
-    if (completionHandler != nil) {
-        
-        completionHandler(alertView, buttonIndex);
+@end
+
+@implementation HPAlert
+
++ (UIViewController *)hp_topViewController {
+    UIWindow *window = nil;
+    for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+        if (![scene isKindOfClass:[UIWindowScene class]]) {
+            continue;
+        }
+        if (scene.activationState != UISceneActivationStateForegroundActive) {
+            continue;
+        }
+        UIWindowScene *windowScene = (UIWindowScene *)scene;
+        for (UIWindow *w in windowScene.windows) {
+            if (w.isKeyWindow) {
+                window = w;
+                break;
+            }
+        }
+        if (!window) {
+            window = windowScene.windows.firstObject;
+        }
+        if (window) {
+            break;
+        }
     }
+    if (!window) {
+        window = [UIApplication sharedApplication].keyWindow;
+    }
+    
+    UIViewController *vc = window.rootViewController;
+    while (vc.presentedViewController) {
+        vc = vc.presentedViewController;
+    }
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        vc = ((UINavigationController *)vc).topViewController;
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        vc = ((UITabBarController *)vc).selectedViewController;
+    }
+    return vc;
 }
 
-#pragma mark - Utility methods
++ (void)hp_presentAlert:(UIAlertController *)alert {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *vc = [self hp_topViewController];
+        if (vc) {
+            [vc presentViewController:alert animated:YES completion:nil];
+        }
+    });
+}
 
-/*
- * Utility selector to show an alert with a title, a message and a button to dimiss.
- */
 + (void)showWithTitle:(NSString *)title
               message:(NSString *)message
               handler:(UIAlertViewHandler)handler {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    
-    [alert showWithHandler:handler];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+        if (handler) {
+            handler(nil, 0);
+        }
+    }]];
+    [self hp_presentAlert:alert];
 }
 
-/*
- * Utility selector to show an alert with an "Error" title, a message and a button to dimiss.
- */
 + (void)showErrorWithMessage:(NSString *)message
                      handler:(UIAlertViewHandler)handler {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    
-    [alert showWithHandler:handler];
+    [self showWithTitle:@"Error" message:message handler:handler];
 }
 
-/*
- * Utility selector to show an alert with a "Warning" title, a message and a button to dimiss.
- */
 + (void)showWarningWithMessage:(NSString *)message
                        handler:(UIAlertViewHandler)handler {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    
-    [alert showWithHandler:handler];
+    [self showWithTitle:@"Warning" message:message handler:handler];
 }
 
-/*
- * Utility selector to show a confirmation dialog with a title, a message and two buttons to accept or cancel.
- */
 + (void)showConfirmationDialogWithTitle:(NSString *)title
                                 message:(NSString *)message
                                 handler:(UIAlertViewHandler)handler {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"No"
-                                          otherButtonTitles:@"Yes", nil];
-    
-    [alert showWithHandler:handler];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"No"
+                                              style:UIAlertActionStyleCancel
+                                            handler:^(UIAlertAction *action) {
+        if (handler) {
+            handler(nil, 0);
+        }
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Yes"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+        if (handler) {
+            handler(nil, 1);
+        }
+    }]];
+    [self hp_presentAlert:alert];
 }
 
-/*
- * added by wujichao
- */
 + (void)showSendMessageDialogWithTitle:(NSString *)title
                                handler:(UIAlertViewHandler)handler {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:nil];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:nil
-                                                   delegate:nil
-                                          cancelButtonTitle:@"取消"
-                                          otherButtonTitles:@"发送", nil];
-    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [alert showWithHandler:handler];
+    HPAlertViewProxy *proxy = [HPAlertViewProxy new];
+    proxy.textField = alert.textFields.firstObject;
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                              style:UIAlertActionStyleCancel
+                                            handler:^(UIAlertAction *action) {
+        if (handler) {
+            handler((UIAlertView *)(id)proxy, 0);
+        }
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"发送"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+        if (handler) {
+            handler((UIAlertView *)(id)proxy, 1);
+        }
+    }]];
+    [self hp_presentAlert:alert];
 }
 
 @end

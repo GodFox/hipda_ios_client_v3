@@ -53,7 +53,7 @@
 + (void)loadMessageListWithBlock:(void (^)(NSArray *lists, NSError *error))block page:(NSInteger)page
 {
     
-    NSString *path = [NSString stringWithFormat:@"forum/pm.php?filter=privatepm&page=%i", page];
+    NSString *path = [NSString stringWithFormat:@"forum/pm.php?filter=privatepm&page=%i&inajax=1", page];
     if(DEBUG_Load_Message) NSLog(@"path %@", path);
     
     [[HPHttpClient sharedClient] getPathContent:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSString *html)
@@ -62,7 +62,7 @@
         if(DEBUG_Load_Message) NSLog(@" html %@", html);
          
          //uc_server/([^\"]+)\".*?
-         NSString *pattern = @"uid=(\\d+)\" target=\"_blank\">(.*?)</a></cite>(.*?)</p>.*?summary\">\r\n(.*?)</div>";
+         NSString *pattern = @"<li id=\"pm_\\d+\"[^>]*>\\s*<a href=\"space\\.php\\?uid=(\\d+)\"[^>]*class=\"avatar\".*?<p class=\"cite\">\\s*<cite><a href=\"space\\.php\\?uid=\\d+\"[^>]*>(.*?)</a></cite>(.*?)</p>\\s*<div class=\"summary\">(.*?)</div>";
          
          NSRegularExpression *reg =
          [[NSRegularExpression alloc] initWithPattern:pattern
@@ -93,7 +93,7 @@
                  NSString *username = [html substringWithRange:nameRange];
                  
                  NSRange dateRange = NSMakeRange([result rangeAtIndex:3].location, [result rangeAtIndex:3].length);
-                 NSString *dateString = [html substringWithRange:dateRange];
+                 NSString *dateString = [[html substringWithRange:dateRange] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                  
                  NSRange summaryRange = NSMakeRange([result rangeAtIndex:4].location, [result rangeAtIndex:4].length);
                  NSString *summary = [html substringWithRange:summaryRange];
@@ -148,7 +148,7 @@
                            block:(void (^)(NSArray *lists, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"forum/pm.php?uid=%ld&filter=privatepm&daterange=%ld#new", uid, range];
+    NSString *path = [NSString stringWithFormat:@"forum/pm.php?uid=%ld&filter=privatepm&daterange=%ld&inajax=1#new", uid, range];
     
     [[HPHttpClient sharedClient] getPathContent:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSString *html)
     {
@@ -163,7 +163,7 @@
          谢谢</div>
          */
         
-        NSString *pattern = @"<cite>([^<]+)</cite>\r\n(.*?)</p>\r\n<div class=\"summary\">(.*?)</div>";
+        NSString *pattern = @"<cite>([^<]+)</cite>\\s*([^<]*?)</p>\\s*<div class=\"summary\">(.*?)</div>";
         
         NSRegularExpression *reg =
         [[NSRegularExpression alloc] initWithPattern:pattern
@@ -187,15 +187,15 @@
                 NSString *username = [html substringWithRange:nameRange];
                 
                 NSRange dateRange = NSMakeRange([result rangeAtIndex:2].location, [result rangeAtIndex:2].length);
-                NSString *dateString = [html substringWithRange:dateRange];
+                NSString *dateString = [[html substringWithRange:dateRange] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
                 NSRange summaryRange = NSMakeRange([result rangeAtIndex:3].location, [result rangeAtIndex:3].length);
                 NSString *summary = [html substringWithRange:summaryRange];
                 
                 // message
                 if ([summary indexOf:@"images/smilies"] != -1) {
-                    // <img src=\"http://www.hi-pda.com/forum/images/smilies/grapeman/19.gif\" border=\"0\" alt=\"\" />
-                    summary = [summary replaceWithPattern:@"<img[^>]+src=\"http://www\\.hi-pda\\.com/forum/images/smilies/([a-z0-9/]+)\\.gif.*?>" template:@"{表情($1)}" isdot:NO];
+                    // <img src=\"https://www.4d4y.com/forum/images/smilies/grapeman/19.gif\" border=\"0\" alt=\"\" />
+                    summary = [summary replaceWithPattern:@"<img[^>]+src=\"https?://www\\.4d4y\\.com/forum/images/smilies/([a-z0-9/]+)\\.gif.*?>" template:@"{表情($1)}" isdot:NO];
                 }
                 //summary = [summary stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
                 summary = [summary stringByConvertingHTMLToPlainText];

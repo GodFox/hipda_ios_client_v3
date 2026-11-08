@@ -50,20 +50,6 @@
 }
 @end
 
-@interface UIActionSheet (Attachment)
-@property (nonatomic, retain) NSMutableDictionary *userInfo;
-@end
-NSString * const kNewAttachmentKey = @"kNewAttachmentKey";
-@implementation UIActionSheet (Attachment)
-@dynamic userInfo;
-- (void)setUserInfo:(NSMutableDictionary *)userInfo {
-    objc_setAssociatedObject(self, (__bridge const void *)(kNewAttachmentKey),userInfo,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (NSMutableDictionary *)userInfo {
-    return objc_getAssociatedObject(self, (__bridge const void *)(kNewAttachmentKey));
-}
-@end
-
 @interface DZWebBrowser ()
 {
     UIBarButtonItem *_stopButton;
@@ -520,146 +506,66 @@ NSString * const kNewAttachmentKey = @"kNewAttachmentKey";
     NSString *title = [userInfo objectForKey:kTitleKey];
     NSString *url = [userInfo objectForKey:kUrlKey];
     
-    //UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:textForKey(TXT_ACTIONSHEET_TWITTER), textForKey(TXT_ACTIONSHEET_FACEBOOK),nil];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title
+                                                                         message:nil
+                                                                  preferredStyle:UIAlertControllerStyleActionSheet];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    actionSheet.userInfo = userInfo;
+    void (^addAction)(NSString *, UIAlertActionStyle) = ^(NSString *actionTitle, UIAlertActionStyle style) {
+        [actionSheet addAction:[UIAlertAction actionWithTitle:actionTitle
+                                                        style:style
+                                                      handler:^(UIAlertAction *action) {
+            [self handleActionWithTitle:actionTitle userInfo:userInfo];
+        }]];
+    };
     
     if ([type isEqualToString:kImageTypeKey]) {
-        [actionSheet addButtonWithTitle:textForKey(TXT_ACTIONSHEET_COPYIMG)];
-        [actionSheet addButtonWithTitle:textForKey(TXT_ACTIONSHEET_SAVEIMG)];
-        
-        [actionSheet addButtonWithTitle:textForKey(TXT_CANCEL)];
-        // ##################
-        actionSheet.cancelButtonIndex = 2;
+        addAction(textForKey(TXT_ACTIONSHEET_COPYIMG), UIAlertActionStyleDefault);
+        addAction(textForKey(TXT_ACTIONSHEET_SAVEIMG), UIAlertActionStyleDefault);
+    } else {
+        addAction(textForKey(TXT_ACTIONSHEET_COPYLINK), UIAlertActionStyleDefault);
+        addAction(textForKey(TXT_ACTIONSHEET_MAIL), UIAlertActionStyleDefault);
+        addAction(textForKey(TXT_ACTIONSHEET_SAFARI), UIAlertActionStyleDefault);
     }
-    else {
-        [actionSheet addButtonWithTitle:textForKey(TXT_ACTIONSHEET_COPYLINK)];
-        [actionSheet addButtonWithTitle:textForKey(TXT_ACTIONSHEET_MAIL)];
-        [actionSheet addButtonWithTitle:textForKey(TXT_ACTIONSHEET_SAFARI)];
-        
-        [actionSheet addButtonWithTitle:textForKey(TXT_CANCEL)];
-        actionSheet.cancelButtonIndex = 3;
-    }
+    [actionSheet addAction:[UIAlertAction actionWithTitle:textForKey(TXT_CANCEL)
+                                                    style:UIAlertActionStyleCancel
+                                                  handler:nil]];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UIPopoverPresentationController *popover = actionSheet.popoverPresentationController;
         if ([view isKindOfClass:[UIBarButtonItem class]]) {
-            [actionSheet showFromBarButtonItem:(UIBarButtonItem *)view animated:YES];
-        }
-        else if ([view isEqual:_webView]) {
-            CGPoint point = view.accessibilityActivationPoint;
-            [actionSheet showFromRect:CGRectMake(point.x, point.y, 1, 1) inView:self.view animated:YES];
-        }
-        else {
-            [actionSheet showFromRect:view.frame inView:self.view animated:YES];
+            popover.barButtonItem = (UIBarButtonItem *)view;
+        } else if ([view isKindOfClass:[UIView class]]) {
+            popover.sourceView = self.view;
+            popover.sourceRect = view.frame;
         }
     }
-    else {
-        [actionSheet showFromToolbar:self.navigationController.toolbar];
-    }
+    [self presentViewController:actionSheet animated:YES completion:nil];
     
-    if ([type isEqualToString:kImageTypeKey]) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        
+    if ([type isEqualToString:kImageTypeKey] && url.length > 0) {
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
         dispatch_async(queue, ^{
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
             UIImage *image = [UIImage imageWithData:data];
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [actionSheet.userInfo setObject:image forKey:kImageTypeKey];
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                if (image) {
+                    [userInfo setObject:image forKey:kImageTypeKey];
+                }
             });
         });
     }
 }
 
-
-#pragma mark - UIWebViewDelegate
-
-- (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)handleActionWithTitle:(NSString *)buttonTitle userInfo:(NSDictionary *)userInfo
 {
-    //Little timer to avoid loading lags
-    NSTimer *webTimer = [NSTimer timerWithTimeInterval:kWebLoadingTimout target:self
-                                              selector:@selector(reachabilityChanged)
-                                              userInfo:nil
-                                               repeats:NO];
-    
-    [[NSRunLoop mainRunLoop] addTimer:webTimer forMode:NSDefaultRunLoopMode];
-    
-    self.currentURL = request.URL;
-    _stopButton.enabled = YES;
-    
-	return YES;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webview
-{
-	[self showLoadingIndicator:YES];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webview
-{
-    _stopButton.enabled = NO;
-    _previousButton.enabled = [webview canGoBack];
-    _nextButton.enabled = [webview canGoForward];
-    _shareButton.enabled = YES;
-    
-    [self showLoadingIndicator:NO];
-}
-
-- (void)webView:(UIWebView *)webview didFailLoadWithError:(NSError *)error
-{
-	[self webViewDidFinishLoad:webview];
-    [self showLoadingIndicator:NO];
-}
-
-
-#pragma mark - NJKWebViewProgressDelegate
-
-- (void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
-{
-    [self.progressView setProgress:progress animated:NO];
-    
-    if (progress == 1.0) {
-        _progressView = nil;
-        [self.navigationItem setTitleView:self.titleLabel];
-        _titleLabel.text = [self title];
-    }
-}
-
-
-#pragma mark - UIGestureRecognizerDelegate Methods
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if ([gestureRecognizer isKindOfClass:[DZLongPressGestureRecognizer class]]) {
-        return YES;
-    }
-    return NO;
-}
-
-
-#pragma mark - UIActionSheetDelegate Methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    UIImage *attachment = [actionSheet.userInfo objectForKey:kImageTypeKey];
-    NSString *title = [actionSheet.userInfo objectForKey:kTitleKey];
-    NSString *url = [actionSheet.userInfo objectForKey:kUrlKey];
-    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    UIImage *attachment = [userInfo objectForKey:kImageTypeKey];
+    NSString *title = [userInfo objectForKey:kTitleKey];
+    NSString *url = [userInfo objectForKey:kUrlKey];
     
     if ([buttonTitle isEqualToString:textForKey(TXT_ACTIONSHEET_MAIL)])
     {
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *mailComposeVC = [[MFMailComposeViewController alloc] init];
             mailComposeVC.mailComposeDelegate = self;
-            //mailComposeVC.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
             NSString *subject = attachment ? title : [self title];
             [mailComposeVC setSubject:subject];
             [mailComposeVC setMessageBody:url isHTML:YES];
@@ -672,12 +578,13 @@ NSString * const kNewAttachmentKey = @"kNewAttachmentKey";
             [self.navigationController presentViewController:mailComposeVC animated:YES completion:NULL];
         }
         else {
-            UIAlertView *alertNoInternet = [[UIAlertView alloc] initWithTitle:textForKey(TXT_ALERT_NO_MAIL)
-                                                                      message:textForKey(TXT_ALERT_NO_MAIL_MESSAGE)
-                                                                     delegate:nil
-                                                            cancelButtonTitle:textForKey(TXT_ALERT_OK)
-                                                            otherButtonTitles:nil];
-            [alertNoInternet show];
+            UIAlertController *alertNoInternet = [UIAlertController alertControllerWithTitle:textForKey(TXT_ALERT_NO_MAIL)
+                                                                                    message:textForKey(TXT_ALERT_NO_MAIL_MESSAGE)
+                                                                             preferredStyle:UIAlertControllerStyleAlert];
+            [alertNoInternet addAction:[UIAlertAction actionWithTitle:textForKey(TXT_ALERT_OK)
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil]];
+            [self presentViewController:alertNoInternet animated:YES completion:NULL];
         }
     }
     else if ([buttonTitle isEqualToString:textForKey(TXT_ACTIONSHEET_COPYLINK)])
@@ -706,7 +613,7 @@ NSString * const kNewAttachmentKey = @"kNewAttachmentKey";
                 ServiceType = SLServiceTypeTwitter;
             }
         }
-        else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:textForKey(TXT_ACTIONSHEET_FACEBOOK)]) {
+        else if ([buttonTitle isEqualToString:textForKey(TXT_ACTIONSHEET_FACEBOOK)]) {
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 ServiceType = SLServiceTypeFacebook;
             }
@@ -723,7 +630,6 @@ NSString * const kNewAttachmentKey = @"kNewAttachmentKey";
         }
     }
 }
-
 
 #pragma mark - MFMailComposeViewControllerDelegate Methods
 
@@ -744,12 +650,13 @@ NSString * const kNewAttachmentKey = @"kNewAttachmentKey";
         _nextButton.enabled = NO;
         _shareButton.enabled = NO;
         
-        UIAlertView *alertNoInternet = [[UIAlertView alloc] initWithTitle:textForKey(TXT_ALERT_NO_INTERNET)
-                                                                  message:textForKey(TXT_ALERT_NO_INTERNET_MESSAGE)
-                                                                 delegate:nil
-                                                        cancelButtonTitle:textForKey(TXT_ALERT_OK)
-                                                        otherButtonTitles:nil];
-        [alertNoInternet show];
+        UIAlertController *alertNoInternet = [UIAlertController alertControllerWithTitle:textForKey(TXT_ALERT_NO_INTERNET)
+                                                                                message:textForKey(TXT_ALERT_NO_INTERNET_MESSAGE)
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+        [alertNoInternet addAction:[UIAlertAction actionWithTitle:textForKey(TXT_ALERT_OK)
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil]];
+        [self presentViewController:alertNoInternet animated:YES completion:NULL];
     }
 }
 

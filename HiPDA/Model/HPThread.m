@@ -246,18 +246,14 @@
 
 + (NSArray *)extractThreads:(NSString *)string {
     
-    //NSLog(@"html : \n%@", string);
+    // 4d4y 的版块列表是自定义模板：<td class="list_user"> + <td class="listcon">
+    NSString *pattern = @"<td[^>]*class=\"list_user\"[^>]*>.*?space\\.php\\?uid=(\\d+).*?</td>\\s*<td class=\"listcon\">\\s*<p><a href=\"space\\.php\\?uid=\\d+\">(.*?)</a>\\s*/\\s*([^<]+)</p>.*?<a href=\"viewthread\\.php\\?tid=(\\d+)[^\"]*\"([^>]*)class=\"title\">(.*?)</a>.*?redirect\\.php\\?tid=\\d+[^\"]*\">(.*?)</a></p>.*?class=\"num\">(\\d+)</a>";
     
-    string = [string stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
-    NSRange range = [string rangeOfString:@"normalthread_"];
-    string = [string substringFromIndex:range.location];
-    
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:@"<span id=\"thread_(\\d+)\"><a ([^>]+)>(.*?)</a>(.*?)<a href=\"space\\.php\\?uid=(\\d+)\">(.*?)</a>\n</cite>\n<em>([^<]+)</em>\n</td>\n<td class=\"nums\"><strong>(\\d+)</strong>/<em>(\\d+)</em></td>"
-                                  options:NSRegularExpressionDotMatchesLineSeparators
-                                  error:&error
-                                  ];
+    NSError *error = nil;
+    NSRegularExpression *regex =
+    [NSRegularExpression regularExpressionWithPattern:pattern
+                                              options:NSRegularExpressionDotMatchesLineSeparators
+                                                error:&error];
     
     __block NSMutableArray *threadsArray = [NSMutableArray arrayWithCapacity:42];
     
@@ -267,66 +263,48 @@
                          usingBlock:
      ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
          
-         NSString *tidString = [string  substringWithRange:[result rangeAtIndex:1]];
-         NSString *aString = [string  substringWithRange:[result rangeAtIndex:2]];
-         NSString *title = [string  substringWithRange:[result rangeAtIndex:3]];
-         NSString *otherString = [string  substringWithRange:[result rangeAtIndex:4]];
-         NSString *uidString = [string  substringWithRange:[result rangeAtIndex:5]];
-         NSString *username = [string  substringWithRange:[result rangeAtIndex:6]];
-         NSString *dateString = [string  substringWithRange:[result rangeAtIndex:7]];
-         NSString *replyCountString = [string  substringWithRange:[result rangeAtIndex:8]];
-         NSString *openCountString = [string  substringWithRange:[result rangeAtIndex:9]];
-        /*
-         NSDictionary *dict = @{
-            @"tidString":tidString,
-            @"aString":aString,
-            @"title":title,
-            @"uidString":uidString,
-            @"username":username,
-            @"dateString":dateString,
-            @"replyCountString":replyCountString,
-            @"openCountString":openCountString
-         };*/
+         if ([result numberOfRanges] < 9) {
+             return;
+         }
          
-         title = [title stringByDecodingHTMLEntities];
+         NSString *uidString = [string substringWithRange:[result rangeAtIndex:1]];
+         NSString *username = [string substringWithRange:[result rangeAtIndex:2]];
+         NSString *dateString = [string substringWithRange:[result rangeAtIndex:3]];
+         NSString *tidString = [string substringWithRange:[result rangeAtIndex:4]];
+         NSString *aString = [string substringWithRange:[result rangeAtIndex:5]];
+         NSString *title = [string substringWithRange:[result rangeAtIndex:6]];
+         NSString *replyCountString = [string substringWithRange:[result rangeAtIndex:8]];
          
+         username = [[username trim] stringByDecodingHTMLEntities];
+         title = [[title trim] stringByDecodingHTMLEntities];
+         dateString = [dateString trim];
          
          NSString *titleColorString = [aString stringBetweenString:@"color: #" andString:@"\""];
          UIColor *titleColor = nil;
          if (titleColorString) {
              titleColor = [titleColorString colorFromHexString];
          }
-
-         BOOL hasImage = NO; BOOL hasAttach = NO;
-         if ([otherString indexOf:@"图片附件"] != -1) {
-             hasImage = YES;
-             title = [NSString stringWithFormat:@"%@ \U0001F4CE", title];
-         } else if ([otherString indexOf:@"附件"] != -1) {
-             hasAttach = YES;
-             title = [NSString stringWithFormat:@"%@ \U0001F4CE", title];
-         }
-        
+         
          NSDictionary *userAttributes = @{
                                           @"uid":uidString,
                                           @"username":username
                                           };
-         //NSLog(@" %d %d %@ ",hasImage,hasAttach,title );
          NSDictionary *postAttributes = @{
                                           @"tid":tidString,
                                           @"title":title,
-                                          @"titleColor":(titleColor?titleColor:[NSNull null]),
+                                          @"titleColor":(titleColor ? titleColor : [NSNull null]),
                                           @"date":dateString,
                                           @"replyCount":replyCountString,
-                                          @"openCount":openCountString,
-                                          @"hasImage":(hasImage?@YES:@NO),
-                                          @"hasAttach":(hasAttach?@YES:@NO),
+                                          @"openCount":@"0",
+                                          @"hasImage":@NO,
+                                          @"hasAttach":@NO,
                                           @"user":userAttributes
                                           };
          
          [threadsArray addObject:postAttributes];
      }];
     
-    return threadsArray;
+    return [NSArray arrayWithArray:threadsArray];
 }
 
 - (NSString *)shortDate {

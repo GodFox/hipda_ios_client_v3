@@ -54,7 +54,7 @@ NSString *cacheKey(NSInteger tid) {
     
     // 2
     // submit
-    //http://www.hi-pda.com/forum/my.php?item=attention&tid=1404188&inajax=1&ajaxtarget=favorite_msg&action=add
+    //https://www.4d4y.com/forum/my.php?item=attention&tid=1404188&inajax=1&ajaxtarget=favorite_msg&action=add
     
     NSString *path = [NSString stringWithFormat:@"forum/my.php?item=attention&tid=%ld&inajax=1&ajaxtarget=favorite_msg&action=add", thread.tid];
     
@@ -95,7 +95,7 @@ NSString *cacheKey(NSInteger tid) {
     
     // 2
     // submit
-    //http://www.hi-pda.com/forum/my.php?item=attention&tid=1404188&inajax=1&ajaxtarget=favorite_msg&action=remove
+    //https://www.4d4y.com/forum/my.php?item=attention&tid=1404188&inajax=1&ajaxtarget=favorite_msg&action=remove
     NSString *path = [NSString stringWithFormat:@"forum/my.php?item=attention&tid=%ld&inajax=1&ajaxtarget=favorite_msg&action=remove", tid];
     
     if (DEBUG_Attention) NSLog(@"attention path %@", path);

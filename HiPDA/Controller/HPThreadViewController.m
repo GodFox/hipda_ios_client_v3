@@ -41,7 +41,7 @@ typedef enum{
 } LoadType;
 
 
-@interface HPThreadViewController () <MCSwipeTableViewCellDelegate, UIAlertViewDelegate, HPCompositionDoneDelegate>
+@interface HPThreadViewController () <MCSwipeTableViewCellDelegate, HPCompositionDoneDelegate>
 
 @property (nonatomic, strong) NSMutableArray *threads;
 @property (nonatomic, assign) NSInteger current_fid;
@@ -214,11 +214,11 @@ typedef enum{
              error_count = 0;
             
              if (threads.count == 0) {
-                 [UIAlertView showWithTitle:@"加载失败"
+                 [HPAlert showWithTitle:@"加载失败"
                                     message:@"返回结果为空, 可能是由于您设置了每页帖子15条, 而置顶帖超过15个, 是否前往个人中心修改为默认?"
                                     handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                      if (buttonIndex != [alertView cancelButtonIndex]) {
-                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.hi-pda.com/forum/memcp.php?action=profile&typeid=5"]];
+                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.4d4y.com/forum/memcp.php?action=profile&typeid=5"]];
                      }
                  }];
                  
@@ -389,7 +389,8 @@ typedef enum{
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [HPThreadCell heightForCellWithThread:[_threads objectAtIndex:indexPath.row]];
+    return [HPThreadCell heightForCellWithThread:[_threads objectAtIndex:indexPath.row]
+                                                  width:CGRectGetWidth(tableView.bounds)];
 }
 
 
@@ -578,7 +579,7 @@ typedef enum{
          
          
          if ([NSStandardUserDefaults boolForKey:kHPHomeTip4Bg or:YES]) {
-             [UIAlertView showConfirmationDialogWithTitle:@"提示"
+             [HPAlert showConfirmationDialogWithTitle:@"提示"
                                                   message:@"帖子已预载入\n在「待读」界面查看"
                                                   handler:^(UIAlertView *alertView, NSInteger buttonIndex)
               {

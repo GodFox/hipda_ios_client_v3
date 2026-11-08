@@ -27,7 +27,7 @@
     NSString *avatar = [attributes valueForKeyPath:@"avatar"];
     if (avatar) {
         if (![avatar isEqualToString:@"000/00/00/00"]) {
-            _avatarImageURLString = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/uc_server/data/avatar/%@_avatar_small.jpg", avatar];
+            _avatarImageURLString = [NSString stringWithFormat:@"https://www.4d4y.com/forum/uc_server/data/avatar/%@_avatar_small.jpg", avatar];
             _avatarImageURL = [NSURL URLWithString:_avatarImageURLString];
             //NSLog(@"avatar url %@", _avatarImageURL);
         } else {
@@ -37,9 +37,9 @@
     } else {
         
         /*
-         http://www.hi-pda.com/forum/uc_server/data/avatar/000/00/53/69_avatar_middle.jpg
-         http://www.hi-pda.com/forum/uc_server/data/avatar/000/02/61/71_avatar_middle.jpg
-         http://www.hi-pda.com/forum/uc_server/data/avatar/000/22/22/37_avatar_middle.jpg
+         https://www.4d4y.com/forum/uc_server/data/avatar/000/00/53/69_avatar_middle.jpg
+         https://www.4d4y.com/forum/uc_server/data/avatar/000/02/61/71_avatar_middle.jpg
+         https://www.4d4y.com/forum/uc_server/data/avatar/000/22/22/37_avatar_middle.jpg
          
          2013-9-15 最新会员 747004
          */
@@ -51,7 +51,7 @@
         //NSLog(@"%02d/%02d/%02d", a, b, c);
         
         //size [small middle big]
-        _avatarImageURLString = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/uc_server/data/avatar/000/%02ld/%02ld/%02ld_avatar_small.jpg", a, b, c];
+        _avatarImageURLString = [NSString stringWithFormat:@"https://www.4d4y.com/forum/uc_server/data/avatar/000/%02ld/%02ld/%02ld_avatar_small.jpg", a, b, c];
         _avatarImageURL = [NSURL URLWithString:_avatarImageURLString];
     }
     
@@ -89,7 +89,7 @@
     c = _uid % 100;
     //NSLog(@"%02d/%02d/%02d", a, b, c);
     
-    NSString *avatarImageURLString = [NSString stringWithFormat:@"http://www.hi-pda.com/forum/uc_server/data/avatar/000/%02ld/%02ld/%02ld_avatar_small.jpg", a, b, c];
+    NSString *avatarImageURLString = [NSString stringWithFormat:@"https://www.4d4y.com/forum/uc_server/data/avatar/000/%02ld/%02ld/%02ld_avatar_small.jpg", a, b, c];
     return [NSURL URLWithString:avatarImageURLString];
 }
 

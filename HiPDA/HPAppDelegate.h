@@ -13,4 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) SWRevealViewController *viewController;
 
+- (void)setupRootViewControllerWithWindow:(UIWindow *)window;
+
 @end
